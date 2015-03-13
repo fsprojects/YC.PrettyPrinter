@@ -2,11 +2,8 @@
 
 open System.Collections.Generic
 
-let spaces n = 
-    let mutable spaces = ""
-    for i in 0..n-1 do
-        spaces <- spaces +  " "
-    spaces
+let spaces n = String.replicate n "_"
+let nl_skip n s = "\n" + spaces n + s
 
 type T_Height  = int
 type T_LastWidht = int
@@ -32,10 +29,12 @@ type Format =
         && format1.width = format2.width
         && format1.widthLast = format2.widthLast
 
+
 //Above Format
     static member (>-<) (f1 : Format, f2 : Format) = 
         let makeIndentsAbove =
-            fun n _ -> ("\n" + spaces n) + f2.txtstr n "" |> f1.txtstr n
+            //fun n _ -> ("\n" + spaces n) + f2.txtstr n "" |> f1.txtstr n
+            fun n -> f1.txtstr n << nl_skip n << f2.txtstr n
         new Format(f1.height+f2.height, f2.widthLast, max f1.width f2.width, makeIndentsAbove)
 
 //Beside Format !!!!WARNING "" is wery stange no spaces
@@ -43,23 +42,36 @@ type Format =
         new Format(f1.height+f2.height-1, 
                    f1.widthLast+f2.widthLast, 
                    max f1.width (f1.widthLast+f2.width), 
-                   fun n _ -> "" |> (f2.txtstr (f2.widthLast + n) >> f1.txtstr n) )
+                   //fun n _ -> "" |> (f2.txtstr (f2.widthLast + n) >> f1.txtstr n) )
+                   fun n -> f1.txtstr n << f2.txtstr (f1.widthLast + n) )
 
 //Is that correctly???
     member this.isSuitable width =
         this.width <= width
 
 //Comparable realisation
+//    interface System.IComparable with
+//      member this.CompareTo format2 =
+//        match format2 with
+//          | :? Format as f2 -> 
+//            if this.height < f2.height 
+//            then -1
+//            elif (this.height = f2.height)
+//            then if this.width < f2.width
+//                 then -1
+//                 else 0
+//            else 1
+//          | _ -> invalidArg "format2" "cannot compare values of different types"
+
+//Comparable realisation
     interface System.IComparable with
       member this.CompareTo format2 =
         match format2 with
           | :? Format as f2 -> 
-            if this.height < f2.height 
+            if (this.height < f2.height) || (this.height = f2.height && this.width < f2.width) 
             then -1
-            elif (this.height = f2.height)
-            then if this.width < f2.width
-                 then -1
-                 else 0
+            elif (this.height = f2.height && this.width = f2.width && this.widthLast = this.widthLast)
+                then 0
             else 1
           | _ -> invalidArg "format2" "cannot compare values of different types"
 
@@ -70,7 +82,7 @@ let stringToFormat (s:string) =
 
 //Adding indent to given Format 
 let indentFormat h (format:Format) =
-    new Format(format.height, h+format.widthLast, h+format.width, fun n s-> format.txtstr (h + n) (spaces h) + s)
+    new Format(format.height, h+format.widthLast, h+format.width, fun n s -> (spaces h) + format.txtstr (h + n) s)
 
 type Frame =
     val width : int
