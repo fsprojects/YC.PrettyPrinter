@@ -1,4 +1,4 @@
-﻿module Test
+﻿module Test 
 
 open Format
 open Doc
@@ -24,8 +24,9 @@ open Pretty
 let tree = Node("5",Node("6",Empty,Empty), Empty)
 let doc = treeToDoc tree
 //let pr = pretty 25 doc
-let fmt = docToFormat 6 doc
-//printfn "%A" (pretty 4 doc)
+let fmt = docToFormat 5 doc
+//printfn "%A" (mergel [[1] ;[0] ; [4] ;[10]])
+printfn "%A" (pretty 5 doc)
 //printfn "%A" (doc)
 printfn "%A" (fmt)
 printfn "%A" (fmt.Head.txtstr 0 "")
@@ -34,13 +35,12 @@ printfn "%A" (fmt.Tail.Head.txtstr 0 "")
 printfn "%A" "----------------"
 printfn "%A" (fmt.Tail.Tail.Head.txtstr 0 "")
 printfn "%A" "----------------"
-//printfn "%A" (fmt.Tail.Tail.Tail.Head.txtstr 0 "")
-//printfn "%A" "----------------"
-printfn "%A" (fmt.Head.width)
-printfn "%A" (fmt.Tail.Head.width)
-printfn "%A" (fmt.Tail.Tail.Head.width)
+printfn "%A" (fmt.Tail.Tail.Tail.Head.txtstr 0 "")
+printfn "%A" "----------------"
+//printfn "%A" (fmt.Head.width)
+//printfn "%A" (fmt.Tail.Head.width)
+//printfn "%A" (fmt.Tail.Tail.Head.width)
 //printfn "%A" (fmt.Tail.Tail.Tail.Head.width)
-
 
 
 //let addOne x = x + 1
