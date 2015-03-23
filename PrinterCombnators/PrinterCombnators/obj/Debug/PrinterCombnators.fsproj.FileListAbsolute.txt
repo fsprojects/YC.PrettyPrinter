@@ -1,9 +1,0 @@
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\PrinterCombnators.exe.config
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\PrinterCombnators.XML
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\PrinterCombnators.exe
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\PrinterCombnators.pdb
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\FSharp.Core.dll
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\FSharp.Core.xml
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\bin\Debug\ru\FSharp.Core.resources.dll
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\obj\Debug\PrinterCombnators.exe
-D:\F#_projects\PrinterCombnators\PrinterCombnators\PrinterCombnators\obj\Debug\PrinterCombnators.pdb
