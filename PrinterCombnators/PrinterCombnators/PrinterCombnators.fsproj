@@ -51,6 +51,7 @@
     <None Include="App.config" />
     <Compile Include="Doc.fs" />
     <Compile Include="Pretty.fs" />
+    <Compile Include="AbstractParse.fs" />
     <Compile Include="Test.fs" />
   </ItemGroup>
   <PropertyGroup>

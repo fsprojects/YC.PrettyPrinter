@@ -1,98 +1,123 @@
 ﻿module Format
-
+//Bug when working with empty format, and 1 height format
 open System.Collections.Generic
 
 let spaces n = String.replicate n "_"
 let nl_skip n s = "\n" + spaces n + s
 
-type T_Height  = int
+type T_Height = int
+
 type T_LastWidht = int
-type T_TotalWidht  = int
+
+type T_TotalWidht = int
+
+type T_FirstWidth = int
+
 //Basic class with some fields
 //Height - total height of our box
 //widthLast - width of last line
 //width -  total width of our box
-type Frame =
-    val width : int
-    val widthLast : int
 
-    new(width0, widthLast0) = { width = width0; widthLast = widthLast0;}
+type Frame = 
+    val first : int
+    val mid : int
+    val last : int
     
+    new(first0, width0, widthLast0) = 
+        { first = first0
+          mid = width0
+          last = widthLast0 }
+
     //Comparable realisation
     interface System.IComparable with
-      member this.CompareTo frame2 =
-        match frame2 with
-          | :? Frame as f2 -> 
-            if this.width < f2.width 
-            then -1
-            elif (this.width = f2.width)
-            then if this.widthLast < f2.widthLast
-                 then -1
-                 elif this.widthLast = f2.widthLast
-                 then 0
-                 else 1
-            else 1
-          | _ -> invalidArg "format2" "cannot compare values of different types"
-    
-    member this.isSuitable (width:int) =
-        this.width <= width
+        member this.CompareTo frame2 = 
+            match frame2 with
+            | :? Frame as f2 -> 
+                if this.first < f2.first && this.mid < f2.mid && this.last < f2.last
+                then -1
+                elif this.first = f2.first && this.mid = f2.mid && this.last = f2.last
+                then 0
+                else 1
+            | _ -> invalidArg "format2" "cannot compare values of different types"
 
-type Format =
+type Format = 
     val height : T_Height
     val widthLast : T_LastWidht
-    val width: T_TotalWidht
+    val width : T_TotalWidht
+    val widthFirst : T_FirstWidth
     val txtstr : int -> string -> string
+
+    new(firstWidth0, width0, widthLast0, height0, txtstr0) = 
+        { height = height0
+          widthLast = widthLast0
+          width = width0
+          txtstr = txtstr0
+          widthFirst = firstWidth0}
+
+    static member (==) (format1 : Format, format2 : Format) = 
+        format1.height = format2.height && format1.width = format2.width && format1.widthLast = format2.widthLast
     
-    new(height0, widthLast0, width0, txtstr0) = {
-        height = height0;
-        widthLast = widthLast0;
-        width = width0;
-        txtstr = txtstr0;
-        }
-    static member (==) (format1 : Format, format2 : Format) =
-        format1.height = format2.height 
-        && format1.width = format2.width
-        && format1.widthLast = format2.widthLast
     //Is that correctly???
-    member this.isSuitable width =
-        this.width <= width
-
-    member this.ToFrame =
-        new Frame(this.width, this.widthLast)
-
-//Above Format
+    member this.isSuitable width = this.width <= width
+    //Frame3d
+    member this.ToFrame = new Frame(this.widthFirst, this.width, this.widthLast)
+    
+    //Above Format
     static member (>-<) (f1 : Format, f2 : Format) = 
-        let makeIndentsAbove =
-            fun n -> f1.txtstr n << nl_skip n << f2.txtstr n
-        new Format(f1.height+f2.height, f2.widthLast, max f1.width f2.width, makeIndentsAbove)
-
-//Beside Format !!!!WARNING "" is wery stange no spaces
+        let makeIndentsAbove = fun n -> f1.txtstr n << nl_skip n << f2.txtstr n
+        let newFirst = f1.widthFirst
+        let newMid = 
+            List.max [(if f1.height > 1 then max f1.width f1.widthLast  else 0); 
+                      (if f2.height > 1 then max f2.widthFirst f2.width else max f1.width f1.widthLast);]
+        let newLast = if f2.widthLast <> 0 then f2.widthLast else f1.widthLast
+        let newHeight= f1.height + f2.height 
+        new Format(newFirst, newMid, newLast, newHeight, makeIndentsAbove)
+    
+    //Beside Format !!!!WARNING "" is wery stange no spaces
     static member (>|<) (f1 : Format, f2 : Format) =
-        new Format(f1.height+f2.height-1, 
-                   f1.widthLast+f2.widthLast, 
-                   max f1.width (f1.widthLast+f2.width), 
-                   //fun n _ -> "" |> (f2.txtstr (f2.widthLast + n) >> f1.txtstr n) )
-                   fun n -> f1.txtstr n << f2.txtstr (f1.widthLast + n) )
+        let newFirst = (if f1.height <> 1 then f1.widthFirst else f1.widthFirst + f2.widthFirst)
+        let newMid = 
+            List.max [(if f1.height > 1 then f1.width else 0); 
+                      (if f1.height = 1 && f2.height=1 then f1.width+f2.width else 0);
+                      (if f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f1.widthLast + f2.width) else f1.width);]
+        
+        let newLast = f1.widthLast + f2.widthLast
+        let newHeight = f1.height + f2.height - 1
+        let newFun = fun n -> f1.txtstr n << f2.txtstr (f1.widthLast + n)
+        new Format(newFirst, newMid, newLast, newHeight, newFun)
+    
+    static member (>/<) (f1 : Format, f2 : Format) =
+        Format.addFill(f1, f2, 1)
 
+    static member addFill (f1 : Format, f2 : Format, shift : int) =
+        let newFirst = if f1.height <> 1 then f1.widthFirst else f1.widthFirst + f2.widthFirst
+        let newMid =
+            List.max [(if f1.height = 1 && f2.height = 1 then f1.width+f2.width else 0);
+                      (if f1.height > 1 && f2.height = 1 then f1.width          else 0); 
+                      (if f1.height = 1 && f2.height > 1 then f2.width + shift  else 0);
+                      (if f1.height > 1 && f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f2.width + shift) else 0);
+                      ]
+        let newLast = if f2.height <> 1 then f2.widthLast + shift else f1.widthLast + f2.widthLast
+        let newHeight = f1.height + f2.height - 1
+        let newFun = fun n -> f1.txtstr n << f2.txtstr (n + shift)
+        new Format(newFirst, newMid, newLast, newHeight, newFun)
+          
     interface System.IComparable with
-      member this.CompareTo format2 =
-        match format2 with
-          | :? Format as f2 -> 
-            if (this.height < f2.height) || (this.height = f2.height && this.width < f2.width) 
-            then -1
-            elif (this.height = f2.height && this.width = f2.width && this.widthLast = this.widthLast)
-                then 0
-            else 1
-          | _ -> invalidArg "format2" "cannot compare values of different types"
+        member this.CompareTo format2 = 
+            match format2 with
+            | :? Format as f2 -> 
+                if (this.height < f2.height) || (this.height = f2.height && this.width < f2.width) then -1
+                elif (this.height = f2.height && this.width = f2.width && this.widthLast = this.widthLast) then 0
+                else 1
+            | _ -> invalidArg "format2" "cannot compare values of different types"
 
 //Makin Format from string
-let stringToFormat (s:string) =
-    let length = s.Length;
-    new Format(length, length, length, (fun _ p -> s + p ))
+let stringToFormat (s : string) = 
+    let length = s.Length
+    new Format(length, length, length, 1, (fun _ p -> s + p))
 
 //Adding indent to given Format 
-let indentFormat h (format:Format) =
-    new Format(format.height, h+format.widthLast, h+format.width, fun n s -> (spaces h) + format.txtstr (h + n) s)
-   
-let formatToFrame (format:Format) =
-    new Frame(format.width, format.widthLast)
+let indentFormat h (format : Format) = 
+    new Format(h + format.widthFirst, h + format.width, h + format.widthLast, format.height, fun n s -> (spaces h) + format.txtstr (h + n) s)
+//let formatToFrame (format : Format) = new Frame(format.width, format.widthLast)
+
