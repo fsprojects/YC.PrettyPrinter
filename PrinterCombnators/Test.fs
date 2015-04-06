@@ -39,5 +39,24 @@ let prints (list : Map<Frame, Format>) =
         printfn "%A last1" (x.Value.widthLast)
         printfn "%A" (x.Value.txtstr 0 "")
 let l = [IFexp[Bexpr(" x>0 "); Expr("{"); PrintExp("thisPrint"); Expr("***");Expr("}")]; PrintExp("second "); Whexp[Bexpr(" x<99 "); Expr("{"); Expr("****");Expr("}")];]
-prints (docToFormats  30 (listToDoc l))
-//printfn "%A" (prints fmt)
+//prints (docToFormats  30 (listToDoc l))
+//let p = "sdsad \n fdsfsdf     \r\nasfsf"
+//let k = pretty 30 (listToDoc l)
+//System.IO.File.WriteAllText("d:\\a.txt", k.txtstr 0 "")
+//System.IO.File.WriteAllText("d:\\a.txt", p)
+//printfn "%A" (prints fmt)001
+let n = Text "First" >-< Text "fdsfdsfsdfdsfdsfsddsf" |> pretty 10//docToFormats 10
+printfn "asdasd" 
+n.txtstr 0 ""
+
+
+
+//let a = "a"
+//let b = "b"
+////let (p:Format) = null
+//let dlist2 = Map.empty//.Add(new Frame(b.Length,b.Length,b.Length), stringToFormat b)
+//let aboveL (l:Format) = Map.fold (fun acc key (r:Format) -> update (l >-< r) acc) Map.empty dlist2
+//let dlist1 = Map.empty.Add(new Frame(a.Length, a.Length, a.Length), stringToFormat a)
+//let res = aboveL (stringToFormat a)
+//printfn "%A" (res.[new Frame(b.Length,b.Length,b.Length)].txtstr 0 "")
+//Спросить у gsv

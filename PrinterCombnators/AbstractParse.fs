@@ -33,9 +33,31 @@ type Code =
     | PrintExp of string
     | WriteExp
 
+//let rec listToDoc list =
+//    match list with
+//    |[]-> Text("")
+//    |h::t ->
+//        match h with
+//        |Bexpr(str) -> Beside(Text(str + " dob "), listToDoc t) >//< Above(Text(str + " doa "), Indent(1, listToDoc t)) >//< Fill(Text(str + " dof "), 1, listToDoc t)
+//        //Beside(Text(str + " do"), listToDoc t) >//< Above(Text(str + " do"), Indent(1, listToDoc t)) >//< Fill(Text(str + " do")), 1, listToDoc t)
+//        |WriteExp -> Above(Text("write sum"), listToDoc t)
+//        |Expr(str) -> if t.IsEmpty then Text(str) else Above(Text(str), listToDoc t)
+//        |IFexp(l) ->  Above (Beside(Text("if"), listToDoc l) >//< Fill(Text("if"), 1, listToDoc l), listToDoc t)
+//        |Whexp(l) ->  Above (Beside(Text("while"), listToDoc l) >//< Fill(Text("while"), 1, listToDoc l), listToDoc t)
+//        | PrintExp(str) ->  Above(Text("print " + str), listToDoc t)
+
+
 let rec listToDoc list =
     match list with
-    |[]-> Text("")
+    |[]-> Text "" //Empt
+    |[h] -> 
+        match h with
+        |Bexpr(str) -> Text(str)
+        |WriteExp -> Text("write sum")
+        |Expr(str) ->Text(str)
+        |IFexp(l) ->  Beside(Text("if"), listToDoc l) >//< Fill(Text("if"), 1, listToDoc l)
+        |Whexp(l) ->  Beside(Text("while"), listToDoc l) >//< Fill(Text("while"), 1, listToDoc l)
+        | PrintExp(str) ->  Text("print " + str)
     |h::t ->
         match h with
         |Bexpr(str) -> Beside(Text(str + " dob "), listToDoc t) >//< Above(Text(str + " doa "), Indent(1, listToDoc t)) >//< Fill(Text(str + " dof "), 1, listToDoc t)
@@ -45,4 +67,3 @@ let rec listToDoc list =
         |IFexp(l) ->  Above (Beside(Text("if"), listToDoc l) >//< Fill(Text("if"), 1, listToDoc l), listToDoc t)
         |Whexp(l) ->  Above (Beside(Text("while"), listToDoc l) >//< Fill(Text("while"), 1, listToDoc l), listToDoc t)
         | PrintExp(str) ->  Above(Text("print " + str), listToDoc t)
-
