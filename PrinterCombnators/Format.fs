@@ -69,9 +69,8 @@ type Format =
         let newFirst = f1.widthFirst
         
         let newMid = 
-            if f1.height > 1 then max f1.width f1.widthLast
-            elif f2.height > 1 then max f2.widthFirst f2.width
-            else max f1.width f1.widthLast
+            List.max [(if f1.height > 1 then max f1.width f1.widthLast  else 0); 
+                      (if f2.height > 1 then max f2.widthFirst f2.width else max f1.width f1.widthLast);]
         
         let newLast = 
             if f2.widthLast <> 0 then f2.widthLast
@@ -87,10 +86,10 @@ type Format =
              else f1.widthFirst + f2.widthFirst)
         
         let newMid = 
-            if f1.height > 1 then f1.width
-            elif f1.height = 1 && f2.height = 1 then f1.width + f2.width
-            elif f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f1.widthLast + f2.width)
-            else f1.width
+            List.max [(if f1.height > 1 then f1.width else 0); 
+                      (if f1.height = 1 && f2.height=1 then f1.width+f2.width else 0);
+                      (if f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f1.widthLast + f2.width) else f1.width);]
+        
         
         let newLast = f1.widthLast + f2.widthLast
         let newHeight = f1.height + f2.height - 1
@@ -105,12 +104,12 @@ type Format =
             if f1.height <> 1 then f1.widthFirst
             else f1.widthFirst + f2.widthFirst
         
-        let newMid = 
-            if f1.height = 1 && f2.height = 1 then f1.width + f2.width
-            elif f1.height > 1 && f2.height = 1 then f1.width
-            elif f1.height = 1 && f2.height > 1 then f2.width + shift
-            elif f1.height > 1 && f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f2.width + shift)
-            else 0
+        let newMid =
+            List.max [(if f1.height = 1 && f2.height = 1 then f1.width+f2.width else 0);
+                      (if f1.height > 1 && f2.height = 1 then f1.width          else 0); 
+                      (if f1.height = 1 && f2.height > 1 then f2.width + shift  else 0);
+                      (if f1.height > 1 && f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f2.width + shift) else 0);
+                      ]
         
         let newLast = 
             if f2.height <> 1 then f2.widthLast + shift

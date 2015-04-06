@@ -20,7 +20,13 @@ let checkUpdate wid (form : Format) (map1 : Map<Frame, Format>) =
 ///Insert in in map1 elements from map2
 let mapmerge (map1 : Map<Frame, Format>) (map2 : Map<Frame, Format>) = 
     Map.fold (fun acc key value -> update value acc) map1 map2
-
+///Заменяем фолды. Выйгрыш в CFA но проигрыш в kernel
+let cross wid predicate (map1 : Map<Frame, Format>) (map2 : Map<Frame, Format>) =
+    let result = ref Map.empty : Map<Frame, Format> ref
+    for x in map1 do
+        for y in map2 do
+            result := checkUpdate wid (predicate x.Value y.Value) (!result)
+    !result  
 ///Main function that tansform Doc to variants of formats
 let rec docToFormats wid doc = 
     match doc with
