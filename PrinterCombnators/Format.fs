@@ -39,6 +39,9 @@ type Frame =
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"
 
+    override x.GetHashCode() =
+        hash (x.first, x.mid, x.last)
+
 type Format = 
     val height : T_Height
     val widthLast : T_LastWidht
