@@ -14,11 +14,11 @@ let wordL s = Text(s)
 /// Join, unbreakable. 
 let (^^) doc1 doc2 = doc1 >||< doc2
 /// Join, possible break with indent=0
-let (++) (doc1:Doc) doc2 = Choice(doc1 >||< doc2, doc1 >-< doc2)   
+let (++) (doc1:Doc) doc2 = (doc1 >||< doc2) >//< (doc1 >-< doc2)         // >//< (Fill(doc1, 0, doc2))   
 /// Join, possible break with indent=1
-let (--)  doc1 doc2   = Choice(doc1 >||< doc2, doc1 >-< Indent(1,doc2))   
+let (--)  doc1 doc2   = (doc1 >||< doc2) >//< (doc1 >-< Indent(1,doc2))  // >//< (doc1 >/< doc2)   
 /// Join, possible break with indent=2 
-let (---) doc1 doc2   = Choice(doc1 >||< doc2, doc1 >-< Indent(2,doc2))    
+let (---) doc1 doc2   = (doc1 >||< doc2) >//<  (doc1 >-< Indent(2,doc2)) // >//< (Fill(doc1, 2, doc2))    
 /// Join broken with ident=0
 let (@@)  doc1 doc2 = Above(doc1, doc2)
 /// Join broken with ident=1 
@@ -48,7 +48,7 @@ let bracketL l = Text "(" >|< l >|< Text ")"
 /// Wrap square brackets around layout.    
 let squareBracketL x = Text "[" >|< x >|< Text "]"    
 /// Wrap braces around layout.        
-let braceL         x = Text "{" >|< x >|< Text "}"
+let braceL         x = (Text "{" >|< x >|< Text "}")  // (Text "{ " >-< x >-< Text"}")  
 /// Form tuple of layouts.            
 let tupleL xs = bracketL (sepListL (Text ",") xs)
 /// Layout two vertically.
