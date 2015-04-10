@@ -34,7 +34,7 @@ let rec docToFormats wid doc =
     | Above(doc1, doc2) -> 
         let dlist1 = docToFormats wid doc1
         let dlist2 = docToFormats wid doc2
-        let aboveForL (l : Format) = mIter (fun r acc -> update (l >-< r) acc) res dlist2        
+        let aboveForL (l : Format) = mIter (fun r acc -> (checkUpdate wid)(l >-< r) acc) res dlist2        
         for kvp in dlist1 do aboveForL kvp.Value
     | Beside(doc1, doc2) -> 
         let dlist1 = docToFormats wid doc1
@@ -50,7 +50,8 @@ let rec docToFormats wid doc =
         let dlist1 = docToFormats wid doc1
         let dlist2 = docToFormats wid doc2        
         mapmerge dlist1 dlist2
-        mapmerge res dlist1
+        //mapmerge res dlist1
+        mIter (checkUpdate wid) res dlist1
     res
 
 ///Get pretty format         

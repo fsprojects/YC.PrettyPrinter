@@ -6,10 +6,12 @@
 *.user
 *.sln.docstates
 
-
+#Printer generic files
 *.in
 *.out
-
+*fxp
+*ycp
+*run
 
 # Build results
 [Dd]ebug/
