@@ -1,0 +1,8 @@
+read(x);
+read(n);
+res := 1;
+while (n) {
+  res := res * x;
+    n := n - 1
+};
+write(res)

@@ -60,8 +60,8 @@ type Format =
         format1.height = format2.height && format1.width = format2.width && format1.widthLast = format2.widthLast
     
     ///Returns if format.width < width
-    member this.isSuitable width = this.width <= width
-    
+    member this.isSuitable width = this.totalW <= width
+    member this.totalW = List.max[this.widthFirst; this.width; this.widthLast]
     //Frame3d
     member this.ToFrame = new Frame(this.widthFirst, this.width, this.widthLast)
     member this.toString = this.txtstr 0 ""
@@ -127,7 +127,7 @@ type Format =
         member this.CompareTo format2 = 
             match format2 with
             | :? Format as f2 -> 
-                if (this.height < f2.height) || (this.height = f2.height && this.width < f2.width) then -1
+                if (this.height < f2.height) || (this.height = f2.height && this.totalW < f2.totalW) then -1 //(this.height = f2.height && this.width < f2.width) then -1
                 elif (this.height = f2.height && this.width = f2.width && this.widthLast = this.widthLast) then 0
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"

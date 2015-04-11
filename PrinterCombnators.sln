@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PrinterCombnators", "PrinterCombnators\PrinterCombnators.fsproj", "{9E25FE35-A451-44DB-99E9-593C93747C79}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test", "Test\Test.fsproj", "{901091B8-F4ED-4AE0-B932-64AE1379987C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "app", "..\lVertical\src\app\app.fsproj", "{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9E25FE35-A451-44DB-99E9-593C93747C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E25FE35-A451-44DB-99E9-593C93747C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E25FE35-A451-44DB-99E9-593C93747C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901091B8-F4ED-4AE0-B932-64AE1379987C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901091B8-F4ED-4AE0-B932-64AE1379987C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901091B8-F4ED-4AE0-B932-64AE1379987C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901091B8-F4ED-4AE0-B932-64AE1379987C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

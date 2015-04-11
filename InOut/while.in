@@ -1,0 +1,4 @@
+while (n) {
+ res := res * x;
+ n := n - 1
+}
