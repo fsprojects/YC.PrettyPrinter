@@ -53,5 +53,5 @@ type Printer(width, iex, wex) =
         //n |> (Pretty.prettyPrints width) 
 
     member this.Print (s : Stmt.t) =
-        s|> printer |> Display.layout_to_string {FormatOptions.Default with PrintWidth=width} 
+        s|> printer |> Display.layout_to_string {FormatOptions.Default with PrintWidth = width} 
         //s |> printer |> (Pretty.prettyPrints width) 

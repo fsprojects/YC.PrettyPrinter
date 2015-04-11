@@ -7,7 +7,6 @@
 *.sln.docstates
 
 #Printer generic files
-*.in
 *.out
 *fxp
 *ycp

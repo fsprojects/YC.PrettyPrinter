@@ -1,32 +1,18 @@
-﻿module YC.PrinterCombinators.``Test``
+﻿module YC.PrinterCombinators.Test
 open NUnit.Framework
 open System.IO
 
+let path = "../../../InOut"
+   
 let filesAreEqual file1 file2 =
     let all1 = File.ReadAllBytes file1
     let all2 = File.ReadAllBytes file2    
     Assert.AreEqual (all1.Length, all2.Length)
 
 module ``YC Prnters`` =
-    open YCLPrinter
-        
-    let path = "../../../InOut"
-    type ``RunTest``() =        
-        [<Test>]
-        member x.``Check Run``() = 
-            let inp = Path.Combine(path, "RunTest.in")
-            let outp = Path.Combine(path, "RunTest.run")
-
-            let text = File.ReadAllText inp
-            let output = Printer(10, A, A).Print(text)
-
-            let out = File.WriteAllText( outp, output)
-            ()
-
-    
+    open YCLPrinter            
     [<TestFixture>]
-    type ``YCPrinter Generator``() =
-        let path = "../../../InOut"    
+    type ``YCPrinter Generator``() = 
         static member TestData = 
             [|
                 //Run Test
@@ -60,6 +46,16 @@ module ``YC Prnters`` =
                 //(10, A, A, ".in", ".expe", ".ycgen");
         
             |]
+        [<Test>]
+        member x.``Check Run``() = 
+            let inp = Path.Combine(path, "RunTest.in")
+            let outp = Path.Combine(path, "RunTest.run")
+
+            let text = File.ReadAllText inp
+            let output = Printer(10, A, A).Print(text)
+
+            let out = File.WriteAllText( outp, output)
+            ()
 
         [<TestCaseSource("TestData")>]
         member x.``Generate Code``((wid: int, iF, wH, input, out)) = 
@@ -76,24 +72,9 @@ module ``YC Prnters`` =
 
 module ``SFormat Generator`` =
     open FsxLPrinter
-        
-    let path = "../../../InOut"
-    type ``RunTest``() =        
-        [<Test>]
-        member x.``Check Run``() = 
-            let inp = Path.Combine(path, "RunTest.in")
-            let outp = Path.Combine(path, "RunTest.run")
-
-            let text = File.ReadAllText inp
-            let output = Printer(10, A, A).Print(text)
-
-            let out = File.WriteAllText( outp, output)
-
-            ()
-    
+           
     [<TestFixture>]
-    type ``SFormatPrinter``() =
-        let path = "../../../InOut"    
+    type ``SFormatPrinter``() =   
         static member TestData = 
             [|
                 //Run Test
@@ -127,6 +108,17 @@ module ``SFormat Generator`` =
                 //(10, A, A, ".in", ".expe", ".ycgen");
         
             |]
+        
+        [<Test>]
+        member x.``Check Run``() = 
+            let inp = Path.Combine(path, "RunTest.in")
+            let outp = Path.Combine(path, "RunTest.run")
+
+            let text = File.ReadAllText inp
+            let output = Printer(10, A, A).Print(text)
+
+            let out = File.WriteAllText( outp, output)
+            ()
 
         [<TestCaseSource("TestData")>]
         member x.``Generate Code``((wid: int, iF, wH, input, out)) = 
@@ -142,8 +134,7 @@ module ``SFormat Generator`` =
 
 module CheckEquals =
     [<TestFixture>]
-    type ``Equals Code``() =
-        let path = "../../../InOut"    
+    type ``Equals Code``() = 
         static member TestData = 
             [|
                 //Run Test
@@ -179,7 +170,7 @@ module CheckEquals =
             |]
 
         [<TestCaseSource("TestData")>]
-        member x.``Generate Code``((f1, f2)) = 
+        member x.``Are Equals``((f1, f2)) = 
             let усpath = Path.Combine(path, f1)
             let fxpath = Path.Combine(path, f2)
 
@@ -188,16 +179,27 @@ module CheckEquals =
 
             Assert.AreEqual(file1.Length, file2.Length)
 
-//        [<TestCaseSource("TestData")>]
-//        member x.``Check Parse Code``((wid: int, iF, wH, input, expected, out)) = 
-//            let inp = Path.Combine(path, input)
-//            let exp = Path.Combine(path, expected)
-//            let outp = Path.Combine(path, out)
-//
-//            let text = File.ReadAllText inp
-//            let output = Printer(wid, iF, wH).Print(text)
-//
-//            //let tr = File.WriteAllText(exp, output)
-//            let out = File.WriteAllText(outp, output)
-//
-//            filesAreEqual exp outp
+module Perfomanse =
+    let [<Test>] ``Test`` () =
+        let timer = new System.Diagnostics.Stopwatch()
+        let file = Path.Combine(path,"PerfomanceTree.in")
+        let fsxPrinter = FsxLPrinter.Printer(200, FsxLPrinter.AB, FsxLPrinter.AB)
+        let ycPrinter = YCLPrinter.Printer(200, YCLPrinter.AB, YCLPrinter.AB)
+
+        let text = File.ReadAllText file
+
+        timer.Start()
+        let str1 = fsxPrinter.Print(text)
+        timer.Stop()
+        let timeFX = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+    
+        timer.Restart()
+        let str2 = ycPrinter.Print(text)
+        timer.Stop()
+    
+        let timeYC = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+        
+        File.WriteAllText(Path.Combine(path,"PerfomanceTree.fxp"), str1)
+        File.WriteAllText(Path.Combine(path,"PerfomanceTree.ycp"), str2)
+
+        Assert.AreEqual(timeFX, timeYC)
