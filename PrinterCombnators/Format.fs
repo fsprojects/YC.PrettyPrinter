@@ -38,6 +38,11 @@ type Frame =
                 elif this.first = f2.first && this.mid = f2.mid && this.last = f2.last then 0
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"
+    
+    override x.Equals(yobj) =
+        match yobj with
+        | :? Frame as f2 -> (x.first = f2.first && x.mid = f2.mid && x.last = f2.last)
+        | _ -> false
 
     override x.GetHashCode() =
         hash (x.first, x.mid, x.last)
