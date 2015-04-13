@@ -183,8 +183,8 @@ module Perfomanse =
     let [<Test>] ``Test`` () =
         let timer = new System.Diagnostics.Stopwatch()
         let file = Path.Combine(path,"PerfomanceTree.in")
-        let fsxPrinter = FsxLPrinter.Printer(200, FsxLPrinter.AB, FsxLPrinter.AB)
-        let ycPrinter = YCLPrinter.Printer(200, YCLPrinter.AB, YCLPrinter.AB)
+        let fsxPrinter = FsxLPrinter.Printer(50, FsxLPrinter.AB, FsxLPrinter.AB)
+        let ycPrinter = YCLPrinter.Printer(50, YCLPrinter.AB, YCLPrinter.AB)
 
         let text = File.ReadAllText file
 

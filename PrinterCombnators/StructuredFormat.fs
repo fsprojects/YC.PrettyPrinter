@@ -14,11 +14,11 @@ let wordL s = Text(s)
 /// Join, unbreakable. 
 let (^^) doc1 doc2 = doc1 >||< doc2
 /// Join, possible break with indent=0
-let (++) (doc1:Doc) doc2 = (doc1 >||< doc2) >//< (doc1 >-< doc2)         // >//< (Fill(doc1, 0, doc2))   
+let (++) (doc1:Doc) doc2 =  (doc1 >||< doc2) >//< (doc1 >-< doc2)       // >//< (Fill(doc1, 0, doc2))   
 /// Join, possible break with indent=1
-let (--)  doc1 doc2   = (doc1 >||< doc2) >//< (doc1 >-< Indent(1,doc2))  // >//< (doc1 >/< doc2)   
+let (--)  doc1 doc2   =  (doc1 >||< doc2) >//< (doc1 >-< Indent(1,doc2))  // >//< (doc1 >/< doc2)   
 /// Join, possible break with indent=2 
-let (---) doc1 doc2   = (doc1 >||< doc2) >//<  (doc1 >-< Indent(2,doc2)) // >//< (Fill(doc1, 2, doc2))    
+let (---) doc1 doc2   =  (doc1 >||< doc2) >//< (doc1 >-< Indent(2,doc2)) // >//< (Fill(doc1, 2, doc2))    
 /// Join broken with ident=0
 let (@@)  doc1 doc2 = Above(doc1, doc2)
 /// Join broken with ident=1 
