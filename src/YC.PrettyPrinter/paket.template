@@ -1,0 +1,23 @@
+type project
+owners
+    Andrey Bulgakov
+authors 
+    Andrey Bulgakov
+projectUrl
+    http://github.com/AndreyBulgakov/YC.PrettyPrinter
+iconUrl
+    https://raw.githubusercontent.com/AndreyBulgakov/YC.PrettyPrinter/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/AndreyBulgakov/YC.PrettyPrinter/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    PrettyPrinter PrettyPrinting YC.PrettyPrinter
+summary
+    Pretty printing library
+description
+    Pretty printing library. Contatins interface for migration from Text.StructuredFormat.
+
+

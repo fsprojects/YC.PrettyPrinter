@@ -11,6 +11,8 @@
 *fxp
 *ycp
 *run
+!paket.bootstrapper.exe
+!paket.exe
 
 # Build results
 [Dd]ebug/
