@@ -1,0 +1,18 @@
+if (x) {
+	write(x + 1); 
+	if (x) 
+	{
+		write(x + 1);
+		if (x) {
+			write(x + 1); 
+			if (x) 
+			{
+				write(x + 1)
+			} 
+				else {write(x)}
+		} 
+		else {write(x)}
+	} 
+		else {write(x)}
+} 
+else {write(x)}

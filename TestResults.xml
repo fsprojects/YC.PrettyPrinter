@@ -1,68 +1,93 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\F#_projects\YC.PrettyPrinter - build2\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" total="66" errors="0" failures="10" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-05-01" time="00:16:22">
-  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.8009" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="D:\F#_projects\YC.PrettyPrinter - build2\YC.PrettyPrinter" machine-name="ANDREYCOMP" user="Андрей" user-domain="ANDREYCOMP" />
+<test-results name="D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" total="80" errors="0" failures="19" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-05-24" time="16:02:07">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.8009" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="D:\F#_projects\YC.PrettyPrinter - build" machine-name="ANDREYCOMP" user="Андрей" user-domain="ANDREYCOMP" />
   <culture-info current-culture="ru-RU" current-uiculture="ru-RU" />
-  <test-suite type="Assembly" name="D:\F#_projects\YC.PrettyPrinter - build2\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" executed="True" result="Failure" success="False" time="18.039" asserts="0">
+  <test-suite type="Assembly" name="D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" executed="True" result="Failure" success="False" time="1835.494" asserts="0">
     <results>
-      <test-suite type="Namespace" name="YC" executed="True" result="Failure" success="False" time="17.995" asserts="0">
+      <test-suite type="Namespace" name="YC" executed="True" result="Failure" success="False" time="1835.477" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PrettyPrinter" executed="True" result="Failure" success="False" time="17.995" asserts="0">
+          <test-suite type="Namespace" name="PrinterCombinators" executed="True" result="Failure" success="False" time="1835.476" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="Tests+CheckEquals+Equals Code" executed="True" result="Failure" success="False" time="0.506" asserts="0">
+              <test-suite type="TestFixture" name="Tests+1YC Prnters+YCPrinter Generator" executed="True" result="Success" success="True" time="1.978" asserts="0">
                 <results>
-                  <test-suite type="ParameterizedTest" name="Are Equals" executed="True" result="Failure" success="False" time="0.494" asserts="0">
+                  <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Check Run" executed="True" result="Success" success="True" time="0.537" asserts="0" />
+                  <test-suite type="ParameterizedTest" name="Generate Code" executed="True" result="Success" success="True" time="1.417" asserts="0">
                     <results>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((RunTest.ycp, RunTest.fxp))" executed="True" result="Success" success="True" time="0.100" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((CombineAb.ycp, CombineAb.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((CombineBe.ycp, CombineBe.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((whileA.ycp, whileA.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((whileB.ycp, whileB.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((whileAB.ycp, whileAB.fxp))" executed="True" result="Failure" success="False" time="0.196" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: 52
-  But was:  57
-]]></message>
-                          <stack-trace><![CDATA[]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((whileW.ycp, whileW.fxp))" executed="True" result="Failure" success="False" time="0.002" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: 52
-  But was:  57
-]]></message>
-                          <stack-trace><![CDATA[]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((while+expr.ycp, while+expr.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((ifA.ycp, ifA.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((ifB.ycp, ifB.fxp))" executed="True" result="Failure" success="False" time="0.002" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: 49
-  But was:  46
-]]></message>
-                          <stack-trace><![CDATA[]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((ifAB.ycp, ifAB.fxp))" executed="True" result="Failure" success="False" time="0.002" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: 49
-  But was:  46
-]]></message>
-                          <stack-trace><![CDATA[]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((ifW.ycp, ifW.fxp))" executed="True" result="Failure" success="False" time="0.002" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: 49
-  But was:  46
-]]></message>
-                          <stack-trace><![CDATA[]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeAA.ycp, LowTreeAA.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeAB.ycp, LowTreeAB.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeBB.ycp, LowTreeBB.fxp))" executed="True" result="Failure" success="False" time="0.001" asserts="1">
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, RunTest.in, RunTest.ycp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((2, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, Combine.in, CombineAb.ycp))" executed="True" result="Success" success="True" time="0.032" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, Combine.in, CombineBe.ycp))" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, while.in, whileA.ycp))" executed="True" result="Success" success="True" time="0.026" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, while.in, whileB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, while.in, whileAB.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((5, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, while.in, whileW.ycp))" executed="True" result="Success" success="True" time="0.015" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, while+expr.in, while+expr.ycp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, if.in, ifA.ycp))" executed="True" result="Success" success="True" time="0.009" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, if.in, ifB.ycp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((10, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, if.in, ifAB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((5, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, if.in, ifW.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((25, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeAA.ycp))" executed="True" result="Success" success="True" time="0.009" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((25, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeAB.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((25, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeBB.ycp))" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((25, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeBA.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((25, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeAbAb.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((20, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, LowTree.in, LowTreeW.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((50, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, HardTree.in, HardTreeAA.ycp))" executed="True" result="Success" success="True" time="0.425" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((50, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, HardTree.in, HardTreeBB.ycp))" executed="True" result="Success" success="True" time="0.378" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+1YC Prnters+YCPrinter Generator.Generate Code((50, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, YC.PrettyPrinter.Tests.YCLPrinter+combineOpt, HardTree.in, HardTreeAB.ycp))" executed="True" result="Success" success="True" time="0.416" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests+2SFormat Generator+SFormatPrinter" executed="True" result="Success" success="True" time="1.614" asserts="0">
+                <results>
+                  <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Check Run" executed="True" result="Success" success="True" time="0.038" asserts="0" />
+                  <test-suite type="ParameterizedTest" name="Generate Code" executed="True" result="Success" success="True" time="1.575" asserts="0">
+                    <results>
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, RunTest.in, RunTest.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((2, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, Combine.in, CombineAb.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, Combine.in, CombineBe.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, while.in, whileA.fxp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, while.in, whileB.fxp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, while.in, whileAB.fxp))" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((5, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, while.in, whileW.fxp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, while+expr.in, while+expr.fxp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, if.in, ifA.fxp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, if.in, ifB.fxp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((10, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, if.in, ifAB.fxp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((5, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, if.in, ifW.fxp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((25, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeAA.fxp))" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((25, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeAB.fxp))" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((25, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeBB.fxp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((25, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeBA.fxp))" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((25, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeAbAb.fxp))" executed="True" result="Success" success="True" time="0.010" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((20, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, LowTree.in, LowTreeW.fxp))" executed="True" result="Success" success="True" time="0.013" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((50, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, HardTree.in, HardTreeAA.fxp))" executed="True" result="Success" success="True" time="0.538" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((50, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, HardTree.in, HardTreeBB.fxp))" executed="True" result="Success" success="True" time="0.437" asserts="0" />
+                      <test-case name="YC.PrinterCombinators.Tests+2SFormat Generator+SFormatPrinter.Generate Code((50, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, YC.PrettyPrinter.Tests.FsxLPrinter+combineOpt, HardTree.in, HardTreeAB.fxp))" executed="True" result="Success" success="True" time="0.448" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests+3CheckEquals+Equals Code" executed="True" result="Failure" success="False" time="0.054" asserts="0">
+                <results>
+                  <test-suite type="ParameterizedTest" name="Are Equals" executed="True" result="Failure" success="False" time="0.053" asserts="0">
+                    <results>
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((RunTest.ycp, RunTest.fxp))" executed="True" result="Success" success="True" time="0.018" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((CombineAb.ycp, CombineAb.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((CombineBe.ycp, CombineBe.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((whileA.ycp, whileA.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((whileB.ycp, whileB.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((whileAB.ycp, whileAB.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((whileW.ycp, whileW.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((while+expr.ycp, while+expr.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((ifA.ycp, ifA.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((ifB.ycp, ifB.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((ifAB.ycp, ifAB.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((ifW.ycp, ifW.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeAA.ycp, LowTreeAA.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeAB.ycp, LowTreeAB.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeBB.ycp, LowTreeBB.fxp))" executed="True" result="Failure" success="False" time="0.012" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected: 167
   But was:  155
@@ -70,18 +95,18 @@
                           <stack-trace><![CDATA[]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeBA.ycp, LowTreeBA.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeAbAb.ycp, LowTreeAbAb.fxp))" executed="True" result="Failure" success="False" time="0.001" asserts="1">
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeBA.ycp, LowTreeBA.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeAbAb.ycp, LowTreeAbAb.fxp))" executed="True" result="Failure" success="False" time="0.001" asserts="1">
                         <failure>
-                          <message><![CDATA[  Expected: 142
-  But was:  163
+                          <message><![CDATA[  Expected: 154
+  But was:  148
 ]]></message>
                           <stack-trace><![CDATA[]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((LowTreeW.ycp, LowTreeW.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((HardTreeAA.ycp, HardTreeAA.fxp))" executed="True" result="Success" success="True" time="0.040" asserts="1" />
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((HardTreeBB.ycp, HardTreeBB.fxp))" executed="True" result="Failure" success="False" time="0.028" asserts="1">
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeW.ycp, LowTreeW.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((HardTreeAA.ycp, HardTreeAA.fxp))" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((HardTreeBB.ycp, HardTreeBB.fxp))" executed="True" result="Failure" success="False" time="0.001" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected: 3269
   But was:  3136
@@ -89,10 +114,10 @@
                           <stack-trace><![CDATA[]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="YC.PrettyPrinter.Tests+CheckEquals+Equals Code.Are Equals((HardTreeAB.ycp, HardTreeAB.fxp))" executed="True" result="Failure" success="False" time="0.008" asserts="1">
+                      <test-case name="YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((HardTreeAB.ycp, HardTreeAB.fxp))" executed="True" result="Failure" success="False" time="0.001" asserts="1">
                         <failure>
-                          <message><![CDATA[  Expected: 2415
-  But was:  3320
+                          <message><![CDATA[  Expected: 2645
+  But was:  2156
 ]]></message>
                           <stack-trace><![CDATA[]]></stack-trace>
                         </failure>
@@ -101,77 +126,151 @@
                   </test-suite>
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="Tests+Perfomanse" executed="True" result="Failure" success="False" time="14.629" asserts="0">
+              <test-suite type="TestFixture" name="Tests+4xSpeed+xSpeedTest" executed="True" result="Failure" success="False" time="1815.473" asserts="0">
                 <results>
-                  <test-case name="YC.PrettyPrinter.Tests+Perfomanse.Test" executed="True" result="Failure" success="False" time="14.628" asserts="1">
-                    <failure>
-                      <message><![CDATA[  Expected: 6519.0807000000004d
-  But was:  8046.9960000000001d
+                  <test-suite type="ParameterizedTest" name="Test" executed="True" result="Failure" success="False" time="1815.472" asserts="0">
+                    <results>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x1.in&quot;)" executed="True" result="Failure" success="False" time="0.076" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 2.3199600000000005d
+  But was:  2.22498d
 ]]></message>
-                      <stack-trace><![CDATA[в YC.PrettyPrinter.Tests.Perfomanse.Test() в D:\F#_projects\YC.PrettyPrinter - build2\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 205
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x2.in&quot;)" executed="True" result="Failure" success="False" time="0.203" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 8.6429300000000016d
+  But was:  9.4974100000000004d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x3.in&quot;)" executed="True" result="Failure" success="False" time="0.394" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 20.19003d
+  But was:  19.154950000000003d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x4.in&quot;)" executed="True" result="Failure" success="False" time="1.027" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 51.138649999999998d
+  But was:  51.399170000000005d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x5.in&quot;)" executed="True" result="Failure" success="False" time="1.836" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 88.699840000000009d
+  But was:  94.824360000000013d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x6.in&quot;)" executed="True" result="Failure" success="False" time="3.208" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 152.03880000000001d
+  But was:  164.41050000000001d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x7.in&quot;)" executed="True" result="Failure" success="False" time="6.281" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 320.57296000000002d
+  But was:  307.40106000000003d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x8.in&quot;)" executed="True" result="Failure" success="False" time="12.637" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 627.79781000000003d
+  But was:  635.87211000000002d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x9.in&quot;)" executed="True" result="Failure" success="False" time="25.960" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 1291.7797d
+  But was:  1304.07349d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x10.in&quot;)" executed="True" result="Failure" success="False" time="54.496" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 2751.5970499999999d
+  But was:  2697.8949899999998d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x11.in&quot;)" executed="True" result="Failure" success="False" time="103.077" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 5184.81322d
+  But was:  5122.8228899999995d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x12.in&quot;)" executed="True" result="Failure" success="False" time="213.258" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 10515.448310000002d
+  But was:  10810.166939999999d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x13.in&quot;)" executed="True" result="Failure" success="False" time="432.949" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 21616.714539999997d
+  But was:  21678.156580000003d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test(&quot;xSpeed/x14.in&quot;)" executed="True" result="Failure" success="False" time="960.044" asserts="1">
+                        <failure>
+                          <message><![CDATA[  Expected: 47777.018830000001d
+  But was:  48224.88900000001d
+]]></message>
+                          <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.4xSpeed.xSpeedTest.Test(String spFile) в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 238
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests+5Perfomanse" executed="True" result="Failure" success="False" time="16.306" asserts="0">
+                <results>
+                  <test-case name="YC.PrinterCombinators.Tests+5Perfomanse.5Test" executed="True" result="Failure" success="False" time="16.305" asserts="1">
+                    <failure>
+                      <message><![CDATA[  Expected: 7936.5069000000003d
+  But was:  8365.2075999999997d
+]]></message>
+                      <stack-trace><![CDATA[в YC.PrinterCombinators.Tests.5Perfomanse.5Test() в D:\F#_projects\YC.PrettyPrinter - build\tests\YC.PrettyPrinter.Tests\CheckCode.fs:строка 264
 ]]></stack-trace>
                     </failure>
                   </test-case>
-                </results>
-              </test-suite>
-              <test-suite type="TestFixture" name="Tests+SFormat Generator+SFormatPrinter" executed="True" result="Success" success="True" time="1.461" asserts="0">
-                <results>
-                  <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Check Run" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                  <test-suite type="ParameterizedTest" name="Generate Code" executed="True" result="Success" success="True" time="1.457" asserts="0">
-                    <results>
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, RunTest.in, RunTest.fxp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((2, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, Combine.in, CombineAb.fxp))" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, Combine.in, CombineBe.fxp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, while.in, whileA.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, while.in, whileB.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((15, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, while.in, whileAB.fxp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((5, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, while.in, whileW.fxp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, while+expr.in, while+expr.fxp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, if.in, ifA.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, if.in, ifB.fxp))" executed="True" result="Success" success="True" time="0.004" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((10, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, if.in, ifAB.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((5, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, if.in, ifW.fxp))" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((25, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeAA.fxp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((25, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeAB.fxp))" executed="True" result="Success" success="True" time="0.012" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((25, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeBB.fxp))" executed="True" result="Success" success="True" time="0.011" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((25, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeBA.fxp))" executed="True" result="Success" success="True" time="0.009" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((25, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeAbAb.fxp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((20, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, LowTree.in, LowTreeW.fxp))" executed="True" result="Success" success="True" time="0.011" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((50, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, HardTree.in, HardTreeAA.fxp))" executed="True" result="Success" success="True" time="0.533" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((50, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, HardTree.in, HardTreeBB.fxp))" executed="True" result="Success" success="True" time="0.444" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+SFormat Generator+SFormatPrinter.Generate Code((50, FsxLPrinter+combineOpt, FsxLPrinter+combineOpt, HardTree.in, HardTreeAB.fxp))" executed="True" result="Success" success="True" time="0.354" asserts="0" />
-                    </results>
-                  </test-suite>
-                </results>
-              </test-suite>
-              <test-suite type="TestFixture" name="Tests+YC Prnters+YCPrinter Generator" executed="True" result="Success" success="True" time="1.375" asserts="0">
-                <results>
-                  <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Check Run" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                  <test-suite type="ParameterizedTest" name="Generate Code" executed="True" result="Success" success="True" time="1.371" asserts="0">
-                    <results>
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, RunTest.in, RunTest.ycp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((2, YCLPrinter+combineOpt, YCLPrinter+combineOpt, Combine.in, CombineAb.ycp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, Combine.in, CombineBe.ycp))" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, while.in, whileA.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, while.in, whileB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((15, YCLPrinter+combineOpt, YCLPrinter+combineOpt, while.in, whileAB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((5, YCLPrinter+combineOpt, YCLPrinter+combineOpt, while.in, whileW.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, while+expr.in, while+expr.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, if.in, ifA.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, if.in, ifB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((10, YCLPrinter+combineOpt, YCLPrinter+combineOpt, if.in, ifAB.ycp))" executed="True" result="Success" success="True" time="0.003" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((5, YCLPrinter+combineOpt, YCLPrinter+combineOpt, if.in, ifW.ycp))" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((25, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeAA.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((25, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeAB.ycp))" executed="True" result="Success" success="True" time="0.010" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((25, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeBB.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((25, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeBA.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((25, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeAbAb.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((20, YCLPrinter+combineOpt, YCLPrinter+combineOpt, LowTree.in, LowTreeW.ycp))" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((50, YCLPrinter+combineOpt, YCLPrinter+combineOpt, HardTree.in, HardTreeAA.ycp))" executed="True" result="Success" success="True" time="0.359" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((50, YCLPrinter+combineOpt, YCLPrinter+combineOpt, HardTree.in, HardTreeBB.ycp))" executed="True" result="Success" success="True" time="0.447" asserts="0" />
-                      <test-case name="YC.PrettyPrinter.Tests+YC Prnters+YCPrinter Generator.Generate Code((50, YCLPrinter+combineOpt, YCLPrinter+combineOpt, HardTree.in, HardTreeAB.ycp))" executed="True" result="Success" success="True" time="0.460" asserts="0" />
-                    </results>
-                  </test-suite>
                 </results>
               </test-suite>
             </results>

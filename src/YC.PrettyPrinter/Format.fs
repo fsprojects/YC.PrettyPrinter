@@ -38,69 +38,65 @@ type Frame =
                 elif this.first = f2.first && this.mid = f2.mid && this.last = f2.last then 0
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"
+    
+    override x.Equals(yobj) =
+        match yobj with
+        | :? Frame as f2 -> (x.first = f2.first && x.mid = f2.mid && x.last = f2.last)
+        | _ -> false
 
     override x.GetHashCode() =
         hash (x.first, x.mid, x.last)
-    override x.Equals(yobj) = 
-        match yobj with
-        | :? Frame as y -> x.first = y.first && x.mid = y.mid && x.last = y.last
-        | _ -> false
 
 type Format = 
     val height : T_Height
-    val widthLast : T_LastWidht
-    val width : T_TotalWidht
-    val widthFirst : T_FirstWidth
+    val last : T_LastWidht
+    val mid : T_TotalWidht
+    val first : T_FirstWidth
     val txtstr : int -> string -> string
     
     new(firstWidth0, width0, widthLast0, height0, txtstr0) = 
         { height = height0
-          widthLast = widthLast0
-          width = width0
+          last = widthLast0
+          mid = width0
           txtstr = txtstr0
-          widthFirst = firstWidth0 }
+          first = firstWidth0 }
     
     static member (==) (format1 : Format, format2 : Format) = 
-        format1.height = format2.height && format1.width = format2.width && format1.widthLast = format2.widthLast
+        format1.height = format2.height && format1.mid = format2.mid && format1.last = format2.last
     
     ///Returns if format.width < width
     member this.isSuitable width = this.totalW <= width
-    member this.totalW = List.max[this.widthFirst; this.width; this.widthLast]
+    member this.totalW = List.max[this.first; this.mid; this.last]
     //Frame3d
-    member this.ToFrame = new Frame(this.widthFirst, this.width, this.widthLast)
+    member this.ToFrame = new Frame(this.first, this.mid, this.last)
     member this.toString = this.txtstr 0 ""
     
     ///Above Format
     static member (>-<) (f1 : Format, f2 : Format) = 
-        let makeIndentsAbove = fun n -> f1.txtstr n << nl_skip n << f2.txtstr n
-        let newFirst = f1.widthFirst
-        
+        let newFirst = f1.first
         let newMid = 
-            List.max [(if f1.height > 1 then max f1.width f1.widthLast  else 0); 
-                      (if f2.height > 1 then max f2.widthFirst f2.width else max f1.width f1.widthLast);]
-        
+            List.max [(if f1.height > 1 then max f1.mid f1.last  else 0); 
+                      (if f2.height > 1 then max f2.first f2.mid else max f1.mid f1.last);]
         let newLast = 
-            if f2.widthLast <> 0 then f2.widthLast
-            else f1.widthLast
-        
+            if f2.last <> 0 then f2.last
+            else f1.last
         let newHeight = f1.height + f2.height
-        new Format(newFirst, newMid, newLast, newHeight, makeIndentsAbove)
+        let newFun = fun n -> f1.txtstr n << nl_skip n << f2.txtstr n
+        new Format(newFirst, newMid, newLast, newHeight, newFun)
     
     ///Beside Format
     static member (>|<) (f1 : Format, f2 : Format) = 
         let newFirst = 
-            (if f1.height <> 1 then f1.widthFirst
-             else f1.widthFirst + f2.widthFirst)
-        
+            (if f1.height <> 1 then f1.first
+             else f1.first + f2.first)
         let newMid = 
-            List.max [(if f1.height > 1 then f1.width else 0); 
-                      (if f1.height = 1 && f2.height=1 then f1.width+f2.width else 0);
-                      (if f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f1.widthLast + f2.width) else f1.width);]
-        
-        
-        let newLast = f1.widthLast + f2.widthLast
+            List.max [(if f1.height > 1 then f1.mid else 0); 
+                      (if f1.height = 1 && f2.height=1 then f1.mid+f2.mid else 0);
+                      (if f2.height > 1 then max (f1.last + f2.first) (f1.last + f2.mid) 
+                                        else f1.mid);]
+        let newLast = f1.last + f2.last
         let newHeight = f1.height + f2.height - 1
-        let newFun = fun n -> f1.txtstr n << f2.txtstr (f1.widthLast + n)
+        let newFun = fun n -> f1.txtstr n << f2.txtstr (f1.last + n)
         new Format(newFirst, newMid, newLast, newHeight, newFun)
     
     ///Fill format
@@ -108,20 +104,17 @@ type Format =
     
     static member addFill (f1 : Format, f2 : Format, shift : int) = 
         let newFirst = 
-            if f1.height <> 1 then f1.widthFirst
-            else f1.widthFirst + f2.widthFirst
-        
+            if f1.height <> 1 then f1.first
+            else f1.first + f2.first
         let newMid =
-            List.max [(if f1.height = 1 && f2.height = 1 then f1.width+f2.width else 0);
-                      (if f1.height > 1 && f2.height = 1 then f1.width          else 0); 
-                      (if f1.height = 1 && f2.height > 1 then f2.width + shift  else 0);
-                      (if f1.height > 1 && f2.height > 1 then max (f1.widthLast + f2.widthFirst) (f2.width + shift) else 0);
-                      ]
-        
+            List.max [(if f1.height = 1 && f2.height = 1 then f1.mid+f2.mid else 0);
+                      (if f1.height > 1 && f2.height = 1 then f1.mid          else 0); 
+                      (if f1.height = 1 && f2.height > 1 then f2.mid + shift  else 0);
+                      (if f1.height > 1 && f2.height > 1 then max (f1.last + f2.first) (f2.mid + shift) 
+                                                         else 0);]
         let newLast = 
-            if f2.height <> 1 then f2.widthLast + shift
-            else f1.widthLast + f2.widthLast
-        
+            if f2.height <> 1 then f2.last + shift
+            else f1.last + f2.last
         let newHeight = f1.height + f2.height - 1
         let newFun = fun n -> f1.txtstr n << f2.txtstr (n + shift)
         new Format(newFirst, newMid, newLast, newHeight, newFun)
@@ -132,16 +125,17 @@ type Format =
             match format2 with
             | :? Format as f2 -> 
                 if (this.height < f2.height) || (this.height = f2.height && this.totalW < f2.totalW) then -1 //(this.height = f2.height && this.width < f2.width) then -1
-                elif (this.height = f2.height && this.width = f2.width && this.widthLast = this.widthLast) then 0
+                elif (this.height = f2.height && this.mid = f2.mid && this.last = this.last) then 0
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"
+
     override x.Equals(yobj) = 
         match yobj with
-        | :? Format as y -> x.height = y.height && x.widthFirst = y.widthFirst && x.width = y.width && x.widthLast = y.widthLast
+        | :? Format as y -> x.height = y.height && x.first = y.first && x.mid = y.mid && x.last = y.last
         | _ -> false
     
     override x.GetHashCode() =
-        hash (x.height, x.widthFirst, x.width, x.widthLast)
+        hash (x.height, x.first, x.mid, x.last)
 
 let emptyFormat = new Format(0, 0, 0, 0, fun _ _ -> "")
 
@@ -152,5 +146,5 @@ let stringToFormat (s : string) =
 
 //Adding indent to given Format 
 let indentFormat h (format : Format) = 
-    new Format(h + format.widthFirst, h + format.width, h + format.widthLast, format.height, 
+    new Format(h + format.first, h + format.mid, h + format.last, format.height, 
                fun n s -> (spaces h) + format.txtstr (h + n) s)
