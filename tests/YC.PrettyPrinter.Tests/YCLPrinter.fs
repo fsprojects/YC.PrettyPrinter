@@ -1,9 +1,9 @@
-﻿module YCLPrinter
+﻿module YC.PrettyPrinter.Tests.YCLPrinter
 open Expr
 open Stmt
 open Stmt.Parser
 open CoreParser
-open YC.PrettyPrinter.Doc
+//open YC.PrettyPrinter.Doc
 open YC.PrettyPrinter.Pretty
 
 //open Microsoft.FSharp.Text.StructuredFormat
@@ -37,7 +37,7 @@ type Printer(width, iex, wex) =
         
     and ifPrint e s1 s2 = 
         match iF with
-        | A -> ((wordL"if" ^^ bracketL (exprPrinter e))  @@--  braceL (printer s1)) @@ (wordL"else" @@-- braceL (printer s2))
+        | A -> ((wordL"if" ^^ bracketL (exprPrinter e))  @@--  braceL (printer s1)) @@ wordL"else" @@-- braceL (printer s2)
         | B -> ((wordL"if" ^^ bracketL (exprPrinter e)) ^^ ( braceL (printer s1))) @@ (wordL"else" ^^ braceL (printer s2)) 
         | AB -> ((wordL"if" ^^ bracketL (exprPrinter e)) --- (braceL (printer s1))) @@ (wordL"else" --- braceL (printer s2))
     

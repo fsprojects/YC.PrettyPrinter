@@ -1,0 +1,6 @@
+if (x) {
+	write(x + 1)
+} 
+else {
+	write(x)
+}

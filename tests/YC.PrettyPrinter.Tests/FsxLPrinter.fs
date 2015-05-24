@@ -1,4 +1,4 @@
-﻿module FsxLPrinter
+﻿module YC.PrettyPrinter.Tests.FsxLPrinter
 open Expr
 open Stmt
 open Stmt.Parser
@@ -37,7 +37,7 @@ type Printer(width, iex, wex) =
         
     and ifPrint e s1 s2 = 
         match iF with
-        | A -> ((wordL"if" ^^ bracketL (exprPrinter e))  @@--  braceL (printer s1)) @@ (wordL"else" @@-- braceL (printer s2))
+        | A -> ((wordL"if" ^^ bracketL (exprPrinter e))  @@--  braceL (printer s1)) @@ wordL"else" @@-- braceL (printer s2)
         | B -> ((wordL"if" ^^ bracketL (exprPrinter e)) ^^ ( braceL (printer s1))) @@ (wordL"else" ^^ braceL (printer s2)) 
         | AB -> ((wordL"if" ^^ bracketL (exprPrinter e)) --- (braceL (printer s1))) @@ (wordL"else" --- braceL (printer s2))
     
@@ -49,7 +49,7 @@ type Printer(width, iex, wex) =
 
     member this.Print text =
         let n = parse () &text |> List.head |> fst |> printer 
-        Display.layout_to_string {FormatOptions.Default with PrintWidth=100} n
+        Display.layout_to_string {FormatOptions.Default with PrintWidth=width} n
         //n |> (Pretty.prettyPrints width) 
 
     member this.Print (s : Stmt.t) =

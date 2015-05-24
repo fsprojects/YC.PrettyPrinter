@@ -139,7 +139,7 @@ Target "RunTests" (fun _ ->
     |> NUnit (fun p ->
         { p with
             DisableShadowCopy = true
-            TimeOut = TimeSpan.FromMinutes 20.
+            TimeOut = TimeSpan.FromMinutes 40.
             OutputFile = "TestResults.xml" })
 )
 
@@ -167,7 +167,7 @@ Target "SourceLink" (fun _ ->
         let files = proj.Compiles -- assemblyInfo
         repo.VerifyChecksums files
         proj.VerifyPdbChecksums files
-        proj.CreateSrcSrv baseUrl repo.Revision (repo.Paths files)
+        proj.CreateSrcSrv baseUrl  repo.Revision (repo.Paths files)
         Pdbstr.exec proj.OutputFilePdb proj.OutputFilePdbSrcSrv
     )
 )

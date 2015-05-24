@@ -1,6 +1,7 @@
 ﻿module YC.PrettyPrinter.Doc
 
 open System.Collections.Generic
+
 type Doc = 
     | Text of string
     | Indent of int * Doc
@@ -8,7 +9,7 @@ type Doc =
     | Above of Doc * Doc
     | Fill of Doc * int * Doc
     | Choice of Doc * Doc
-   
+    
     ///Beside
     static member (>|<) (doc1, doc2) = Beside(doc1, doc2)
     ///Above
@@ -19,3 +20,4 @@ type Doc =
     static member (>//<) (doc1, doc2) = Choice(doc1, doc2)
     ///Separate
     static member (>||<) (doc1, doc2) = doc1 >|< Text " " >|< doc2
+    

@@ -1,5 +1,5 @@
 ﻿module YC.PrettyPrinter.Pretty
-//Рассмотреть вариант,что адд и бесайд не нуждаются в чек апдейте и все делать в чойсе. Перевести в форматы
+
 open YC.PrettyPrinter.Doc
 open YC.PrettyPrinter.Format
 open System.Collections.Generic
@@ -71,8 +71,7 @@ and cacheContains wid doc =
     else 
         let cacheForm = docToFormats wid doc
         cacheMap.Add(doc, cacheForm)
-        cacheForm
-
+        cacheForm   
 ///Get pretty format         
 let pretty (resultWidth : int) (d : Doc) = 
     let myMap = docToFormats resultWidth d

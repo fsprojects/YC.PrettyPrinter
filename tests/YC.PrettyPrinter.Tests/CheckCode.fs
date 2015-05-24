@@ -1,4 +1,4 @@
-﻿module YC.PrettyPrinter.Tests
+﻿module YC.PrinterCombinators.Tests
 open NUnit.Framework
 open System.IO
 
@@ -9,8 +9,8 @@ let filesAreEqual file1 file2 =
     let all2 = File.ReadAllBytes file2    
     Assert.AreEqual (all1.Length, all2.Length)
 
-module ``YC Prnters`` =
-    open YCLPrinter            
+module ``1YC Prnters`` =
+    open YC.PrettyPrinter.Tests.YCLPrinter            
     [<TestFixture>]
     type ``YCPrinter Generator``() = 
         static member TestData = 
@@ -23,7 +23,7 @@ module ``YC Prnters`` =
             
                 (10, A, A, "while.in", "whileA.ycp");
                 (10, A, B, "while.in", "whileB.ycp");
-                (15, A, AB,"while.in",  "whileAB.ycp");
+                (10, A, AB,"while.in",  "whileAB.ycp");
                 (5, A, AB, "while.in", "whileW.ycp");
             
                 (10, A, A, "while+expr.in", "while+expr.ycp");
@@ -70,8 +70,8 @@ module ``YC Prnters`` =
             ()
 //            filesAreEqual exp outp
 
-module ``SFormat Generator`` =
-    open FsxLPrinter
+module ``2SFormat Generator`` =
+    open YC.PrettyPrinter.Tests.FsxLPrinter
            
     [<TestFixture>]
     type ``SFormatPrinter``() =   
@@ -85,7 +85,7 @@ module ``SFormat Generator`` =
             
                 (10, A, A, "while.in", "whileA.fxp");
                 (10, A, B, "while.in", "whileB.fxp");
-                (15, A, AB,"while.in",  "whileAB.fxp");
+                (10, A, AB,"while.in",  "whileAB.fxp");
                 (5, A, AB, "while.in", "whileW.fxp");
             
                 (10, A, A, "while+expr.in", "while+expr.fxp");
@@ -132,7 +132,7 @@ module ``SFormat Generator`` =
             ()
 
 
-module CheckEquals =
+module ``3CheckEquals`` =
     [<TestFixture>]
     type ``Equals Code``() = 
         static member TestData = 
@@ -179,8 +179,67 @@ module CheckEquals =
 
             Assert.AreEqual(file1.Length, file2.Length)
 
-module Perfomanse =
-    let [<Test>] ``Test`` () =
+module ``4xSpeed`` =
+    open YC.PrettyPrinter.Tests
+    [<TestFixture>]
+    type ``xSpeedTest``() = 
+        static member TestData = 
+            [|
+                //Run Test
+                ("xSpeed/x1.in");
+                ("xSpeed/x2.in");
+                ("xSpeed/x3.in");
+                ("xSpeed/x4.in");
+                ("xSpeed/x5.in");
+                ("xSpeed/x6.in");
+                ("xSpeed/x7.in");
+                ("xSpeed/x8.in");
+                ("xSpeed/x9.in");
+                ("xSpeed/x10.in");
+                ("xSpeed/x11.in");
+                ("xSpeed/x12.in");
+                ("xSpeed/x13.in");
+                ("xSpeed/x14.in");
+
+//                ("xSpeed/x1x1.in");
+//                ("xSpeed/x2x2.in");
+//                ("xSpeed/x4x4.in");
+//                ("xSpeed/x8x8.in");
+               // ("xSpeed/x16.in");
+
+                //(10, A, A, ".in", ".expe", ".ycgen");
+        
+            |]
+        [<TestCaseSource("TestData")>]
+        member  x.``Test`` (spFile) =
+            let timer = new System.Diagnostics.Stopwatch()
+            let file = Path.Combine(path,spFile)
+            let fsxPrinter = FsxLPrinter.Printer(50, FsxLPrinter.AB, FsxLPrinter.AB)
+            let ycPrinter = YCLPrinter.Printer(50, YCLPrinter.AB, YCLPrinter.AB)
+
+            let text = File.ReadAllText file
+            let mutable timeFX = 0.0
+            let mutable timeYC = 0.0
+            for i in 0..9 do
+                timer.Start()
+                let str1 = fsxPrinter.Print(text)
+                timer.Stop()
+                //let timeFX = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+                timeFX <- timeFX + timer.Elapsed.TotalMilliseconds
+                
+                timer.Restart()
+                let str2 = ycPrinter.Print(text)
+                timer.Stop()
+                
+
+                timeYC <- timeYC + timer.Elapsed.TotalMilliseconds
+                timer.Reset()
+            //let timeYC = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+            Assert.AreEqual(timeFX/10.0, timeYC/10.0)
+
+module ``5Perfomanse`` =
+    open YC.PrettyPrinter.Tests
+    let [<Test>] ``5Test`` () =
         let timer = new System.Diagnostics.Stopwatch()
         let file = Path.Combine(path,"PerfomanceTree.in")
         let fsxPrinter = FsxLPrinter.Printer(50, FsxLPrinter.AB, FsxLPrinter.AB)
