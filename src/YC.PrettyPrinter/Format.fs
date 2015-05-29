@@ -66,6 +66,7 @@ type Format =
     
     ///Returns if format.width < width
     member this.isSuitable width = this.totalW <= width
+    ///Max width
     member this.totalW = List.max[this.first; this.mid; this.last]
     //Frame3d
     member this.ToFrame = new Frame(this.first, this.mid, this.last)
@@ -101,7 +102,7 @@ type Format =
     
     ///Fill format
     static member (>/<) (f1 : Format, f2 : Format) = Format.addFill (f1, f2, 1)
-    
+    ///Fill format
     static member addFill (f1 : Format, f2 : Format, shift : int) = 
         let newFirst = 
             if f1.height <> 1 then f1.first
@@ -139,12 +140,12 @@ type Format =
 
 let emptyFormat = new Format(0, 0, 0, 0, fun _ _ -> "")
 
-//Makin Format from string
+///Makin Format from string
 let stringToFormat (s : string) = 
     let length = s.Length
     new Format(length, length, length, 1, (fun _ p -> s + p))
 
-//Adding indent to given Format 
+///Adding indent to given Format 
 let indentFormat h (format : Format) = 
     new Format(h + format.first, h + format.mid, h + format.last, format.height, 
                fun n s -> (spaces h) + format.txtstr (h + n) s)

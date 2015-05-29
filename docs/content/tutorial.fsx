@@ -10,10 +10,7 @@ Introducing your project
 Say more
 
 *)
-#r "YC.PrettyPrinter.dll"
-open YC.PrettyPrinter
 
-Library.hello 0
 (**
 Some more info
 *)
