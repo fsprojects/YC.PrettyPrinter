@@ -26,10 +26,7 @@ Example
 This example demonstrates using a function defined in this sample library.
 
 *)
-#r "YC.PrettyPrinter.dll"
-open YC.PrettyPrinter
-
-printfn "hello = %i" <| Library.hello 0
+///
 
 (**
 Some more info

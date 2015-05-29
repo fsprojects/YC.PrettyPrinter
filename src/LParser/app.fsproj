@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>app</RootNamespace>
     <AssemblyName>app</AssemblyName>
   </PropertyGroup>
@@ -21,15 +21,10 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="CoreParser.fs" />
     <Compile Include="Expr.fs" />
     <Compile Include="Stmt.fs" />
-    <Compile Include="Interpreter.fs" />
     <Compile Include="VerticalPrinter.fs" />
-    <Compile Include="Program.fs" />
-    <None Include="Scripts\load-references.fsx" />
-    <None Include="Scripts\load-project.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
