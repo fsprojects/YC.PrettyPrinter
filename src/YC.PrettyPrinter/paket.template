@@ -1,4 +1,6 @@
 type project
+id
+    YC.PrettyPrinter
 owners
     Andrey Bulgakov
 authors 
