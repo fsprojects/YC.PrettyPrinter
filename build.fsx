@@ -38,7 +38,7 @@ let summary = "Pretty printing library"
 let description = "Pretty printing library. Contatins interface for migration from Text.StructuredFormat."
 
 // List of author names (for NuGet package)
-let authors = [ "Andrey Bulgakov" ]
+let authors = [ "YaccConstructor"; "Andrey Bulgakov" ]
 
 // Tags for your project (for NuGet package)
 let tags = "PrettyPrinter PrettyPrinting YC.PrettyPrinter FSharp PrinterCombinator"
@@ -221,8 +221,8 @@ Target "GenerateHelp" (fun _ ->
     Rename "docs/content/release-notes.md" "docs/content/RELEASE_NOTES.md"
 
     DeleteFile "docs/content/license.md"
-    CopyFile "docs/content/" "LICENSE.txt"
-    Rename "docs/content/license.md" "docs/content/LICENSE.txt"
+    CopyFile "docs/content/" "LICENSE"
+    Rename "docs/content/license.md" "docs/content/LICENSE"
 
     generateHelp true
 )
@@ -233,8 +233,8 @@ Target "GenerateHelpDebug" (fun _ ->
     Rename "docs/content/release-notes.md" "docs/content/RELEASE_NOTES.md"
 
     DeleteFile "docs/content/license.md"
-    CopyFile "docs/content/" "LICENSE.txt"
-    Rename "docs/content/license.md" "docs/content/LICENSE.txt"
+    CopyFile "docs/content/" "LICENSE"
+    Rename "docs/content/license.md" "docs/content/LICENSE"
 
     generateHelp' true true
 )
