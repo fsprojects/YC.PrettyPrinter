@@ -49,6 +49,7 @@
     <Compile Include="Format.fs" />
     <Compile Include="Pretty.fs" />
     <Compile Include="StructuredFormat.fs" />
+    <Compile Include="AssemblyInfo.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
