@@ -1,20 +1,20 @@
 type project
 owners
-    Andrey Bulgakov
+    YaccConstructor
 authors 
     Andrey Bulgakov
 projectUrl
-    http://github.com/AndreyBulgakov/YC.PrettyPrinter
+    http://github.com/YaccConstructor/YC.PrettyPrinter
 iconUrl
-    https://raw.githubusercontent.com/AndreyBulgakov/YC.PrettyPrinter/master/docs/files/img/logo.png
+    https://raw.githubusercontent.com/YaccConstructor/YC.PrettyPrinter/master/docs/files/img/logo.png
 licenseUrl
-    http://github.com/AndreyBulgakov/YC.PrettyPrinter/blob/master/LICENSE.txt
+    http://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/LICENSE
 requireLicenseAcceptance
     false
 copyright
     Copyright 2015
 tags
-    PrettyPrinter PrettyPrinting YC.PrettyPrinter
+    PrettyPrinter PrettyPrinting YC.PrettyPrinter FSharp
 summary
     Pretty printing library
 description
