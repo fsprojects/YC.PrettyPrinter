@@ -41,7 +41,7 @@ let description = "Pretty printing library. Contatins interface for migration fr
 let authors = [ "Andrey Bulgakov" ]
 
 // Tags for your project (for NuGet package)
-let tags = "PrettyPrinter PrettyPrinting YC.PrettyPrinter"
+let tags = "PrettyPrinter PrettyPrinting YC.PrettyPrinter FSharp PrinterCombinator"
 
 // File system information 
 let solutionFile  = "YC.PrettyPrinter.sln"
@@ -51,14 +51,14 @@ let testAssemblies = "tests/**/bin/Release/*Tests*.dll"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitOwner = "AndreyBulgakov" 
+let gitOwner = "YaccConstructor" 
 let gitHome = "https://github.com/" + gitOwner
 
 // The name of the project on GitHub
 let gitName = "YC.PrettyPrinter"
 
 // The url for the raw files hosted
-let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/AndreyBulgakov"
+let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/YaccConstructor"
 
 // --------------------------------------------------------------------------------------
 // END TODO: The rest of the file includes standard build steps
