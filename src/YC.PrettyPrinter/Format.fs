@@ -15,10 +15,10 @@ type T_TotalWidht = int
 
 type T_FirstWidth = int
 
-//Basic class with some fields
-//Height - total height of our box
-//widthLast - width of last line
-//width -  total width of our box
+///Basic class with some fields
+///Height - total height of our box
+///widthLast - width of last line
+///width -  total width of our box
 type Frame = 
     val first : int
     val mid : int
