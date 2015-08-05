@@ -72,14 +72,14 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\LParser\app.fsproj">
-      <Name>app</Name>
-      <Project>{4c17bf65-9f5a-45b8-8cfb-84f874b6da81}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\YC.PrettyPrinter\YC.PrettyPrinter.fsproj">
       <Name>YC.PrettyPrinter</Name>
       <Project>{ccac0e9b-2a60-4cd8-a03c-d302f01479c6}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LParser\app.fsproj">
+      <Name>app</Name>
+      <Project>{4c17bf65-9f5a-45b8-8cfb-84f874b6da81}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
