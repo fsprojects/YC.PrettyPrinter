@@ -6,16 +6,16 @@ let path = "../../../InOut"
    
 let filesAreEqual file1 file2 =
     let all1 = File.ReadAllBytes file1
-    let all2 = File.ReadAllBytes file2    
+    let all2 = File.ReadAllBytes file2
     Assert.AreEqual (all1.Length, all2.Length)
 
 module ``1YC Prnters`` =
-    open YC.PrettyPrinter.Tests.YCLPrinter            
+    open YC.PrettyPrinter.Tests.YCLPrinter
+
     [<TestFixture>]
     type ``YCPrinter Generator``() = 
         static member TestData = 
             [|
-                //Run Test
                 (10, A, A, "RunTest.in", "RunTest.ycp");
             
                 (2, A, A, "Combine.in",  "CombineAb.ycp");
@@ -43,9 +43,8 @@ module ``1YC Prnters`` =
                 (50, A, A, "HardTree.in", "HardTreeAA.ycp");
                 (50, B, B, "HardTree.in", "HardTreeBB.ycp");
                 (50, AB, AB, "HardTree.in", "HardTreeAB.ycp");
-                //(10, A, A, ".in", ".expe", ".ycgen");
-        
             |]
+
         [<Test>]
         member x.``Check Run``() = 
             let inp = Path.Combine(path, "RunTest.in")
@@ -58,17 +57,15 @@ module ``1YC Prnters`` =
             ()
 
         [<TestCaseSource("TestData")>]
-        member x.``Generate Code``((wid: int, iF, wH, input, out)) = 
+        member x.``Generate Code``((wid : int, iF, wH, input, out)) = 
             let inp = Path.Combine(path, input)
             let outp = Path.Combine(path, out)
 
             let text = File.ReadAllText inp
             let output = Printer(wid, iF, wH).Print(text)
 
-//            let tr = File.WriteAllText(exp, output)
             let out = File.WriteAllText(outp, output)
             ()
-//            filesAreEqual exp outp
 
 module ``2SFormat Generator`` =
     open YC.PrettyPrinter.Tests.FsxLPrinter
@@ -77,7 +74,6 @@ module ``2SFormat Generator`` =
     type ``SFormatPrinter``() =   
         static member TestData = 
             [|
-                //Run Test
                 (10, A, A, "RunTest.in", "RunTest.fxp");
             
                 (2, A, A, "Combine.in",  "CombineAb.fxp");
@@ -105,8 +101,6 @@ module ``2SFormat Generator`` =
                 (50, A, A, "HardTree.in", "HardTreeAA.fxp");
                 (50, B, B, "HardTree.in", "HardTreeBB.fxp");
                 (50, AB, AB, "HardTree.in", "HardTreeAB.fxp");
-                //(10, A, A, ".in", ".expe", ".ycgen");
-        
             |]
         
         [<Test>]
@@ -121,7 +115,7 @@ module ``2SFormat Generator`` =
             ()
 
         [<TestCaseSource("TestData")>]
-        member x.``Generate Code``((wid: int, iF, wH, input, out)) = 
+        member x.``Generate Code``((wid : int, iF, wH, input, out)) = 
             let inp = Path.Combine(path, input)
             let outp = Path.Combine(path, out)
 
@@ -137,7 +131,6 @@ module ``3CheckEquals`` =
     type ``Equals Code``() = 
         static member TestData = 
             [|
-                //Run Test
                 ("RunTest.ycp", "RunTest.fxp");
             
                 ("CombineAb.ycp",  "CombineAb.fxp");
@@ -165,8 +158,6 @@ module ``3CheckEquals`` =
                 ("HardTreeAA.ycp", "HardTreeAA.fxp");
                 ("HardTreeBB.ycp", "HardTreeBB.fxp");
                 ("HardTreeAB.ycp", "HardTreeAB.fxp");
-                //(10, A, A, ".in", ".expe", ".ycgen");
-        
             |]
 
         [<TestCaseSource("TestData")>]
@@ -186,7 +177,6 @@ module ``4xSpeed`` =
     type ``xSpeedTest``() = 
         static member TestData = 
             [|
-                //Run Test
                 ("xSpeed/x1.in");
                 ("xSpeed/x2.in");
                 ("xSpeed/x3.in");
@@ -195,26 +185,12 @@ module ``4xSpeed`` =
                 ("xSpeed/x6.in");
                 ("xSpeed/x7.in");
                 ("xSpeed/x8.in");
- //               ("xSpeed/x9.in");
- //               ("xSpeed/x10.in");
-//               ("xSpeed/x11.in");
-//                ("xSpeed/x12.in");
-//                ("xSpeed/x13.in");
-//                ("xSpeed/x14.in");
-
-//                ("xSpeed/x1x1.in");
-//                ("xSpeed/x2x2.in");
-//                ("xSpeed/x4x4.in");
-//                ("xSpeed/x8x8.in");
-               // ("xSpeed/x16.in");
-
-                //(10, A, A, ".in", ".expe", ".ycgen");
-        
             |]
+
         [<TestCaseSource("TestData")>]
         member  x.``Test`` (spFile) =
             let timer = new System.Diagnostics.Stopwatch()
-            let file = Path.Combine(path,spFile)
+            let file = Path.Combine(path, spFile)
             let fsxPrinter = FsxLPrinter.Printer(50, FsxLPrinter.AB, FsxLPrinter.AB)
             let ycPrinter = YCLPrinter.Printer(50, YCLPrinter.AB, YCLPrinter.AB)
 
@@ -225,18 +201,15 @@ module ``4xSpeed`` =
                 timer.Start()
                 let str1 = fsxPrinter.Print(text)
                 timer.Stop()
-                //let timeFX = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
                 timeFX <- timeFX + timer.Elapsed.TotalMilliseconds
                 
                 timer.Restart()
                 let str2 = ycPrinter.Print(text)
                 timer.Stop()
-                
 
                 timeYC <- timeYC + timer.Elapsed.TotalMilliseconds
                 timer.Reset()
-            //let timeYC = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
-            printfn "xSpeed with %A \n Text.StructuredFormat: %A\n YC.PrettyPrinter: %A" spFile (timeFX/10.0) (timeYC/10.0)
+            printfn "xSpeed with %A \n Text.StructuredFormat: %A\n YC.PrettyPrinter: %A" spFile (timeFX / 10.0) (timeYC / 10.0)
 
 module ``5Perfomanse`` =
     open YC.PrettyPrinter.Tests
@@ -251,15 +224,15 @@ module ``5Perfomanse`` =
         timer.Start()
         let str1 = fsxPrinter.Print(text)
         timer.Stop()
-        let timeFX = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+        let timeFX = timer.Elapsed.TotalMilliseconds
     
         timer.Restart()
         let str2 = ycPrinter.Print(text)
         timer.Stop()
     
-        let timeYC = timer.Elapsed.TotalMilliseconds //ElapsedMilliseconds
+        let timeYC = timer.Elapsed.TotalMilliseconds
         
         File.WriteAllText(Path.Combine(path,"PerfomanceTree.fxp"), str1)
         File.WriteAllText(Path.Combine(path,"PerfomanceTree.ycp"), str2)
         if timeFX <> timeYC 
-            then printfn "Difference between timeFX %A, and timeYC %A" timeFX timeYC
+        then printfn "Difference between timeFX %A, and timeYC %A" timeFX timeYC
