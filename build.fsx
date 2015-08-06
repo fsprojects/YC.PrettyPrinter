@@ -69,7 +69,7 @@ let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/YaccConstructo
 let release = LoadReleaseNotes "RELEASE_NOTES.md"
 
 // Helper active pattern for project types
-let (|Fsproj|Csproj|Vbproj|) (projFileName:string) = 
+let (|Fsproj|Csproj|Vbproj|) (projFileName : string) = 
     match projFileName with
     | f when f.EndsWith("fsproj") -> Fsproj
     | f when f.EndsWith("csproj") -> Csproj
@@ -190,21 +190,20 @@ Target "PublishNuget" (fun _ ->
 // Generate the documentation
 
 Target "GenerateReferenceDocs" (fun _ ->
-    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
-      failwith "generating reference documentation failed"
+    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] 
+    then failwith "generating reference documentation failed"
 )
 
 let generateHelp' fail debug =
     let args =
-        if debug then ["--define:HELP"]
+        if debug 
+        then ["--define:HELP"]
         else ["--define:RELEASE"; "--define:HELP"]
-    if executeFSIWithArgs "docs/tools" "generate.fsx" args [] then
-        traceImportant "Help generated"
-    else
-        if fail then
-            failwith "generating help documentation failed"
-        else
-            traceImportant "generating help documentation failed"
+    if executeFSIWithArgs "docs/tools" "generate.fsx" args [] 
+    then traceImportant "Help generated"
+    elif fail 
+    then failwith "generating help documentation failed"
+    else traceImportant "generating help documentation failed"
 
 let generateHelp fail =
     generateHelp' fail false
@@ -233,10 +232,8 @@ Target "GenerateHelpDebug" (fun _ ->
     generateHelp' true true
 )
 
-Target "KeepRunning" (fun _ ->    
-    use watcher = !! "docs/content/**/*.*" |> WatchChanges (fun changes ->
-         generateHelp false
-    )
+Target "KeepRunning" (fun _ ->
+    use watcher = !! "docs/content/**/*.*" |> WatchChanges (fun changes -> generateHelp false)
 
     traceImportant "Waiting for help edits. Press any key to stop."
 
@@ -265,21 +262,21 @@ F# Project Scaffold ({0})
 
 Target "AddLangDocs" (fun _ ->
     let args = System.Environment.GetCommandLineArgs()
-    if args.Length < 4 then
-        failwith "Language not specified."
+    if args.Length < 4 
+    then failwith "Language not specified."
 
     args.[3..]
     |> Seq.iter (fun lang ->
-        if lang.Length <> 2 && lang.Length <> 3 then
-            failwithf "Language must be 2 or 3 characters (ex. 'de', 'fr', 'ja', 'gsw', etc.): %s" lang
+        if lang.Length <> 2 && lang.Length <> 3 
+        then failwithf "Language must be 2 or 3 characters (ex. 'de', 'fr', 'ja', 'gsw', etc.): %s" lang
 
         let templateFileName = "template.cshtml"
         let templateDir = "docs/tools/templates"
         let langTemplateDir = templateDir @@ lang
         let langTemplateFileName = langTemplateDir @@ templateFileName
 
-        if System.IO.File.Exists(langTemplateFileName) then
-            failwithf "Documents for specified language '%s' have already been added." lang
+        if System.IO.File.Exists(langTemplateFileName) 
+        then failwithf "Documents for specified language '%s' have already been added." lang
 
         ensureDirectory langTemplateDir
         Copy langTemplateDir [ templateDir @@ templateFileName ]
@@ -315,9 +312,9 @@ Target "Release" (fun _ ->
         | _ -> getUserPassword "Password: "
     let remote =
         Git.CommandHelper.getGitResult "" "remote -v"
-        |> Seq.filter (fun (s: string) -> s.EndsWith("(push)"))
-        |> Seq.tryFind (fun (s: string) -> s.Contains(gitOwner + "/" + gitName))
-        |> function None -> gitHome + "/" + gitName | Some (s: string) -> s.Split().[0]
+        |> Seq.filter (fun (s : string) -> s.EndsWith("(push)"))
+        |> Seq.tryFind (fun (s : string) -> s.Contains(gitOwner + "/" + gitName))
+        |> function None -> gitHome + "/" + gitName | Some (s : string) -> s.Split().[0]
     StageAll ""
     Git.Commit.Commit "" (sprintf "Bump version to %s" release.NugetVersion)
     Branches.pushBranch "" remote (Information.getBranchName "")
