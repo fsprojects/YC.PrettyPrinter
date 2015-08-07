@@ -18,27 +18,27 @@ module ``1YC Prnters`` =
             [|
                 (10, A, A, "RunTest.in", "RunTest.ycp");
             
-                (2, A, A, "Combine.in",  "CombineAb.ycp");
-                (10, A, A, "Combine.in",  "CombineBe.ycp");
+                (2, A, A, "Combine.in", "CombineAb.ycp");
+                (10, A, A, "Combine.in", "CombineBe.ycp");
             
                 (10, A, A, "while.in", "whileA.ycp");
                 (10, A, B, "while.in", "whileB.ycp");
-                (10, A, AB,"while.in",  "whileAB.ycp");
+                (10, A, AB,"while.in", "whileAB.ycp");
                 (5, A, AB, "while.in", "whileW.ycp");
             
                 (10, A, A, "while+expr.in", "while+expr.ycp");
 
-                (10, A, A, "if.in",   "ifA.ycp");
-                (10, B, A, "if.in", "ifB.ycp");
-                (10, AB, A,"if.in", "ifAB.ycp");
-                (5, AB, A, "if.in", "ifW.ycp");
+                (10, A, A, "If.in", "ifA.ycp");
+                (10, B, A, "If.in", "ifB.ycp");
+                (10, AB, A,"If.in", "ifAB.ycp");
+                (5, AB, A, "If.in", "ifW.ycp");
 
-                (25, A, A, "LowTree.in",  "LowTreeAA.ycp");
-                (25, A, B, "LowTree.in",  "LowTreeAB.ycp");
-                (25, B, B, "LowTree.in",  "LowTreeBB.ycp");
-                (25, B, A, "LowTree.in",  "LowTreeBA.ycp");            
-                (25, AB, AB, "LowTree.in",  "LowTreeAbAb.ycp");
-                (20, A, A, "LowTree.in",  "LowTreeW.ycp");
+                (25, A, A, "LowTree.in", "LowTreeAA.ycp");
+                (25, A, B, "LowTree.in", "LowTreeAB.ycp");
+                (25, B, B, "LowTree.in", "LowTreeBB.ycp");
+                (25, B, A, "LowTree.in", "LowTreeBA.ycp");
+                (25, AB, AB, "LowTree.in", "LowTreeAbAb.ycp");
+                (20, A, A, "LowTree.in", "LowTreeW.ycp");
 
                 (50, A, A, "HardTree.in", "HardTreeAA.ycp");
                 (50, B, B, "HardTree.in", "HardTreeBB.ycp");
@@ -76,27 +76,27 @@ module ``2SFormat Generator`` =
             [|
                 (10, A, A, "RunTest.in", "RunTest.fxp");
             
-                (2, A, A, "Combine.in",  "CombineAb.fxp");
-                (10, A, A, "Combine.in",  "CombineBe.fxp");
+                (2, A, A, "Combine.in", "CombineAb.fxp");
+                (10, A, A, "Combine.in", "CombineBe.fxp");
             
                 (10, A, A, "while.in", "whileA.fxp");
                 (10, A, B, "while.in", "whileB.fxp");
-                (10, A, AB,"while.in",  "whileAB.fxp");
+                (10, A, AB,"while.in", "whileAB.fxp");
                 (5, A, AB, "while.in", "whileW.fxp");
             
                 (10, A, A, "while+expr.in", "while+expr.fxp");
 
-                (10, A, A, "if.in",   "ifA.fxp");
-                (10, B, A, "if.in", "ifB.fxp");
-                (10, AB, A,"if.in", "ifAB.fxp");
-                (5, AB, A, "if.in", "ifW.fxp");
+                (10, A, A, "If.in", "ifA.fxp");
+                (10, B, A, "If.in", "ifB.fxp");
+                (10, AB, A,"If.in", "ifAB.fxp");
+                (5, AB, A, "If.in", "ifW.fxp");
 
-                (25, A, A, "LowTree.in",  "LowTreeAA.fxp");
-                (25, A, B, "LowTree.in",  "LowTreeAB.fxp");
-                (25, B, B, "LowTree.in",  "LowTreeBB.fxp");
-                (25, B, A, "LowTree.in",  "LowTreeBA.fxp");            
-                (25, AB, AB, "LowTree.in",  "LowTreeAbAb.fxp");
-                (20, A, A, "LowTree.in",  "LowTreeW.fxp");
+                (25, A, A, "LowTree.in", "LowTreeAA.fxp");
+                (25, A, B, "LowTree.in", "LowTreeAB.fxp");
+                (25, B, B, "LowTree.in", "LowTreeBB.fxp");
+                (25, B, A, "LowTree.in", "LowTreeBA.fxp");            
+                (25, AB, AB, "LowTree.in", "LowTreeAbAb.fxp");
+                (20, A, A, "LowTree.in", "LowTreeW.fxp");
 
                 (50, A, A, "HardTree.in", "HardTreeAA.fxp");
                 (50, B, B, "HardTree.in", "HardTreeBB.fxp");
@@ -111,7 +111,7 @@ module ``2SFormat Generator`` =
             let text = File.ReadAllText inp
             let output = Printer(10, A, A).Print(text)
 
-            let out = File.WriteAllText( outp, output)
+            let out = File.WriteAllText(outp, output)
             ()
 
         [<TestCaseSource("TestData")>]
@@ -133,27 +133,27 @@ module ``3CheckEquals`` =
             [|
                 ("RunTest.ycp", "RunTest.fxp");
             
-                ("CombineAb.ycp",  "CombineAb.fxp");
-                ("CombineBe.ycp",  "CombineBe.fxp");
+                ("CombineAb.ycp", "CombineAb.fxp");
+                ("CombineBe.ycp", "CombineBe.fxp");
             
                 ("whileA.ycp", "whileA.fxp");
                 ("whileB.ycp", "whileB.fxp");
-                ("whileAB.ycp",  "whileAB.fxp");
+                ("whileAB.ycp", "whileAB.fxp");
                 ("whileW.ycp", "whileW.fxp");
 
                 ("while+expr.ycp", "while+expr.fxp");
 
-                ("ifA.ycp",   "ifA.fxp");
+                ("ifA.ycp", "ifA.fxp");
                 ("ifB.ycp", "ifB.fxp");
                 ("ifAB.ycp", "ifAB.fxp");
                 ("ifW.ycp", "ifW.fxp");
 
-                ("LowTreeAA.ycp",  "LowTreeAA.fxp");
-                ("LowTreeAB.ycp",  "LowTreeAB.fxp");
-                ("LowTreeBB.ycp",  "LowTreeBB.fxp");
-                ("LowTreeBA.ycp",  "LowTreeBA.fxp");            
-                ("LowTreeAbAb.ycp",  "LowTreeAbAb.fxp");
-                ("LowTreeW.ycp",  "LowTreeW.fxp");
+                ("LowTreeAA.ycp", "LowTreeAA.fxp");
+                ("LowTreeAB.ycp", "LowTreeAB.fxp");
+                ("LowTreeBB.ycp", "LowTreeBB.fxp");
+                ("LowTreeBA.ycp", "LowTreeBA.fxp");
+                ("LowTreeAbAb.ycp", "LowTreeAbAb.fxp");
+                ("LowTreeW.ycp", "LowTreeW.fxp");
 
                 ("HardTreeAA.ycp", "HardTreeAA.fxp");
                 ("HardTreeBB.ycp", "HardTreeBB.fxp");
@@ -215,7 +215,7 @@ module ``5Perfomanse`` =
     open YC.PrettyPrinter.Tests
     let [<Test>] ``5Test`` () =
         let timer = new System.Diagnostics.Stopwatch()
-        let file = Path.Combine(path,"PerfomanceTree.in")
+        let file = Path.Combine(path, "PerfomanceTree.in")
         let fsxPrinter = FsxLPrinter.Printer(50, FsxLPrinter.AB, FsxLPrinter.AB)
         let ycPrinter = YCLPrinter.Printer(50, YCLPrinter.AB, YCLPrinter.AB)
 
@@ -232,7 +232,7 @@ module ``5Perfomanse`` =
     
         let timeYC = timer.Elapsed.TotalMilliseconds
         
-        File.WriteAllText(Path.Combine(path,"PerfomanceTree.fxp"), str1)
-        File.WriteAllText(Path.Combine(path,"PerfomanceTree.ycp"), str2)
+        File.WriteAllText(Path.Combine(path, "PerfomanceTree.fxp"), str1)
+        File.WriteAllText(Path.Combine(path, "PerfomanceTree.ycp"), str2)
         if timeFX <> timeYC 
         then printfn "Difference between timeFX %A, and timeYC %A" timeFX timeYC
