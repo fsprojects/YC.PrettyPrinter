@@ -10,8 +10,8 @@ YC.PrettyPrinter
 YC.PrettyPrinter is an F# implementation of printer combinator library based on the paper
 <a href="http://link.springer.com/chapter/10.1007%2F978-3-662-46823-4_21">Polynomial-Time 
 Optimal Pretty-Printing Combinators with Choice</a>. The library contains 5 combinators, 
-sufficient for creation of pretty printer for optimal representation of code. The interface
-for an easy migration from <a href="https://github.com/jack-pappas/FSharp.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>
+sufficient for creation of pretty printer for optimal printing of code. The interface
+for an easy migration from <a href="https://github.com/fsprojects/FSharpx.Extras/tree/master/src/FSharpx.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>
 is provided and can be found 
 <a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">here</a>.
 
