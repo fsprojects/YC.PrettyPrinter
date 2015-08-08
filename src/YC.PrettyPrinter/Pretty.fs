@@ -91,7 +91,7 @@ let best wid (map1 : Dictionary<Frame, Format>) =
     value
     
 ///Get pretty format with Best       
-let prettyPrints (resultWidth : int) (d : Doc) = 
+let print (resultWidth : int) (d : Doc) = 
     let myMap = docToFormats resultWidth d
     best resultWidth myMap
     |> (fun x -> x.txtstr 0 "")
