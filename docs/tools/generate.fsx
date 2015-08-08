@@ -13,7 +13,7 @@ let referenceBinaries = []
 // Web site location for the generated documentation
 let website = "/YC.PrettyPrinter"
 
-let githubLink = "http://github.com/AndreyBulgakov/YC.PrettyPrinter"
+let githubLink = "https://github.com/YaccConstructor/YC.PrettyPrinter/"
 
 // Specify more information about your project
 let info =

@@ -7,7 +7,13 @@
 YC.PrettyPrinter
 ======================
 
-Documentation
+YC.PrettyPrinter is an F# implementation of printer combinator library based on the paper
+<a href="http://link.springer.com/chapter/10.1007%2F978-3-662-46823-4_21">Polynomial-Time 
+Optimal Pretty-Printing Combinators with Choice</a>. The library contains 5 combinators, 
+sufficient for creation of pretty printer for optimal representation of code. The interface
+for an easy migration from <a href="https://github.com/jack-pappas/FSharp.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>
+is provided and can be found 
+<a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">here</a>.
 
 <div class="row">
   <div class="span1"></div>
@@ -20,29 +26,11 @@ Documentation
   <div class="span1"></div>
 </div>
 
-Example
--------
-
-This example demonstrates using a function defined in this sample library.
-
-*)
-///
-
-(**
-Some more info
-
 Samples & documentation
 -----------------------
 
-The library comes with comprehensible documentation. 
-It can include tutorials automatically generated from `*.fsx` files in [the content folder][content]. 
-The API reference is automatically generated from Markdown comments in the library implementation.
-
- * [Tutorial](tutorial.html) contains a further explanation of this sample library.
-
- * [API Reference](reference/index.html) contains automatically generated documentation for all types, modules
-   and functions in the library. This includes additional brief samples on using most of the
-   functions.
+The library comes with documentation and include [Getting Started tutorial](tutorial.html), 
+as well as an [API Reference](reference/index.html)
  
 Contributing and copyright
 --------------------------
@@ -56,9 +44,9 @@ The library is available under Public Domain license, which allows modification 
 redistribution for both commercial and non-commercial purposes. For more information see the 
 [License file][license] in the GitHub repository. 
 
-  [content]: https://github.com/fsprojects/YC.PrettyPrinter/tree/master/docs/content
-  [gh]: https://github.com/fsprojects/YC.PrettyPrinter
-  [issues]: https://github.com/fsprojects/YC.PrettyPrinter/issues
-  [readme]: https://github.com/fsprojects/YC.PrettyPrinter/blob/master/README.md
-  [license]: https://github.com/fsprojects/YC.PrettyPrinter/blob/master/LICENSE.txt
+  [content]: https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/docs/content
+  [gh]: https://github.com/YaccConstructor/YC.PrettyPrinter
+  [issues]: https://github.com/YaccConstructor/YC.PrettyPrinter/issues
+  [readme]: https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/README.md
+  [license]: https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/LICENSE
 *)
