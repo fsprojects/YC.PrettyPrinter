@@ -5,29 +5,29 @@ open System.Collections.Generic
 let spaces n = String.replicate n " "
 let nl_skip n s = "\r\n" + spaces n + s
 
-type T_Height = int
+[<Measure>] type height
 
-type T_LastWidht = int
+[<Measure>] type lastWidth
 
-type T_TotalWidht = int
+[<Measure>] type totalWidth
 
-type T_FirstWidth = int
+[<Measure>] type firstWidth
 
 ///Basic class with some fields.
-///Height - total height of our box.
-///widthLast - width of last line.
-///width -  total width of our box.
+///first - width of the first line of the box.
+///mid - total width of the box.
+///last - width of the last line of the box.
 type Frame = 
-    val first : int
-    val mid : int
-    val last : int
+    val first : int<firstWidth>
+    val mid : int<totalWidth>
+    val last : int<lastWidth>
     
     new(first0, width0, widthLast0) = 
         { first = first0
           mid = width0
           last = widthLast0 }
 
-    //Frame comparable realisation
+    //Frame comparable implementation
     interface System.IComparable with
         member this.CompareTo frame2 =
             match frame2 with
@@ -48,10 +48,10 @@ type Frame =
         hash (x.first, x.mid, x.last)
 
 type Format = 
-    val height : T_Height
-    val last : T_LastWidht
-    val mid : T_TotalWidht
-    val first : T_FirstWidth
+    val height : int<height>
+    val last : int<lastWidth>
+    val mid : int<totalWidth>
+    val first : int<firstWidth>
     val txtstr : int -> string -> string
     
     new(firstWidth0, width0, widthLast0, height0, txtstr0) = 
@@ -67,8 +67,8 @@ type Format =
     ///Returns if format.width < width.
     member this.isSuitable width = this.totalW <= width
     ///Max width.
-    member this.totalW = List.max[this.first; this.mid; this.last]
-    //Frame3d.
+    member this.totalW = List.max[int this.first; int this.mid; int this.last]
+    ///Frame3d.
     member this.ToFrame = new Frame(this.first, this.mid, this.last)
     member this.toString = this.txtstr 0 ""
     
@@ -76,10 +76,11 @@ type Format =
     static member (>-<) (f1 : Format, f2 : Format) = 
         let newFirst = f1.first
         let newMid = 
-            List.max [(if f1.height > 1 then max f1.mid f1.last  else 0); 
-                      (if f2.height > 1 then max f2.first f2.mid else max f1.mid f1.last);]
+            List.max [(if f1.height > 1<height> then max (int f1.mid) (int f1.last)  else 0)
+                      (if f2.height > 1<height> then max (int f2.first) (int f2.mid) else max (int f1.mid) (int f1.last))]
+            * 1<totalWidth>
         let newLast = 
-            if f2.last <> 0 
+            if f2.last <> 0<lastWidth> 
             then f2.last
             else f1.last
         let newHeight = f1.height + f2.height
@@ -89,18 +90,18 @@ type Format =
     ///Beside Format.
     static member (>|<) (f1 : Format, f2 : Format) = 
         let newFirst = 
-            (if f1.height <> 1 
+            (if f1.height <> 1<height> 
              then f1.first
              else f1.first + f2.first)
         let newMid = 
-            List.max [(if f1.height > 1 then f1.mid else 0); 
-                      (if f1.height = 1 && f2.height = 1 then f1.mid + f2.mid else 0);
-                      (if f2.height > 1 
-                       then max (f1.last + f2.first) (f1.last + f2.mid) 
-                       else f1.mid);]
+            List.max [(if f1.height > 1<height> then f1.mid else 0<totalWidth>)
+                      (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
+                      (if f2.height > 1<height> 
+                       then max (int f1.last + int f2.first) (int f1.last + int f2.mid) * 1<totalWidth> 
+                       else f1.mid)]
         let newLast = f1.last + f2.last
-        let newHeight = f1.height + f2.height - 1
-        let newFun = fun n -> f1.txtstr n << f2.txtstr (f1.last + n)
+        let newHeight = f1.height + f2.height - 1<height>
+        let newFun = fun n -> f1.txtstr n << f2.txtstr (int f1.last + n)
         new Format(newFirst, newMid, newLast, newHeight, newFun)
     
     ///Fill format.
@@ -108,19 +109,23 @@ type Format =
     ///Fill format.
     static member addFill (f1 : Format, f2 : Format, shift : int) = 
         let newFirst = 
-            if f1.height <> 1 
+            if f1.height <> 1<height> 
             then f1.first
             else f1.first + f2.first
         let newMid =
-            List.max [(if f1.height = 1 && f2.height = 1 then f1.mid + f2.mid else 0);
-                      (if f1.height > 1 && f2.height = 1 then f1.mid else 0); 
-                      (if f1.height = 1 && f2.height > 1 then f2.mid + shift  else 0);
-                      (if f1.height > 1 && f2.height > 1 then max (f1.last + f2.first) (f2.mid + shift) else 0);]
+            List.max [
+                        (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
+                        (if f1.height > 1<height> && f2.height = 1<height> then f1.mid else 0<totalWidth>)
+                        (if f1.height = 1<height> && f2.height > 1<height> then f2.mid + shift * 1<totalWidth> else 0<totalWidth>)
+                        (if f1.height > 1<height> && f2.height > 1<height> 
+                         then max ((int f1.last + int f2.first) * 1<totalWidth>) (f2.mid + shift * 1<totalWidth>) 
+                         else 0<totalWidth>)
+                      ]
         let newLast = 
-            if f2.height <> 1 
-            then f2.last + shift
+            if f2.height <> 1<height> 
+            then f2.last + shift * 1<lastWidth>
             else f1.last + f2.last
-        let newHeight = f1.height + f2.height - 1
+        let newHeight = f1.height + f2.height - 1<height>
         let newFun = fun n -> f1.txtstr n << f2.txtstr (n + shift)
         new Format(newFirst, newMid, newLast, newHeight, newFun)
     
@@ -144,14 +149,15 @@ type Format =
     override x.GetHashCode() =
         hash (x.height, x.first, x.mid, x.last)
 
-let emptyFormat = new Format(0, 0, 0, 0, fun _ _ -> "")
+let emptyFormat = new Format(0<firstWidth>, 0<totalWidth>, 0<lastWidth>, 0<height>, fun _ _ -> "")
 
 ///Making Format from string.
 let stringToFormat (s : string) = 
     let length = s.Length
-    new Format(length, length, length, 1, (fun _ p -> s + p))
+    new Format(length * 1<firstWidth>, length * 1<totalWidth>, length * 1<lastWidth>, 1<height>, (fun _ p -> s + p))
 
 ///Adding indent to given Format.
-let indentFormat h (format : Format) = 
-    new Format(h + format.first, h + format.mid, h + format.last, format.height, 
+let indentFormat (h : int) (format : Format) = 
+    new Format(h * 1<firstWidth> + format.first, h * 1<totalWidth> + format.mid, h * 1<lastWidth> + format.last, format.height, 
                fun n s -> (spaces h) + format.txtstr (h + n) s)
+               

@@ -4,15 +4,15 @@ open YC.PrettyPrinter.Doc
 /// The empty doc.
 let emptyL = Text ""
 /// Is it the empty doc?
-let isEmptyL d = (Text "").Equals(d)
+let isEmptyL d = emptyL.Equals d
 
 /// An uninterpreted leaf, to be interpreted into a string
 /// by the layout engine. This allows leaf layouts for numbers, strings and
 /// other atoms to be customized according to culture.
-let objL o = Text(o.ToString())
+let objL o = Text (o.ToString())
 
-/// An string leaf.
-let wordL s = Text(s)
+/// A string leaf.
+let wordL s = Text s
 
 /// Join, unbreakable.
 let (^^) doc1 doc2 = doc1 >||< doc2
@@ -27,15 +27,15 @@ let (--)  doc1 doc2 = (doc1 >||< doc2) >//< (doc1 >-< Indent(1, doc2))
 let (---) doc1 doc2 = (doc1 >||< doc2) >//< (doc1 >-< Indent(2, doc2))
 
 /// Join broken with ident = 0.
-let (@@)  doc1 doc2 = Above(doc1, doc2)
+let (@@)  doc1 doc2 = doc1 >-< doc2
 
 /// Join broken with ident = 1.
-let (@@-) doc1 doc2 = Above(doc1, Indent(1, doc2))
+let (@@-) doc1 doc2 = doc1 >-< Indent(1, doc2)
 
 /// Join broken with ident = 2.
-let (@@--) doc1 doc2 = Above(doc1, Indent(2, doc2))
+let (@@--) doc1 doc2 = doc1 >-< Indent(2, doc2)
 
-let rec tagListL tagger = 
+let rec private tagListL tagger = 
     function
     | [] -> emptyL
     | [x] -> x
@@ -84,10 +84,7 @@ let optionL xL =
 /// Layout like an F# list.
 let listL xL xs = Text "[" ^^ sepListL (Text ";") (List.map xL xs) ^^ Text "]"
 
-/// For limitting layout of list-like sequences (lists,arrays,etc).
-/// Unfold a list of items using (project and z) making layout list via itemL.
-/// If reach maxLength (before exhausting) then truncate.
-let boundedUnfoldL (itemL : 'a -> Doc) (project : 'z -> ('a * 'z) option) (stopShort : 'z -> bool) (z : 'z) maxLength =
+let private boundedUnfoldL (itemL : 'a -> Doc) (project : 'z -> ('a * 'z) option) (stopShort : 'z -> bool) (z : 'z) maxLength =
     let rec consume n z =
         if stopShort z 
         then [wordL "..."] 
@@ -99,4 +96,7 @@ let boundedUnfoldL (itemL : 'a -> Doc) (project : 'z -> ('a * 'z) option) (stopS
                              else itemL x :: consume (n - 1) z  (* cons recursive... *)
     consume maxLength z  
 
+/// For limitting layout of list-like sequences (lists,arrays,etc).
+/// Unfold a list of items using (project and z) making layout list via itemL.
+/// If reach maxLength (before exhausting) then truncate.
 let unfoldL itemL project z maxLength = boundedUnfoldL itemL project (fun _ -> false) z maxLength
