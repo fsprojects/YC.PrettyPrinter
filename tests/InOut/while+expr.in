@@ -1,7 +1,0 @@
-while (n) {
- res := res * x;
- n := n - 1
-}
-read p;
-write n;
-rex := k + 1;
