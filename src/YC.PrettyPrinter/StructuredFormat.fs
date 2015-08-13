@@ -14,6 +14,11 @@ let objL o = Text (o.ToString())
 /// A string leaf.
 let wordL s = Text s
 
+/// An string which is right parenthesis (no space on the left).
+let rightL s = Text s
+/// An string which is left  parenthesis (no space on the right).
+let leftL s = Text s
+
 /// Join, unbreakable.
 let (^^) doc1 doc2 = doc1 >||< doc2
 
