@@ -67,8 +67,9 @@ let rec docToFormats wid doc =
     res
 
 and cacheContains wid doc =
-    if cacheMap.ContainsKey(doc) 
-    then cacheMap.[doc] 
+    let flg, res =  cacheMap.TryGetValue doc
+    if flg 
+    then res 
     else 
         let cacheForm = docToFormats wid doc
         cacheMap.Add(doc, cacheForm)
