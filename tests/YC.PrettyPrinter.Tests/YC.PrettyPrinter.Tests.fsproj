@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8f1f5edd-4a46-4948-af8d-c878fa946b31</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>YC.PrettyPrinter.Tests</RootNamespace>
     <AssemblyName>YC.PrettyPrinter.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -61,6 +61,7 @@
     <Compile Include="FsxLPrinter.fs" />
     <Compile Include="YCLPrinter.fs" />
     <Compile Include="CheckCode.fs" />
+    <Compile Include="Example.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
