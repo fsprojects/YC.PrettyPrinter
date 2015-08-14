@@ -40,6 +40,13 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "app", "tests\LParser\app.fs
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Example", "tests\Example\Example.fsproj", "{78B2FA30-9298-4E58-8343-A88006EAF384}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{18032A29-D243-47D3-BC09-DAA52AE79685}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
