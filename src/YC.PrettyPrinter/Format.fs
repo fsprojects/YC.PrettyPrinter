@@ -13,39 +13,27 @@ let nl_skip n s = "\r\n" + spaces n + s
 
 [<Measure>] type firstWidth
 
-///Basic class with some fields.
-///first - width of the first line of the box.
-///mid - total width of the box.
-///last - width of the last line of the box.
-type Frame = 
-    val first : int<firstWidth>
-    val mid : int<totalWidth>
-    val last : int<lastWidth>
-    
-    new(first0, width0, widthLast0) = 
-        { first = first0
-          mid = width0
-          last = widthLast0 }
+[<Measure>] type Frame
 
-    //Frame comparable implementation
-    interface System.IComparable with
-        member this.CompareTo frame2 =
-            match frame2 with
-            | :? Frame as f2 ->
-                if this.first < f2.first && this.mid < f2.mid && this.last < f2.last
-                then -1
-                elif this.first = f2.first && this.mid = f2.mid && this.last = f2.last
-                then 0
-                else 1
-            | _ -> invalidArg "format2" "cannot compare values of different types"
+let cFirst = 10
+let cMid = 12
+let cLast = 10
 
-    override x.Equals(yobj) =
-        match yobj with
-        | :? Frame as f2 -> (x.first = f2.first && x.mid = f2.mid && x.last = f2.last)
-        | _ -> false
+let inline newFrame (first: int<firstWidth>) (mid: int<totalWidth>) (last:int<lastWidth>) = 
+    (int first <<< cMid + cLast) ||| (int mid <<< cLast) ||| int last 
+    |> (*) 1<Frame>
 
-    override x.GetHashCode() =
-        hash (x.first, x.mid, x.last)
+let inline frameFirst (frame: int<Frame>) =
+    int frame >>> cMid + cLast
+    |> (*) 1<firstWidth>
+
+let inline frameMid (frame: int<Frame>) =
+    (int frame <<< cFirst) >>> cMid + cLast
+    |> (*) 1<totalWidth>
+
+let inline frameLast (frame: int<Frame>) =
+    (int frame <<< cMid + cFirst) >>> cMid + cFirst
+    |> (*) 1<lastWidth>
 
 type Format = 
     val height : int<height>
@@ -69,7 +57,7 @@ type Format =
     ///Max width.
     member this.totalW = List.max[int this.first; int this.mid; int this.last]
     ///Frame3d.
-    member this.ToFrame = new Frame(this.first, this.mid, this.last)
+    member this.ToFrame = newFrame this.first this.mid this.last
     member this.toString = this.txtstr 0 ""
     
     ///Above Format.
