@@ -35,8 +35,9 @@ let inline frameLast (frame: int<Frame>) =
     (int frame <<< cMid + cFirst) >>> cMid + cFirst
     |> (*) 1<lastWidth>
 
-type Format = 
-    val height : int<height>
+type Format =
+    
+    val height : int<height>        
     val last : int<lastWidth>
     val mid : int<totalWidth>
     val first : int<firstWidth>
@@ -64,8 +65,8 @@ type Format =
     static member (>-<) (f1 : Format, f2 : Format) = 
         let newFirst = f1.first
         let newMid = 
-            List.max [(if f1.height > 1<height> then max (int f1.mid) (int f1.last)  else 0)
-                      (if f2.height > 1<height> then max (int f2.first) (int f2.mid) else max (int f1.mid) (int f1.last))]
+            max (if f1.height > 1<height> then max (int f1.mid) (int f1.last)  else 0)
+                (if f2.height > 1<height> then max (int f2.first) (int f2.mid) else max (int f1.mid) (int f1.last))
             * 1<totalWidth>
         let newLast = 
             if f2.last <> 0<lastWidth> 
@@ -82,11 +83,11 @@ type Format =
              then f1.first
              else f1.first + f2.first)
         let newMid = 
-            List.max [(if f1.height > 1<height> then f1.mid else 0<totalWidth>)
-                      (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
-                      (if f2.height > 1<height> 
-                       then max (int f1.last + int f2.first) (int f1.last + int f2.mid) * 1<totalWidth> 
-                       else f1.mid)]
+            (if f1.height > 1<height> then f1.mid else 0<totalWidth>)
+            |> max (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
+            |> max (if f2.height > 1<height> 
+                    then max (int f1.last + int f2.first) (int f1.last + int f2.mid) * 1<totalWidth> 
+                    else f1.mid)
         let newLast = f1.last + f2.last
         let newHeight = f1.height + f2.height - 1<height>
         let newFun = fun n -> f1.txtstr n << f2.txtstr (int f1.last + n)
@@ -101,14 +102,13 @@ type Format =
             then f1.first
             else f1.first + f2.first
         let newMid =
-            List.max [
-                        (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
-                        (if f1.height > 1<height> && f2.height = 1<height> then f1.mid else 0<totalWidth>)
-                        (if f1.height = 1<height> && f2.height > 1<height> then f2.mid + shift * 1<totalWidth> else 0<totalWidth>)
-                        (if f1.height > 1<height> && f2.height > 1<height> 
-                         then max ((int f1.last + int f2.first) * 1<totalWidth>) (f2.mid + shift * 1<totalWidth>) 
-                         else 0<totalWidth>)
-                      ]
+            (if f1.height = 1<height> && f2.height = 1<height> then f1.mid + f2.mid else 0<totalWidth>)
+            |> max (if f1.height > 1<height> && f2.height = 1<height> then f1.mid else 0<totalWidth>)
+            |> max (if f1.height = 1<height> && f2.height > 1<height> then f2.mid + shift * 1<totalWidth> else 0<totalWidth>)
+            |> max (if f1.height > 1<height> && f2.height > 1<height> 
+                    then max ((int f1.last + int f2.first) * 1<totalWidth>) (f2.mid + shift * 1<totalWidth>) 
+                    else 0<totalWidth>)
+                     
         let newLast = 
             if f2.height <> 1<height> 
             then f2.last + shift * 1<lastWidth>
@@ -124,7 +124,7 @@ type Format =
             | :? Format as f2 -> 
                 if (this.height < f2.height) || (this.height = f2.height && this.totalW < f2.totalW) 
                 then -1
-                elif (this.height = f2.height && this.mid = f2.mid && this.last = this.last) 
+                elif this.height = f2.height && this.mid = f2.mid && this.last = this.last
                 then 0
                 else 1
             | _ -> invalidArg "format2" "cannot compare values of different types"

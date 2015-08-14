@@ -19,6 +19,8 @@ let rightL s = Text s
 /// An string which is left  parenthesis (no space on the right).
 let leftL s = Text s
 
+let sepL s = Text s
+
 /// Join, unbreakable.
 let (^^) doc1 doc2 = doc1 >||< doc2
 
