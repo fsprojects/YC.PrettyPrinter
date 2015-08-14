@@ -13,7 +13,9 @@ let ast =
     //(&"if (1+4+5+12+verylongvarname+13+14+15) {if (1+4+5+12+13+13+verylongvarname+14+15) { write(1+2+3+4+5+6+7+8+9+10+11+verylongvarname+12+13+13+14+15)} else{ write(1+verylongvarname+2+3+4+5+6+7+8+9+10+11+12+13+13+14+15)}; write(1+2+3+4+5+6+7+8+9+10+11+12+13+13+14+15)} else{ write(1+2+3+4+5+6+7+8+9+10+11+12+13+13+14+15)};")
     //(&"if (1+4+5+1+11+12+23+34) { write(1+2+3+4+5+6+7+8+9+10+11+234+34343+445645)} else{ write(1+2+3+4+5+6+7+8+9+10+11+234+34343+445645)};")
     //(&"if (1+5+7) { write(1+2)} else{ write(1+222+3+4)};")
-    (&"if (1+5+7) { write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};")
+    //(&"if (1+5+7) { write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};")
+    //(&"if (1+5+7) { write(1+2222+3333+4+5+6+7+8+9)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};")
+    (&"if (1+5+7) { write(1+2); write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};")
     |> Stmt.Parser.parse () 
 
 let width = 25
@@ -29,7 +31,7 @@ module SF =
         | Expr.Var n -> string n |> wordL
     and printS ast =
         match ast with
-        | Stmt.Write s -> wordL "write" ^^ bracketL(print s) ^^ rightL ";"
+        | Stmt.Write s -> wordL "write" ^^ bracketL(print s)
         | Stmt.Seq(s1, s2) -> (printS s1 ^^ rightL ";") @@ printS s2
         | Stmt.If(c,t,f) -> 
             let _t = wordL "then" --- printS t
@@ -52,7 +54,7 @@ module YCPP =
         | Expr.Var n -> string n |> wordL
     and printS ast =
         match ast with
-        | Stmt.Write s -> wordL "write" ^^ bracketL(print s) >|< wordL ";"
+        | Stmt.Write s -> wordL "write" ^^ bracketL(print s)
         | Stmt.Seq(s1, s2) -> (printS s1 >|< wordL ";") @@ printS s2
         | Stmt.If(c,t,f) -> 
 //            let _t = wordL "then" --- printS t
@@ -60,7 +62,7 @@ module YCPP =
 //            (wordL "if" ^^ bracketL(print c)) @@ _t @@ _f 
             let _t = printS t
             let _f = printS f            
-            let if1 = (wordL "if" ^^ bracketL(print c)) @@ (wordL "then" ++ _t) @@ (wordL "else" ++ _f )
+            let if1 = (wordL "if" ^^ bracketL(print c)) @@ (wordL "then" ^^ _t) @@ (wordL "else" ^^ _f )
             let if2 = (wordL "if" ^^ bracketL(print c)) @@ (wordL "then" @@-- _t) @@ (wordL "else" @@-- _f )
             if1 >//< if2
     

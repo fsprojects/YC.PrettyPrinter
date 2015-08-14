@@ -38,6 +38,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "YC.PrettyPrinter.Tests", "t
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "app", "tests\LParser\app.fsproj", "{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Example", "tests\Example\Example.fsproj", "{78B2FA30-9298-4E58-8343-A88006EAF384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B2FA30-9298-4E58-8343-A88006EAF384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B2FA30-9298-4E58-8343-A88006EAF384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B2FA30-9298-4E58-8343-A88006EAF384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B2FA30-9298-4E58-8343-A88006EAF384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{8E6D5255-776D-4B61-85F9-73C37AA1FB9A} = {A6A6AF7D-D6E3-442D-9B1E-58CC91879BE1}
 		{8F1F5EDD-4A46-4948-AF8D-C878FA946B31} = {ED8079DD-2B06-4030-9F0F-DC548F98E1C4}
 		{4C17BF65-9F5A-45B8-8CFB-84F874B6DA81} = {ED8079DD-2B06-4030-9F0F-DC548F98E1C4}
+		{78B2FA30-9298-4E58-8343-A88006EAF384} = {ED8079DD-2B06-4030-9F0F-DC548F98E1C4}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = src\test\test.fsproj
