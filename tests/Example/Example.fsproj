@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Program.fs" />
     <None Include="App.config" />
-    <None Include="pakеt.references" />
+    <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\YC.PrettyPrinter\YC.PrettyPrinter.fsproj">
