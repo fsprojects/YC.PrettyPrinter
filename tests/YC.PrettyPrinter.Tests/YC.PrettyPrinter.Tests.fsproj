@@ -61,6 +61,7 @@
     <Compile Include="FsxLPrinter.fs" />
     <Compile Include="YCLPrinter.fs" />
     <Compile Include="CheckCode.fs" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
