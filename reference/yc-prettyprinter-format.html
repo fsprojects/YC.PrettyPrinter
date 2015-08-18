@@ -36,6 +36,9 @@
 
 
 <h1>Format</h1>
+<p>
+  <span>Namespace: YC.PrettyPrinter</span><br />
+</p>
 <div class="xmldoc">
 </div>
 
@@ -57,11 +60,7 @@
           <td class="type-name">
             <a href="yc-prettyprinter-format-frame.html">Frame</a>
           </td>
-          <td class="xmldoc"><p>Basic class with some fields.
-first - width of the first line of the box.
-mid - total width of the box.
-last - width of the last line of the box.</p>
-</td>
+          <td class="xmldoc"></td>
         </tr>
         <tr>
           <td class="type-name">
@@ -102,14 +101,14 @@ last - width of the last line of the box.</p>
         <td class="member-name">
 
           <code onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)">
-            emptyFormat 
+            cFirst 
           </code>
           <div class="tip" id="1">
-            <strong>Signature:</strong> Format<br />
+            <strong>Signature:</strong> int<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L152-152" class="github-link">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L18-18" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -120,28 +119,156 @@ last - width of the last line of the box.</p>
         <td class="member-name">
 
           <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
-            indentFormat h format
+            cLast 
           </code>
           <div class="tip" id="2">
-            <strong>Signature:</strong> h:int -&gt; format:Format -&gt; Format<br />
+            <strong>Signature:</strong> int<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L160-160" class="github-link">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L20-20" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Adding indent to given Format.</p>
-
+          
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
           <code onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)">
-            nl_skip n s
+            cMid 
           </code>
           <div class="tip" id="3">
+            <strong>Signature:</strong> int<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L19-19" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
+            emptyFormat 
+          </code>
+          <div class="tip" id="4">
+            <strong>Signature:</strong> Format<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L140-140" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
+            frameFirst frame
+          </code>
+          <div class="tip" id="5">
+            <strong>Signature:</strong> frame:int&lt;Frame&gt; -&gt; int&lt;MeasureProduct&lt;firstWidth,MeasureOne&gt;&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L26-26" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
+            frameLast frame
+          </code>
+          <div class="tip" id="6">
+            <strong>Signature:</strong> frame:int&lt;Frame&gt; -&gt; int&lt;MeasureProduct&lt;lastWidth,MeasureOne&gt;&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L34-34" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+            frameMid frame
+          </code>
+          <div class="tip" id="7">
+            <strong>Signature:</strong> frame:int&lt;Frame&gt; -&gt; int&lt;MeasureProduct&lt;totalWidth,MeasureOne&gt;&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L30-30" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+            indentFormat h format
+          </code>
+          <div class="tip" id="8">
+            <strong>Signature:</strong> h:int -&gt; format:Format -&gt; Format<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L148-148" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Adding indent to given Format.</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+            newFrame first mid last
+          </code>
+          <div class="tip" id="9">
+            <strong>Signature:</strong> first:int&lt;firstWidth&gt; -&gt; mid:int&lt;totalWidth&gt; -&gt; last:int&lt;lastWidth&gt; -&gt; int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L22-22" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
+            nl_skip n s
+          </code>
+          <div class="tip" id="10">
             <strong>Signature:</strong> n:int -&gt; s:string -&gt; string<br />
                       </div>
         </td>
@@ -156,10 +283,10 @@ last - width of the last line of the box.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
+          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
             spaces n
           </code>
-          <div class="tip" id="4">
+          <div class="tip" id="11">
             <strong>Signature:</strong> n:int -&gt; string<br />
                       </div>
         </td>
@@ -174,19 +301,21 @@ last - width of the last line of the box.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
             stringToFormat s
           </code>
-          <div class="tip" id="5">
+          <div class="tip" id="12">
             <strong>Signature:</strong> s:string -&gt; Format<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L155-155" class="github-link">
+            <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Format.fs#L143-143" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
           <p>Making Format from string.</p>
+
+
 
         </td>
       </tr>

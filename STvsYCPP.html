@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>STvsYCPP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Pretty printing library"/>
+    <meta name="author" content="Andrey Bulgakov"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/YC.PrettyPrinter/content/style.css" />
+    <script type="text/javascript" src="/YC.PrettyPrinter/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="https://github.com/YaccConstructor/YC.PrettyPrinter/">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/YC.PrettyPrinter/index.html">YC.PrettyPrinter</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<p>Why YC.PrettyPrinter is not yiet another Microsoft.Text.StructuredFormat? Lets try to compare this two libraries. Final version of sources presented in this post is available on <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/tests/Example/Program.fs">GitHub</a>.</p>
+
+<p>First of all, common header. I use custom parser for simple "C-like" language implemented for tests. In examples below I do not aimed to format input string. So, input and output syntax may be different. Also let we specify width for result layout.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">Example</span>
+
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">Expr</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Stmt</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 3)" onmouseover="showTip(event, 'fs2', 3)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 4)" onmouseover="showTip(event, 'fs3', 4)" class="i">Parser</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">CoreParser</span>
+
+<span class="k">let</span> <span class="i">ast</span> <span class="o">=</span> 
+    <span class="o">&amp;</span><span class="s">&quot;if (1+5+7) { write(1+2)} else{ write(1+3+4)};&quot;</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs2', 6)" onmouseover="showTip(event, 'fs2', 6)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="i">Parser</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs5', 8)" onmouseover="showTip(event, 'fs5', 8)" class="i">parse</span> () 
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs6', 9)" onmouseover="showTip(event, 'fs6', 9)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 10)" onmouseover="showTip(event, 'fs7', 10)" class="i">head</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs8', 11)" onmouseover="showTip(event, 'fs8', 11)" class="i">fst</span>
+
+<span class="k">let</span> <span class="i">width</span> <span class="o">=</span> <span class="n">25</span>
+</code></pre></td>
+</tr>
+</table>
+
+<p>First step is creation of printer with braking after "then" and "else" by using StructuredFormat. Description of combinators is available <a href="https://github.com/fsprojects/FSharpx.Extras/blob/master/src/FSharpx.Text.StructuredFormat/StructuredFormat.fsi">here</a>.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">SF</span> <span class="o">=</span>
+    <span class="k">open</span> <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="i">Microsoft</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="i">FSharp</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs11', 14)" onmouseover="showTip(event, 'fs11', 14)" class="i">Text</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 15)" onmouseover="showTip(event, 'fs12', 15)" class="i">StructuredFormat</span>
+    <span class="k">open</span> <span onmouseout="hideTip(event, 'fs9', 16)" onmouseover="showTip(event, 'fs9', 16)" class="i">Microsoft</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs10', 17)" onmouseover="showTip(event, 'fs10', 17)" class="i">FSharp</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs11', 18)" onmouseover="showTip(event, 'fs11', 18)" class="i">Text</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 19)" onmouseover="showTip(event, 'fs12', 19)" class="i">StructuredFormat</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs13', 20)" onmouseover="showTip(event, 'fs13', 20)" class="i">LayoutOps</span>
+
+    <span class="k">let</span> <span class="k">rec</span> <span class="i">print</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs1', 21)" onmouseover="showTip(event, 'fs1', 21)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs14', 22)" onmouseover="showTip(event, 'fs14', 22)" class="i">BinOp</span>(<span class="i">x</span>, <span class="i">y</span>, <span class="i">z</span>) <span class="k">-&gt;</span> <span class="i">print</span> <span class="i">y</span> <span class="o">++</span> <span class="i">wordL</span> (<span onmouseout="hideTip(event, 'fs15', 23)" onmouseover="showTip(event, 'fs15', 23)" class="i">string</span> <span class="i">x</span>) <span class="o">^^</span> <span class="i">print</span> <span class="i">z</span>
+        | <span onmouseout="hideTip(event, 'fs1', 24)" onmouseover="showTip(event, 'fs1', 24)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs16', 25)" onmouseover="showTip(event, 'fs16', 25)" class="i">Num</span> <span class="i">n</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs15', 26)" onmouseover="showTip(event, 'fs15', 26)" class="i">string</span> <span class="i">n</span> <span class="o">|&gt;</span> <span class="i">wordL</span>
+        | <span onmouseout="hideTip(event, 'fs1', 27)" onmouseover="showTip(event, 'fs1', 27)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs17', 28)" onmouseover="showTip(event, 'fs17', 28)" class="i">Var</span> <span class="i">n</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs15', 29)" onmouseover="showTip(event, 'fs15', 29)" class="i">string</span> <span class="i">n</span> <span class="o">|&gt;</span> <span class="i">wordL</span>
+    <span class="k">and</span> <span class="i">printS</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs2', 30)" onmouseover="showTip(event, 'fs2', 30)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 31)" onmouseover="showTip(event, 'fs18', 31)" class="i">Write</span> <span class="i">s</span> <span class="k">-&gt;</span> <span class="i">wordL</span> <span class="s">&quot;write&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">s</span>)
+        | <span onmouseout="hideTip(event, 'fs2', 32)" onmouseover="showTip(event, 'fs2', 32)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 33)" onmouseover="showTip(event, 'fs19', 33)" class="i">Seq</span>(<span class="i">s1</span>, <span class="i">s2</span>) <span class="k">-&gt;</span> (<span class="i">printS</span> <span class="i">s1</span> <span class="o">^^</span> <span class="i">rightL</span> <span class="s">&quot;;&quot;</span>) <span class="o">@@</span> <span class="i">printS</span> <span class="i">s2</span>
+        | <span onmouseout="hideTip(event, 'fs2', 34)" onmouseover="showTip(event, 'fs2', 34)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 35)" onmouseover="showTip(event, 'fs20', 35)" class="i">If</span>(<span class="i">c</span>,<span class="i">t</span>,<span class="i">f</span>) <span class="k">-&gt;</span> 
+            <span class="k">let</span> <span class="i">_t</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;then&quot;</span> <span class="o">@@--</span> <span class="i">printS</span> <span class="i">t</span>
+            <span class="k">let</span> <span class="i">_f</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;else&quot;</span> <span class="o">@@--</span> <span class="i">printS</span> <span class="i">f</span>
+            (<span class="i">wordL</span> <span class="s">&quot;if&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">c</span>)) <span class="o">@@</span> <span class="i">_t</span> <span class="o">@@</span> <span class="i">_f</span> 
+    
+    <span class="k">let</span> <span class="i">str</span> <span class="i">ast</span> <span class="o">=</span> 
+        <span class="i">printS</span> <span class="i">ast</span>
+        <span class="o">|&gt;</span> <span class="i">Display</span><span class="o">.</span><span class="i">layout_to_string</span> {<span class="i">FormatOptions</span><span class="o">.</span><span class="i">Default</span> <span class="k">with</span> <span class="i">PrintWidth</span> <span class="o">=</span> <span class="i">width</span>}
+</code></pre></td>
+</tr>
+</table>
+
+<p>Output is formatted input string:
+<pre>
+//input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
+if (1 + 5 + 7)
+then
+  write (1 + 2);
+  write (1 + 2)
+else
+  write (1 + 3 + 4)
+</pre></p>
+
+<p>The next step is migration to YC.PrettyPrinter. Since the <a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">set of combinators implemented in YC.PrettyPrinter</a> is similar to the set of StructuredFormat combinators, you need only change openings and correct final function for layout ot string converting.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">YCPP</span> <span class="o">=</span>
+    <span class="k">open</span> <span class="i">YC</span><span class="o">.</span><span class="i">PrettyPrinter</span>
+    <span class="k">open</span> <span class="i">YC</span><span class="o">.</span><span class="i">PrettyPrinter</span><span class="o">.</span><span class="i">StructuredFormat</span>
+
+    <span class="k">let</span> <span class="k">rec</span> <span class="i">print</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs1', 36)" onmouseover="showTip(event, 'fs1', 36)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs14', 37)" onmouseover="showTip(event, 'fs14', 37)" class="i">BinOp</span>(<span class="i">x</span>, <span class="i">y</span>, <span class="i">z</span>) <span class="k">-&gt;</span> <span class="i">print</span> <span class="i">y</span> <span class="o">++</span> <span class="i">wordL</span> (<span onmouseout="hideTip(event, 'fs15', 38)" onmouseover="showTip(event, 'fs15', 38)" class="i">string</span> <span class="i">x</span>) <span class="o">^^</span> <span class="i">print</span> <span class="i">z</span>
+        | <span onmouseout="hideTip(event, 'fs1', 39)" onmouseover="showTip(event, 'fs1', 39)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs16', 40)" onmouseover="showTip(event, 'fs16', 40)" class="i">Num</span> <span class="i">n</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs15', 41)" onmouseover="showTip(event, 'fs15', 41)" class="i">string</span> <span class="i">n</span> <span class="o">|&gt;</span> <span class="i">wordL</span>
+        | <span onmouseout="hideTip(event, 'fs1', 42)" onmouseover="showTip(event, 'fs1', 42)" class="i">Expr</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs17', 43)" onmouseover="showTip(event, 'fs17', 43)" class="i">Var</span> <span class="i">n</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs15', 44)" onmouseover="showTip(event, 'fs15', 44)" class="i">string</span> <span class="i">n</span> <span class="o">|&gt;</span> <span class="i">wordL</span>
+    <span class="k">and</span> <span class="i">printS</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs2', 45)" onmouseover="showTip(event, 'fs2', 45)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 46)" onmouseover="showTip(event, 'fs18', 46)" class="i">Write</span> <span class="i">s</span> <span class="k">-&gt;</span> <span class="i">wordL</span> <span class="s">&quot;write&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">s</span>)
+        | <span onmouseout="hideTip(event, 'fs2', 47)" onmouseover="showTip(event, 'fs2', 47)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 48)" onmouseover="showTip(event, 'fs19', 48)" class="i">Seq</span>(<span class="i">s1</span>, <span class="i">s2</span>) <span class="k">-&gt;</span> (<span class="i">printS</span> <span class="i">s1</span> <span class="o">^^</span> <span class="i">rightL</span> <span class="s">&quot;;&quot;</span>) <span class="o">@@</span> <span class="i">printS</span> <span class="i">s2</span>
+        | <span onmouseout="hideTip(event, 'fs2', 49)" onmouseover="showTip(event, 'fs2', 49)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 50)" onmouseover="showTip(event, 'fs20', 50)" class="i">If</span>(<span class="i">c</span>,<span class="i">t</span>,<span class="i">f</span>) <span class="k">-&gt;</span> 
+            <span class="k">let</span> <span class="i">_t</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;then&quot;</span> <span class="o">@@--</span> <span class="i">printS</span> <span class="i">t</span>
+            <span class="k">let</span> <span class="i">_f</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;else&quot;</span> <span class="o">@@--</span> <span class="i">printS</span> <span class="i">f</span>
+            (<span class="i">wordL</span> <span class="s">&quot;if&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">c</span>)) <span class="o">@@</span> <span class="i">_t</span> <span class="o">@@</span> <span class="i">_f</span> 
+
+    <span class="k">let</span> <span class="i">str</span> <span class="i">ast</span> <span class="o">=</span> 
+        <span class="i">printS</span> <span class="i">ast</span>
+        <span class="o">|&gt;</span> <span class="i">Pretty</span><span class="o">.</span><span class="i">print</span> <span class="i">width</span>
+</code></pre></td>
+</tr>
+</table>
+
+<p>Run it.
+<pre>
+//input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
+if (1 + 5 + 7)
+then
+  write (1 + 2) ;
+  write (1 + 2)
+else
+  write (1 + 3 + 4)
+</pre></p>
+
+<p>Good. We get similar result but there is some problems with semicolon: extra space is added. It is because rightL is stub for migration simplification. Spaces manipulation in YC.PrettyPrinter and StructuredFormat has some differences. Well, let we try to fix it: wordL and unbrakable concatenation without spaces (combinator &gt;|&lt;) can help to solve the problem.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">    <span class="k">and</span> <span class="i">printS</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs2', 51)" onmouseover="showTip(event, 'fs2', 51)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 52)" onmouseover="showTip(event, 'fs18', 52)" class="i">Write</span> <span class="i">s</span> <span class="k">-&gt;</span> <span class="i">wordL</span> <span class="s">&quot;write&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">s</span>)
+        | <span onmouseout="hideTip(event, 'fs2', 53)" onmouseover="showTip(event, 'fs2', 53)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 54)" onmouseover="showTip(event, 'fs19', 54)" class="i">Seq</span>(<span class="i">s1</span>, <span class="i">s2</span>) <span class="k">-&gt;</span> (<span class="i">printS</span> <span class="i">s1</span> <span class="o">&gt;</span><span class="o">|&lt;</span> <span class="i">wordL</span> <span class="s">&quot;;&quot;</span>) <span class="o">@@</span> <span class="i">printS</span> <span class="i">s2</span>
+</code></pre></td>
+</tr>
+</table>
+
+<pre>
+//input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
+if (1 + 5 + 7)
+then
+  write (1 + 2);
+  write (1 + 2)
+else
+  write (1 + 3 + 4)
+</pre>
+
+<p>Ather modifications outputs are identical.</p>
+
+<p>Well. Migration is pretty simple. But what about differences? Let try to cpecify variadic layout for "if". It is not necessary to add line braking after "then" and "else" always. Sometymes we want to add next block without braking. Result should looks like this example:</p>
+
+<pre>
+if cond
+then stmt1;
+     stmt2
+else
+     stmt3
+</pre>
+
+<p>To implement such printer using StructuredFormat we can use combinator (---) : join, possible break with indent=2.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">    <span class="k">and</span> <span class="i">printS</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs2', 55)" onmouseover="showTip(event, 'fs2', 55)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 56)" onmouseover="showTip(event, 'fs18', 56)" class="i">Write</span> <span class="i">s</span> <span class="k">-&gt;</span> <span class="i">wordL</span> <span class="s">&quot;write&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">s</span>)
+        | <span onmouseout="hideTip(event, 'fs2', 57)" onmouseover="showTip(event, 'fs2', 57)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 58)" onmouseover="showTip(event, 'fs19', 58)" class="i">Seq</span>(<span class="i">s1</span>, <span class="i">s2</span>) <span class="k">-&gt;</span> (<span class="i">printS</span> <span class="i">s1</span> <span class="o">^^</span> <span class="i">rightL</span> <span class="s">&quot;;&quot;</span>) <span class="o">@@</span> <span class="i">printS</span> <span class="i">s2</span>
+        | <span onmouseout="hideTip(event, 'fs2', 59)" onmouseover="showTip(event, 'fs2', 59)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 60)" onmouseover="showTip(event, 'fs20', 60)" class="i">If</span>(<span class="i">c</span>,<span class="i">t</span>,<span class="i">f</span>) <span class="k">-&gt;</span> 
+            <span class="k">let</span> <span class="i">_t</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;then&quot;</span> <span class="o">---</span> <span class="i">printS</span> <span class="i">t</span>
+            <span class="k">let</span> <span class="i">_f</span> <span class="o">=</span> <span class="i">wordL</span> <span class="s">&quot;else&quot;</span> <span class="o">---</span> <span class="i">printS</span> <span class="i">f</span>
+            (<span class="i">wordL</span> <span class="s">&quot;if&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">c</span>)) <span class="o">@@</span> <span class="i">_t</span> <span class="o">@@</span> <span class="i">_f</span> 
+</code></pre></td>
+</tr>
+</table>
+
+<p>Let try to format some examples.</p>
+
+<pre>
+// input: "if (1+5+7) { write(1+2)} else{ write(1+3+4)};"
+if (1 + 5 + 7)
+then write (1 + 2)
+else write (1 + 3 + 4)
+</pre>
+
+<pre>
+//input: 
+//"if (1+5+7) { write(longVarName+longVarName); write(longVarName+longVarName)}"
+//+" else{ write(longVarName+longVarName)};"
+//
+if (1 + 5 + 7)
+then
+  write (longVarName + longVarName);
+  write (longVarName + longVarName)
+else
+  write (longVarName + longVarName)
+</pre>
+
+<pre>
+// input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
+if (1 + 5 + 7)
+then write (1 + 2);
+     write (1 + 2)
+else write (1 + 3 + 4)
+</pre>
+
+<p>Well, seems that all works as we want.</p>
+
+<pre>
+// input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};"
+if (1 + 5 + 7)
+then write (1 + 2);
+     write (1 + 2)
+else
+  write (veryVeryVeryVeryLongVarName
+         + 222 + 3 + 4)
+</pre>
+
+<p>In some cases we can get slightly incorrect output. It happens because we can not sinchronize brakings after "then" and "else" and we can not solve this problem using StructuredFormat. But YC.PrettyPrinter can help us because it contais choice combinator.</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">    <span class="k">and</span> <span class="i">printS</span> <span class="i">ast</span> <span class="o">=</span>
+        <span class="k">match</span> <span class="i">ast</span> <span class="k">with</span>
+        | <span onmouseout="hideTip(event, 'fs2', 61)" onmouseover="showTip(event, 'fs2', 61)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 62)" onmouseover="showTip(event, 'fs18', 62)" class="i">Write</span> <span class="i">s</span> <span class="k">-&gt;</span> <span class="i">wordL</span> <span class="s">&quot;write&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">s</span>)
+        | <span onmouseout="hideTip(event, 'fs2', 63)" onmouseover="showTip(event, 'fs2', 63)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 64)" onmouseover="showTip(event, 'fs19', 64)" class="i">Seq</span>(<span class="i">s1</span>, <span class="i">s2</span>) <span class="k">-&gt;</span> (<span class="i">printS</span> <span class="i">s1</span> <span class="o">&gt;</span><span class="o">|&lt;</span> <span class="i">wordL</span> <span class="s">&quot;;&quot;</span>) <span class="o">@@</span> <span class="i">printS</span> <span class="i">s2</span>
+        | <span onmouseout="hideTip(event, 'fs2', 65)" onmouseover="showTip(event, 'fs2', 65)" class="i">Stmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 66)" onmouseover="showTip(event, 'fs20', 66)" class="i">If</span>(<span class="i">c</span>,<span class="i">t</span>,<span class="i">f</span>) <span class="k">-&gt;</span> 
+            <span class="k">let</span> <span class="i">_t</span> <span class="o">=</span> <span class="i">printS</span> <span class="i">t</span>
+            <span class="k">let</span> <span class="i">_f</span> <span class="o">=</span> <span class="i">printS</span> <span class="i">f</span>
+            <span class="c">// We can specify &quot;template&quot; for &quot;if-then-else&quot; layout.</span>
+            <span class="k">let</span> <span class="i">ifTpl</span> <span class="i">f</span> <span class="o">=</span> 
+                (<span class="i">wordL</span> <span class="s">&quot;if&quot;</span> <span class="o">^^</span> <span class="i">bracketL</span>(<span class="i">print</span> <span class="i">c</span>)) <span class="o">@@</span> (<span class="i">wordL</span> <span class="s">&quot;then&quot;</span> <span class="o">|&gt;</span> <span class="i">f</span> <span class="o">&lt;|</span> <span class="i">_t</span>) <span class="o">@@</span> (<span class="i">wordL</span> <span class="s">&quot;else&quot;</span> <span class="o">|&gt;</span> <span class="i">f</span> <span class="o">&lt;|</span> <span class="i">_f</span> )            
+            <span class="c">// Choice: all unbrekable or all with braking.</span>
+            (<span class="i">ifTpl</span> (<span class="o">^^</span>)) <span class="o">&gt;</span><span class="o">//&lt;</span> (<span class="i">ifTpl</span> (<span class="o">@@--</span>))
+</code></pre></td>
+</tr>
+</table>
+
+<p>Output for <code>"if (1+5+7) { write(1+2); write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};"</code>:
+<pre>
+if (1 + 5 + 7)
+then
+  write (1 + 2);
+  write (1 + 2)
+else
+  write (veryVeryVeryVeryLongVarName
+         + 222 + 3 + 4)
+</pre></p>
+
+<p>Well. It is what we want. So, combinators which implemented in YC.PrettyPrinter is more comprehensive. Also, they are global optimal: result is layout with required width and minimal height. 
+Output for <code>"if (1+5+7) { write(longVarName+longVarName); write(longVarName+longVarName)} else{ write(longVarName+longVarName)};"</code> is good demonstartion of this property. Width for layout is 25 for both libraries.</p>
+
+<pre>
+//StructuredFormat
+if (1 + 5 + 7)
+then
+  write (longVarName + longVarName);
+  write (longVarName + longVarName)
+else
+  write (longVarName + longVarName)
+
+<p>//YC.PrettyPrinter
+if (1 + 5 + 7)
+then
+  write (longVarName
+         + longVarName);
+  write (longVarName
+         + longVarName)
+else
+  write (longVarName
+         + longVarName)
+</pre></p>
+
+<p>As you can see, width of result generated by StructuredFormat is greater then 25 and width of result generated by YC.PrettyPrinter is not greater and height is minimal such that do not exceed required width.</p>
+
+<p>Small note about performance. YC.PrettyPrinter is not sutable for fast printing of huge amount of code. We compare printer based on StructuredFormat (P1) with printer on YC.PrettyPrinter (P2) whish is result of naive migration form StructuredFormat.
+P1 was implemented for SQL translation results printing (AST) as part of enterprice project. It is nesessary 2.5 sec to print back AST of 10000 loc and 13 sec to print back AST of 20000 loc with P2. With P1 both examples printed in 0.5 sec.</p>
+
+<p>Final result: if you need fast printer then you should use StructuredFormat, but if your goal is really pretty output then YC.PrettyPrinter is better choice.</p>
+
+<div class="tip" id="fs1">module Expr</div>
+<div class="tip" id="fs2">module Stmt</div>
+<div class="tip" id="fs3">module Parser<br /><br />from Stmt</div>
+<div class="tip" id="fs4">module CoreParser</div>
+<div class="tip" id="fs5">val parse : unit -&gt; Stmt.t CoreParser.t<br /><br />Full name: Stmt.Parser.parse</div>
+<div class="tip" id="fs6">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type List&lt;&#39;T&gt; =<br />&#160;&#160;| ( [] )<br />&#160;&#160;| ( :: ) of Head: &#39;T * Tail: &#39;T list<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;member Head : &#39;T<br />&#160;&#160;member IsEmpty : bool<br />&#160;&#160;member Item : index:int -&gt; &#39;T with get<br />&#160;&#160;member Length : int<br />&#160;&#160;member Tail : &#39;T list<br />&#160;&#160;static member Cons : head:&#39;T * tail:&#39;T list -&gt; &#39;T list<br />&#160;&#160;static member Empty : &#39;T list<br /><br />Full name: Microsoft.FSharp.Collections.List&lt;_&gt;</div>
+<div class="tip" id="fs7">val head : list:&#39;T list -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Collections.List.head</div>
+<div class="tip" id="fs8">val fst : tuple:(&#39;T1 * &#39;T2) -&gt; &#39;T1<br /><br />Full name: Microsoft.FSharp.Core.Operators.fst</div>
+<div class="tip" id="fs9">namespace Microsoft</div>
+<div class="tip" id="fs10">namespace Microsoft.FSharp</div>
+<div class="tip" id="fs11">namespace Microsoft.FSharp.Text</div>
+<div class="tip" id="fs12">namespace Microsoft.FSharp.Text.StructuredFormat</div>
+<div class="tip" id="fs13">module LayoutOps<br /><br />from Microsoft.FSharp.Text.StructuredFormat</div>
+<div class="tip" id="fs14">union case Expr.t.BinOp: char * Expr.t * Expr.t -&gt; Expr.t</div>
+<div class="tip" id="fs15">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
+<div class="tip" id="fs16">union case Expr.t.Num: int -&gt; Expr.t</div>
+<div class="tip" id="fs17">union case Expr.t.Var: string -&gt; Expr.t</div>
+<div class="tip" id="fs18">union case Stmt.t.Write: Expr.t -&gt; Stmt.t</div>
+<div class="tip" id="fs19">union case Stmt.t.Seq: Stmt.t * Stmt.t -&gt; Stmt.t</div>
+<div class="tip" id="fs20">union case Stmt.t.If: Expr.t * Stmt.t * Stmt.t -&gt; Stmt.t</div>
+
+        </div>
+        <div class="span3">
+          <img src="/YC.PrettyPrinter/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">YC.PrettyPrinter</li>
+            <li><a href="/YC.PrettyPrinter/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/YC.PrettyPrinter">Get Library via NuGet</a></li>
+            <li><a href="https://github.com/YaccConstructor/YC.PrettyPrinter/">Source Code on GitHub</a></li>
+            <li><a href="/YC.PrettyPrinter/license.html">License</a></li>
+            <li><a href="/YC.PrettyPrinter/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/YC.PrettyPrinter/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/YC.PrettyPrinter/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
