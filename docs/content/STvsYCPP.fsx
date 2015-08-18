@@ -5,9 +5,11 @@
 #r @"C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\app.dll"
 
 (**
-Why YC.PrettyPrinter is not yiet another Microsoft.Text.StructuredFormat? Lets try to compare this two libraries. Final version of sources presented in this post is available on <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/tests/Example/Program.fs">GitHub</a>.
+Why YC.PrettyPrinter is not just yet another Microsoft.Text.StructuredFormat? Lets compare these two libraries. Final version of the sources presented in this post is available on <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/tests/Example/Program.fs">GitHub</a>.
 
-First of all, common header. I use custom parser for simple "C-like" language implemented for tests. In examples below I do not aimed to format input string. So, input and output syntax may be different. Also let we specify width for result layout.
+First of all, common header. We use custom parser for simple "C-like" language implemented for tests. In the following examples, an input string is formatted by the printer we compose. Notice that the printer changes not only the structure of the code, but the syntax too. The printer is designed in such a manner to better demonstrate the difference between two libraries and wrong syntax of the output should not be considered as a flaw. 
+
+The desired maximum width for the output is specified in a common header: see 'width'. 
 
 *)
 
@@ -28,7 +30,7 @@ let width = 25
 
 (**
 
-First step is creation of printer with braking after "then" and "else" by using StructuredFormat. Description of combinators is available <a href="https://github.com/fsprojects/FSharpx.Extras/blob/master/src/FSharpx.Text.StructuredFormat/StructuredFormat.fsi">here</a>.
+First step is to implement a printer using StructuredFormat library. This printer breaks the line after "then" and "else" keywords. Description of the combinators used in the example is available <a href="https://github.com/fsprojects/FSharpx.Extras/blob/master/src/FSharpx.Text.StructuredFormat/StructuredFormat.fsi">here</a>.
 
 *)
 
@@ -56,7 +58,7 @@ module SF =
 
 (**
 
-Output is formatted input string:
+This printer produce the following output:
 <pre>
 //input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
 if (1 + 5 + 7)
@@ -73,7 +75,7 @@ else
 
 (**
 
-The next step is migration to YC.PrettyPrinter. Since the <a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">set of combinators implemented in YC.PrettyPrinter</a> is similar to the set of StructuredFormat combinators, you need only change openings and correct final function for layout ot string converting.   
+Next, we implement the same printer using YC.PrettyPrinter library. The <a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">set of combinators implemented in YC.PrettyPrinter</a> is very similar to the set of StructuredFormat combinators which simplify such migration a lot. All you need to do is to change openings and correct the function 'str' used for conversion of layout to string.
 
 *)
 
@@ -111,7 +113,7 @@ else
   write (1 + 3 + 4)
 </pre>
 
-Good. We get similar result but there is some problems with semicolon: extra space is added. It is because rightL is stub for migration simplification. Spaces manipulation in YC.PrettyPrinter and StructuredFormat has some differences. Well, let we try to fix it: wordL and unbrakable concatenation without spaces (combinator >|<) can help to solve the problem. 
+Good. The result looks similar, but there is an extra space before the semicolon. The reason for this is that 'rightL' is a stub for migration simplification. Spaces manipulation in YC.PrettyPrinter and StructuredFormat has some differences. To fix it, unbreakable concatenation without spaces (combinator >|<) should be used. 
 
 *)
 
@@ -121,6 +123,8 @@ Good. We get similar result but there is some problems with semicolon: extra spa
         | Stmt.Seq(s1, s2) -> (printS s1 >|< wordL ";") @@ printS s2
 
 (**
+
+Outputs are identical after the modifications.
 
 <pre>
 //input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(1+3+4)};"
@@ -132,9 +136,7 @@ else
   write (1 + 3 + 4)
 </pre>
 
-Ather modifications outputs are identical.
-
-Well. Migration is pretty simple. But what about differences? Let try to cpecify variadic layout for "if". It is not necessary to add line braking after "then" and "else" always. Sometymes we want to add next block without braking. Result should looks like this example:
+As you can see, migration is a piece of cake. But what about differences? Let's specify variadic layout for "if". In this case, line break after "then" and "else" keywords is optional: sometimes we want to add next block without breaking. Result should looks like this example:
 
 <pre>
 if cond
@@ -144,7 +146,7 @@ else
      stmt3
 </pre>
 
-To implement such printer using StructuredFormat we can use combinator (---) : join, possible break with indent=2.
+Such printer can be implemented using StructuredFormat by means of the combinator '(---)' : join, possible break with indent=2.
 
 *)
 
@@ -159,7 +161,7 @@ To implement such printer using StructuredFormat we can use combinator (---) : j
 
 (**
 
-Let try to format some examples.
+Let's format some examples.
 
 <pre>
 // input: "if (1+5+7) { write(1+2)} else{ write(1+3+4)};"
@@ -190,7 +192,9 @@ then write (1 + 2);
 else write (1 + 3 + 4)
 </pre>
 
-Well, seems that all works as we want. 
+Well, it seems that everything works just fine. 
+
+However, in some cases we can get a slightly incorrect output. Consider the following example. You can notice that "then" and "else" blocks are formatted differently. Many code styles consider this a bad practice suggesting to choose one style for the given statement. 
 
 <pre>
 // input: "if (1+5+7) { write(1+2); write(1+2)} else{ write(veryVeryVeryVeryLongVarName+222+3+4)};"
@@ -202,7 +206,7 @@ else
          + 222 + 3 + 4)
 </pre>
 
-In some cases we can get slightly incorrect output. It happens because we can not sinchronize brakings after "then" and "else" and we can not solve this problem using StructuredFormat. But YC.PrettyPrinter can help us because it contais choice combinator. 
+Unfortunately, it is impossible to synchronize line breaks using StructuredFormat. YC.PrettyPrinter, on the other hand, provides choice combinator which come in handy in this situation. 
 
 *)
 
@@ -232,8 +236,9 @@ else
          + 222 + 3 + 4)
 </pre>
 
-Well. It is what we want. So, combinators which implemented in YC.PrettyPrinter is more comprehensive. Also, they are global optimal: result is layout with required width and minimal height. 
-Output for <code>"if (1+5+7) { write(longVarName+longVarName); write(longVarName+longVarName)} else{ write(longVarName+longVarName)};"</code> is good demonstartion of this property. Width for layout is 25 for both libraries.
+As you can see, the output is formatted exactly as we desired. This demonstrates that combinators implemented in YC.PrettyPrinter are more comprehensive. Also, YC.PrettyPrinter produces global optimal result: the code is formatted in such a way that it has required width and minimal height. 
+
+Output for <code>"if (1+5+7) { write(longVarName+longVarName); write(longVarName+longVarName)} else{ write(longVarName+longVarName)};"</code> is a great demonstration of this property. In this example the width for layout is 25 for both libraries.
 
 <pre>
 //StructuredFormat
@@ -256,11 +261,11 @@ else
          + longVarName)
 </pre>
 
-As you can see, width of result generated by StructuredFormat is greater then 25 and width of result generated by YC.PrettyPrinter is not greater and height is minimal such that do not exceed required width.
+The output of StructuredFormat exceeds maximum possible width (the longest line consists of 37 symbols) whereas the result generated by YC.PrettyPrinter is of proper width and has the minimal possible height such that it does not exceed required width.
 
-Small note about performance. YC.PrettyPrinter is not sutable for fast printing of huge amount of code. We compare printer based on StructuredFormat (P1) with printer on YC.PrettyPrinter (P2) whish is result of naive migration form StructuredFormat.
-P1 was implemented for SQL translation results printing (AST) as part of enterprice project. It is nesessary 2.5 sec to print back AST of 10000 loc and 13 sec to print back AST of 20000 loc with P2. With P1 both examples printed in 0.5 sec. 
+We conclude with the small note about performance. Because of the global optimality of the result produced, YC.PrettyPrinter needs significant time to process an input which makes it unsuitable for fast printing of huge amount of code. We compared the printer based on StructuredFormat (P1) with the printer implemented using YC.PrettyPrinter (P2) which is a result of naive migration from StructuredFormat.
+Both printers were used to print the results of SQL translation (represented as an Abstract Syntax Tree) as part of enterprise project. It took 2.5 sec to print the AST of 10000 loc and 13 sec to print the AST of 20000 loc with P2. With P1 both examples were printed in 0.5 sec. 
 
-Final result: if you need fast printer then you should use StructuredFormat, but if your goal is really pretty output then YC.PrettyPrinter is better choice.
+To sum up, if you need fast printer, then StructuredFormat should be used, but if your goal is a really pretty output, then YC.PrettyPrinter is better choice.
 
 *)
