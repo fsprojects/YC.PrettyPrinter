@@ -14,11 +14,11 @@ let objL o = Text (o.ToString())
 /// A string leaf.
 let wordL s = Text s
 
-/// An string which is right parenthesis (no space on the left).
+/// Stub for migration simplification.
 let rightL s = Text s
-/// An string which is left  parenthesis (no space on the right).
+/// Stub for migration simplification.
 let leftL s = Text s
-
+/// Stub for migration simplification.
 let sepL s = Text s
 
 /// Join, unbreakable.
