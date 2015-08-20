@@ -52,14 +52,14 @@ let testAssemblies = "tests/**/bin/Release/*Tests*.dll"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitOwner = "YaccConstructor" 
+let gitOwner = "fsprojects" 
 let gitHome = "https://github.com/" + gitOwner
 
 // The name of the project on GitHub
 let gitName = "YC.PrettyPrinter"
 
 // The url for the raw files hosted
-let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/YaccConstructor"
+let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/fsprojects"
 
 // --------------------------------------------------------------------------------------
 // END TODO: The rest of the file includes standard build steps

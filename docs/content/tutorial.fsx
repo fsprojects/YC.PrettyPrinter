@@ -8,15 +8,15 @@ Getting started
 ========================
 
 YC.PrettyPrinters contains two sets of printer combinators: 
-<a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-doc-doc.html">the first</a> 
+<a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-doc-doc.html">the first</a> 
 consists of 5 basic combinators described in 
 <a href="http://link.springer.com/chapter/10.1007%2F978-3-662-46823-4_21">the paper</a>
-and <a href="http://yaccconstructor.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">the second</a> is the same as 
+and <a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">the second</a> is the same as 
 <a href="https://github.com/fsprojects/FSharpx.Extras/tree/master/src/FSharpx.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>
 library provides. You can either use the set of basic combinators or the set of more high-level StructuredFormat-like combinators.
 
 The best way to understand how to create pretty printers using our library is to take a look 
-at <a href="https://github.com/YaccConstructor/YC.PrettyPrinter/blob/master/src/YC.PrettyPrinter/StructuredFormat.fs">our implementation</a> of
+at <a href="https://github.com/fsprojects/YC.PrettyPrinter/blob/master/src/YC.PrettyPrinter/StructuredFormat.fs">our implementation</a> of
 <a href="https://github.com/fsprojects/FSharpx.Extras/tree/master/src/FSharpx.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>. 
 
 The following example demonstrates how to use this library.
