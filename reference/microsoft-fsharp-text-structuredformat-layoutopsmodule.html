@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>LayoutOps - YC.PrettyPrinter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Andrey Bulgakov"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/YC.PrettyPrinter/content/style.css" />
+    <script type="text/javascript" src="/YC.PrettyPrinter/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="https://github.com/fsprojects/YC.PrettyPrinter/">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/YC.PrettyPrinter/index.html">YC.PrettyPrinter</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>LayoutOps</h1>
+<p>
+  <span>Namespace: Microsoft.FSharp.Text.StructuredFormat</span><br />
+</p>
+<div class="xmldoc">
+<p>A layout is a sequence of strings which have been joined together.
+The strings are classified as words, separators and left and right parenthesis.
+This classification determines where spaces are inserted.
+A joint is either unbreakable, breakable or broken.
+If a joint is broken the RHS layout occurs on the next line with optional indentation.
+A layout can be squashed to for given width which forces breaks as required.</p>
+
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+            ( -- ) layout1 layout2
+          </code>
+          <div class="tip" id="8">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L102-102" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join, possible break with indent=1</p>
+
+
+              <p>CompiledName: <code>op_MinusMinus</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+            ( --- ) layout1 layout2
+          </code>
+          <div class="tip" id="9">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L103-103" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join, possible break with indent=2</p>
+
+
+              <p>CompiledName: <code>op_MinusMinusMinus</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
+            ( @@ ) layout1 layout2
+          </code>
+          <div class="tip" id="10">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L104-104" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join broken with ident=0</p>
+
+
+              <p>CompiledName: <code>op_AtAt</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
+            ( @@- ) layout1 layout2
+          </code>
+          <div class="tip" id="11">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L105-105" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join broken with ident=1</p>
+
+
+              <p>CompiledName: <code>op_AtAtMinus</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
+            ( @@-- ) layout1 layout2
+          </code>
+          <div class="tip" id="12">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L106-106" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join broken with ident=2</p>
+
+
+              <p>CompiledName: <code>op_AtAtMinusMinus</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
+            ( ^^ ) layout1 layout2
+          </code>
+          <div class="tip" id="13">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L100-100" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join, unbreakable.</p>
+
+
+              <p>CompiledName: <code>op_HatHat</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
+            ( ++ ) layout1 layout2
+          </code>
+          <div class="tip" id="14">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L101-101" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join, possible break with indent=0</p>
+
+
+              <p>CompiledName: <code>op_PlusPlus</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
+            aboveL layout1 layout2
+          </code>
+          <div class="tip" id="15">
+            <strong>Signature:</strong> layout1:Layout -&gt; layout2:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L87-87" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Layout two vertically.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '16', 16)" onmouseover="showTip(event, '16', 16)">
+            aboveListL layouts
+          </code>
+          <div class="tip" id="16">
+            <strong>Signature:</strong> layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L122-122" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Layout list vertically.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '17', 17)" onmouseover="showTip(event, '17', 17)">
+            braceL layout
+          </code>
+          <div class="tip" id="17">
+            <strong>Signature:</strong> layout:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L135-135" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Wrap braces around layout.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '18', 18)" onmouseover="showTip(event, '18', 18)">
+            bracketL Layout
+          </code>
+          <div class="tip" id="18">
+            <strong>Signature:</strong> Layout:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L120-120" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Wrap round brackets around Layout.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '19', 19)" onmouseover="showTip(event, '19', 19)">
+            commaListL layouts
+          </code>
+          <div class="tip" id="19">
+            <strong>Signature:</strong> layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L116-116" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join layouts into a comma separated list.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '20', 20)" onmouseover="showTip(event, '20', 20)">
+            emptyL 
+          </code>
+          <div class="tip" id="20">
+            <strong>Signature:</strong> Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L78-78" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>The empty layout</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '21', 21)" onmouseover="showTip(event, '21', 21)">
+            isEmptyL layout
+          </code>
+          <div class="tip" id="21">
+            <strong>Signature:</strong> layout:Layout -&gt; bool<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L79-79" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Is it the empty layout?</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '22', 22)" onmouseover="showTip(event, '22', 22)">
+            leftL text
+          </code>
+          <div class="tip" id="22">
+            <strong>Signature:</strong> text:string -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L77-77" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>An string which is left  parenthesis (no space on the right).</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '23', 23)" onmouseover="showTip(event, '23', 23)">
+            listL selector value
+          </code>
+          <div class="tip" id="23">
+            <strong>Signature:</strong> selector:(&#39;T -&gt; Layout) -&gt; value:&#39;T list -&gt; Layout<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L131-131" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Layout like an F# list.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '24', 24)" onmouseover="showTip(event, '24', 24)">
+            objL value
+          </code>
+          <div class="tip" id="24">
+            <strong>Signature:</strong> value:obj -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L72-72" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>An uninterpreted leaf, to be interpreted into a string
+by the layout engine. This allows leaf layouts for numbers, strings and
+other atoms to be customized according to culture.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '25', 25)" onmouseover="showTip(event, '25', 25)">
+            optionL selector value
+          </code>
+          <div class="tip" id="25">
+            <strong>Signature:</strong> selector:(&#39;T -&gt; Layout) -&gt; value:&#39;T option -&gt; Layout<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L127-127" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Layout like an F# option.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '26', 26)" onmouseover="showTip(event, '26', 26)">
+            rightL text
+          </code>
+          <div class="tip" id="26">
+            <strong>Signature:</strong> text:string -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L76-76" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>An string which is right parenthesis (no space on the left).</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '27', 27)" onmouseover="showTip(event, '27', 27)">
+            semiListL layouts
+          </code>
+          <div class="tip" id="27">
+            <strong>Signature:</strong> layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L117-117" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join layouts into a semi-colon separated list.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '28', 28)" onmouseover="showTip(event, '28', 28)">
+            sepL text
+          </code>
+          <div class="tip" id="28">
+            <strong>Signature:</strong> text:string -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L75-75" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>An string which requires no spaces either side.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '29', 29)" onmouseover="showTip(event, '29', 29)">
+            sepListL layout1 layouts
+          </code>
+          <div class="tip" id="29">
+            <strong>Signature:</strong> layout1:Layout -&gt; layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L119-119" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join layouts into a list separated using the given Layout.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '30', 30)" onmouseover="showTip(event, '30', 30)">
+            spaceListL layouts
+          </code>
+          <div class="tip" id="30">
+            <strong>Signature:</strong> layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L118-118" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Join layouts into a space separated list.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '31', 31)" onmouseover="showTip(event, '31', 31)">
+            squareBracketL layout
+          </code>
+          <div class="tip" id="31">
+            <strong>Signature:</strong> layout:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L133-133" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Wrap square brackets around layout.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '32', 32)" onmouseover="showTip(event, '32', 32)">
+            tagAttrL text maps layout
+          </code>
+          <div class="tip" id="32">
+            <strong>Signature:</strong> text:string -&gt; maps:(string * string) list -&gt; layout:Layout -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L95-95" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>See tagL</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '33', 33)" onmouseover="showTip(event, '33', 33)">
+            tupleL layouts
+          </code>
+          <div class="tip" id="33">
+            <strong>Signature:</strong> layouts:Layout list -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L121-121" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Form tuple of layouts.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '34', 34)" onmouseover="showTip(event, '34', 34)">
+            unfoldL selector folder state count
+          </code>
+          <div class="tip" id="34">
+            <strong>Signature:</strong> selector:(&#39;T -&gt; Layout) -&gt; folder:(&#39;State -&gt; (&#39;T * &#39;State) option) -&gt; state:&#39;State -&gt; count:int -&gt; Layout list<br />
+                          <strong>Type parameters:</strong> 'T, 'State          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L151-151" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>For limitting layout of list-like sequences (lists,arrays,etc).
+unfold a list of items using (project and z) making layout list via itemL.
+If reach maxLength (before exhausting) then truncate.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '35', 35)" onmouseover="showTip(event, '35', 35)">
+            wordL text
+          </code>
+          <div class="tip" id="35">
+            <strong>Signature:</strong> text:string -&gt; Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L74-74" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>An string leaf</p>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/YC.PrettyPrinter/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">YC.PrettyPrinter</li>
+            <li><a href="/YC.PrettyPrinter/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/YC.PrettyPrinter">Get Library via NuGet</a></li>
+            <li><a href="https://github.com/fsprojects/YC.PrettyPrinter/">Source Code on GitHub</a></li>
+            <li><a href="/YC.PrettyPrinter/license.html">License</a></li>
+            <li><a href="/YC.PrettyPrinter/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/YC.PrettyPrinter/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/YC.PrettyPrinter/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="https://github.com/fsprojects/YC.PrettyPrinter/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>

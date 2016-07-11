@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Pretty - YC.PrettyPrinter</title>
+    <title>FormatOptions - YC.PrettyPrinter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="Andrey Bulgakov"/>
@@ -35,53 +35,48 @@
 
 
 
-<h1>Pretty</h1>
+<h1>FormatOptions</h1>
 <p>
-  <span>Namespace: YC.PrettyPrinter</span><br />
+  <span>Namespace: Microsoft.FSharp.Text.StructuredFormat</span><br />
 </p>
 <div class="xmldoc">
+<p>A record of options to control structural formatting.
+For F# Interactive properties matching those of this value can be accessed via the 'fsi'
+value.</p>
+<p>Floating Point format given in the same format accepted by System.Double.ToString,
+e.g. f6 or g15.</p>
+<p>If ShowProperties is set the printing process will evaluate properties of the values being
+displayed.  This may cause additional computation.</p>
+<p>The ShowIEnumerable is set the printing process will force the evalution of IEnumerable objects
+to a small, finite depth, as determined by the printing parameters.
+This may lead to additional computation being performed during printing.</p>
+<example>
+From F# Interactive the default settings can be adjusted using, for example, 
+<pre>
+  open Microsoft.FSharp.Compiler.Interactive.Settings;;
+  setPrintWidth 120;;
+</pre>
+</example>
+
 </div>
-
-<!-- Render nested types and modules, if there are any -->
-
-  <h3>Functions and values</h3>
+  <h3>Record Fields</h3>
   <table class="table table-bordered member-list">
     <thead>
-      <tr><td>Function or value</td><td>Description</td></tr>
+      <tr><td>Record Field</td><td>Description</td></tr>
     </thead>
     <tbody>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '48', 48)" onmouseover="showTip(event, '48', 48)">
-            best wid map1
+          <code onmouseout="hideTip(event, '86', 86)" onmouseover="showTip(event, '86', 86)">
+            AttributeProcessor
           </code>
-          <div class="tip" id="48">
-            <strong>Signature:</strong> wid:int -&gt; map1:Dictionary&lt;&#39;?7214,Format&gt; -&gt; Format<br />
-                          <strong>Type parameters:</strong> '?7214          </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L86-86" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Get suitable and min</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '49', 49)" onmouseover="showTip(event, '49', 49)">
-            cacheContains wid doc
-          </code>
-          <div class="tip" id="49">
-            <strong>Signature:</strong> wid:int -&gt; doc:Doc -&gt; Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt;<br />
+          <div class="tip" id="86">
+            <strong>Signature:</strong> string -&gt; (string * string) list -&gt; bool -&gt; unit<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L69-69" class="github-link">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L144-144" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -91,15 +86,15 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '50', 50)" onmouseover="showTip(event, '50', 50)">
-            cacheMap 
+          <code onmouseout="hideTip(event, '87', 87)" onmouseover="showTip(event, '87', 87)">
+            BindingFlags
           </code>
-          <div class="tip" id="50">
-            <strong>Signature:</strong> Dictionary&lt;Doc,Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt;&gt;<br />
+          <div class="tip" id="87">
+            <strong>Signature:</strong> BindingFlags<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L37-37" class="github-link">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L146-146" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -109,75 +104,15 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '51', 51)" onmouseover="showTip(event, '51', 51)">
-            checkUpdate wid form map1
+          <code onmouseout="hideTip(event, '88', 88)" onmouseover="showTip(event, '88', 88)">
+            FloatingPointFormat
           </code>
-          <div class="tip" id="51">
-            <strong>Signature:</strong> wid:int -&gt; form:Format -&gt; map1:Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt; -&gt; unit<br />
+          <div class="tip" id="88">
+            <strong>Signature:</strong> string<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L16-16" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Insert format to map if format is suitable. If map empty then insert non-suitable format.</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '52', 52)" onmouseover="showTip(event, '52', 52)">
-            docToFormats wid doc
-          </code>
-          <div class="tip" id="52">
-            <strong>Signature:</strong> wid:int -&gt; doc:Doc -&gt; Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt;<br />
-                      </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L40-40" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Main function that tansform Doc to variants of formats.</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '53', 53)" onmouseover="showTip(event, '53', 53)">
-            mapmerge map1 map2
-          </code>
-          <div class="tip" id="53">
-            <strong>Signature:</strong> map1:Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt; -&gt; map2:Dictionary&lt;&#39;?7208,Format&gt; -&gt; unit<br />
-                          <strong>Type parameters:</strong> '?7208          </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L34-34" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Insert in in map1 elements from map2.</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '54', 54)" onmouseover="showTip(event, '54', 54)">
-            mIter f d1 d2
-          </code>
-          <div class="tip" id="54">
-            <strong>Signature:</strong> f:(&#39;?7202 -&gt; &#39;?7203 -&gt; unit) -&gt; d1:&#39;?7203 -&gt; d2:Dictionary&lt;&#39;?7204,&#39;?7202&gt; -&gt; unit<br />
-                          <strong>Type parameters:</strong> '?7202, '?7203, '?7204          </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L21-21" class="github-link">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L143-143" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -187,55 +122,15 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '55', 55)" onmouseover="showTip(event, '55', 55)">
-            pretty resultWidth d
+          <code onmouseout="hideTip(event, '89', 89)" onmouseover="showTip(event, '89', 89)">
+            FormatProvider
           </code>
-          <div class="tip" id="55">
-            <strong>Signature:</strong> resultWidth:int -&gt; d:Doc -&gt; Format<br />
+          <div class="tip" id="89">
+            <strong>Signature:</strong> IFormatProvider<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L79-79" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Get pretty format.</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '56', 56)" onmouseover="showTip(event, '56', 56)">
-            print resultWidth d
-          </code>
-          <div class="tip" id="56">
-            <strong>Signature:</strong> resultWidth:int -&gt; d:Doc -&gt; string<br />
-                      </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L95-95" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>Get pretty format with Best</p>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '57', 57)" onmouseover="showTip(event, '57', 57)">
-            sortUpdate wid result d2
-          </code>
-          <div class="tip" id="57">
-            <strong>Signature:</strong> wid:int -&gt; result:Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt; -&gt; d2:Dictionary&lt;&#39;?7206,Format&gt; -&gt; unit<br />
-                          <strong>Type parameters:</strong> '?7206          </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L24-24" class="github-link">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L145-145" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -245,21 +140,136 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '58', 58)" onmouseover="showTip(event, '58', 58)">
-            update form map1
+          <code onmouseout="hideTip(event, '90', 90)" onmouseover="showTip(event, '90', 90)">
+            PrintDepth
           </code>
-          <div class="tip" id="58">
-            <strong>Signature:</strong> form:Format -&gt; map1:Dictionary&lt;int&lt;MeasureProduct&lt;Frame,MeasureOne&gt;&gt;,Format&gt; -&gt; unit<br />
+          <div class="tip" id="90">
+            <strong>Signature:</strong> int<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/Pretty.fs#L9-9" class="github-link">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L148-148" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Updates map with choosing a min format.</p>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
 
+          <code onmouseout="hideTip(event, '91', 91)" onmouseover="showTip(event, '91', 91)">
+            PrintLength
+          </code>
+          <div class="tip" id="91">
+            <strong>Signature:</strong> int<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L149-149" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
 
+          <code onmouseout="hideTip(event, '92', 92)" onmouseover="showTip(event, '92', 92)">
+            PrintSize
+          </code>
+          <div class="tip" id="92">
+            <strong>Signature:</strong> int<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L150-150" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '93', 93)" onmouseover="showTip(event, '93', 93)">
+            PrintWidth
+          </code>
+          <div class="tip" id="93">
+            <strong>Signature:</strong> int<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L147-147" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '94', 94)" onmouseover="showTip(event, '94', 94)">
+            ShowIEnumerable
+          </code>
+          <div class="tip" id="94">
+            <strong>Signature:</strong> bool<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L152-152" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '95', 95)" onmouseover="showTip(event, '95', 95)">
+            ShowProperties
+          </code>
+          <div class="tip" id="95">
+            <strong>Signature:</strong> bool<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L151-151" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '96', 96)" onmouseover="showTip(event, '96', 96)">
+            Default
+          </code>
+          <div class="tip" id="96">
+            <strong>Signature:</strong> FormatOptions<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fs#L166-166" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+              <p>CompiledName: <code>get_Default</code></p>
         </td>
       </tr>
     </tbody>

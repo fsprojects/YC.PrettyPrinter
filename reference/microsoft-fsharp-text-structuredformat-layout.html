@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>release-notes</title>
+    <title>Layout - YC.PrettyPrinter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Pretty printing library"/>
+    <meta name="description" content=""/>
     <meta name="author" content="Andrey Bulgakov"/>
 
     <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
@@ -32,30 +32,80 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h4><a name="0-0-5-July-11-2016" class="anchor" href="#0-0-5-July-11-2016">0.0.5 - July 11 2016</a></h4>
-<ul>
-<li>Update FSharp.Core to latest version</li>
-<li>Use FSharp.Core from NuGet</li>
-<li>Original Text.StructuredFormat merged</li>
-</ul>
-<h4><a name="0-0-4-August-20-2015" class="anchor" href="#0-0-4-August-20-2015">0.0.4 - August 20 2015</a></h4>
-<ul>
-<li>Links fixed</li>
-</ul>
-<h4><a name="0-0-3-August-20-2015" class="anchor" href="#0-0-3-August-20-2015">0.0.3 - August 20 2015</a></h4>
-<ul>
-<li>Stubs for lrftL, rightL and sepL</li>
-<li>Memory optimization</li>
-</ul>
-<h4><a name="0-0-2-August-8-2015" class="anchor" href="#0-0-2-August-8-2015">0.0.2 - August 8 2015</a></h4>
-<ul>
-<li>First stable release</li>
-</ul>
-<h4><a name="0-0-1-beta-May-1-2015" class="anchor" href="#0-0-1-beta-May-1-2015">0.0.1-beta - May 1 2015</a></h4>
-<ul>
-<li>Initial release</li>
-</ul>
 
+
+
+<h1>Layout</h1>
+<p>
+  <span>Namespace: Microsoft.FSharp.Text.StructuredFormat</span><br />
+</p>
+<div class="xmldoc">
+<p>Data representing structured layouts of terms.  The representation
+of this data type is only for the consumption of formatting engines.</p>
+
+</div>
+  <h3>Union Cases</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Union Case</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '103', 103)" onmouseover="showTip(event, '103', 103)">
+            Attr(...)
+          </code>
+          <div class="tip" id="103">
+            <strong>Signature:</strong> string * (string * string) list * Layout<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L24-24" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '104', 104)" onmouseover="showTip(event, '104', 104)">
+            Leaf(bool,obj,bool)
+          </code>
+          <div class="tip" id="104">
+            <strong>Signature:</strong> bool * obj * bool<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L22-22" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '105', 105)" onmouseover="showTip(event, '105', 105)">
+            Node(bool,Layout,bool,Layout,bool,Joint)
+          </code>
+          <div class="tip" id="105">
+            <strong>Signature:</strong> bool * Layout * bool * Layout * bool * Joint<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/fsprojects/YC.PrettyPrinter/tree/master/src/YC.PrettyPrinter/StructuredFormat.fsi#L23-23" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
         </div>
         <div class="span3">
