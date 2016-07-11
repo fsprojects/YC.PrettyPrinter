@@ -12,9 +12,9 @@ licenseUrl
 requireLicenseAcceptance
     false
 copyright
-    Copyright 2015
+    Copyright 2016
 tags
-    PrettyPrinter PrettyPrinting YC.PrettyPrinter FSharp
+    TextStructuredFormat StructuredFormat PrettyPrinter PrettyPrinting YC.PrettyPrinter FSharp
 summary
     Pretty printing library
 description
