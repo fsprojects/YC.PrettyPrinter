@@ -1,0 +1,23 @@
+System.MethodAccessException: Attempt by method 'FSharpVSPowerTools.Lexer.|GenericTypeParameterPrefix|StaticallyResolvedTypeParameterPrefix|Other|@92(System.String, Microsoft.FSharp.Compiler.SourceCodeServices.FSharpTokenInfo)' to access method 'Microsoft.FSharp.Compiler.Parser.tokenTagToTokenId(Int32)' failed.
+   at FSharp.CodeFormat.CodeFormatAgent.ParseSource(String file, String source, FSharpOption`1 options, FSharpOption`1 defines) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.CodeFormat\CodeFormatAgent.fs:line 390
+   at FSharp.Literate.ParseScript.parseScriptFile(String file, String content, CompilerContext ctx) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\ParseScript.fs:line 198
+   at FSharp.Literate.Literate.ParseScriptFile[d](String path, FSharpOption`1 formatAgent, FSharpOption`1 compilerOptions, FSharpOption`1 definedSymbols, FSharpOption`1 references, FSharpOption`1 fsiEvaluator) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\Main.fs:line 67
+   at FSharp.Literate.Literate.ProcessScriptFile(String input, FSharpOption`1 templateFile, FSharpOption`1 output, FSharpOption`1 format, FSharpOption`1 formatAgent, FSharpOption`1 prefix, FSharpOption`1 compilerOptions, FSharpOption`1 lineNumbers, FSharpOption`1 references, FSharpOption`1 fsiEvaluator, FSharpOption`1 replacements, FSharpOption`1 includeSource, FSharpOption`1 layoutRoots, FSharpOption`1 generateAnchors, FSharpOption`1 assemblyReferences, FSharpOption`1 customizeDocument) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\Main.fs:line 167
+   at <StartupCode$FSharp-Literate>.$Main.processScriptFile@184.Invoke(String file, String output) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\Main.fs:line 184
+   at <StartupCode$FSharp-Literate>.$Main.processDirectory@199(FSharpOption`1 format, Boolean processRecursive, FSharpFunc`2 processScriptFile, FSharpFunc`2 processMarkdown, String indir, String outdir) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\Main.fs:line 218
+   at FSharp.Literate.Literate.ProcessDirectory(String inputDirectory, FSharpOption`1 templateFile, FSharpOption`1 outputDirectory, FSharpOption`1 format, FSharpOption`1 formatAgent, FSharpOption`1 prefix, FSharpOption`1 compilerOptions, FSharpOption`1 lineNumbers, FSharpOption`1 references, FSharpOption`1 fsiEvaluator, FSharpOption`1 replacements, FSharpOption`1 includeSource, FSharpOption`1 layoutRoots, FSharpOption`1 generateAnchors, FSharpOption`1 assemblyReferences, FSharpOption`1 processRecursive, FSharpOption`1 customizeDocument) in c:\Tomas\Public\tpetricek\FSharp.Formatting\src\FSharp.Literate\Main.fs:line 181
+   at FSI_0003.buildDocumentation() in C:\gsv\projects\YC\YC.PrettyPrinter\docs\tools\generate.fsx:line 136
+   at <StartupCode$FSI_0003>.$FSI_0003.main@() in C:\gsv\projects\YC\YC.PrettyPrinter\docs\tools\generate.fsx:line 164
+Stopped due to error
+Running build failed.
+Error:
+System.Exception: generating help documentation failed
+   at FSI_0005.Build.generateHelp'(Boolean fail, Boolean debug)
+   at FSI_0005.Build.clo@213-20.Invoke(Unit _arg1)
+   at Fake.TargetHelper.runSingleTarget(TargetTemplate`1 target) in C:\code\fake\src\app\FakeLib\TargetHelper.fs:line 492
+Status:        Failure
+  1) System.Exception: generating help documentation failed
+   at FSI_0005.Build.generateHelp'(Boolean fail, Boolean debug)
+   at FSI_0005.Build.clo@213-20.Invoke(Unit _arg1)
+   at Fake.TargetHelper.runSingleTarget(TargetTemplate`1 target) in C:\code\fake\src\app\FakeLib\TargetHelper.fs:line 492
+

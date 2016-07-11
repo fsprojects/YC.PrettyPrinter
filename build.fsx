@@ -8,6 +8,7 @@ open Fake.Git
 open Fake.AssemblyInfoFile
 open Fake.ReleaseNotesHelper
 open Fake.UserInputHelper
+open Fake.Testing.NUnit3
 open System
 open System.IO
 #if MONO
@@ -137,11 +138,12 @@ Target "Build" (fun _ ->
 
 Target "RunTests" (fun _ ->
     !! testAssemblies
-    |> NUnit (fun p ->
+    |> NUnit3 (fun p ->
         { p with
-            DisableShadowCopy = true
+            ShadowCopy = false
+            DisposeRunners = true
             TimeOut = TimeSpan.FromMinutes 20.
-            OutputFile = "TestResults.xml" })
+            WorkingDir = "tests/YC.PrettyPrinter.Tests/bin/Release" })
 )
 
 #if MONO

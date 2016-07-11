@@ -34,21 +34,17 @@
         <div class="span9" id="main">
           
 <h1><a name="Getting-started" class="anchor" href="#Getting-started">Getting started</a></h1>
-
-<p>YC.PrettyPrinters contains two sets of printer combinators: 
-<a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-doc-doc.html">the first</a> 
-consists of 5 basic combinators described in 
+<p>YC.PrettyPrinters contains two sets of printer combinators:
+<a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-doc-doc.html">the first</a>
+consists of 5 basic combinators described in
 <a href="http://link.springer.com/chapter/10.1007%2F978-3-662-46823-4_21">the paper</a>
-and <a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">the second</a> is the same as 
+and <a href="http://fsprojects.github.io/YC.PrettyPrinter/reference/yc-prettyprinter-structuredformat.html">the second</a> is the same as
 <a href="https://github.com/fsprojects/FSharpx.Extras/tree/master/src/FSharpx.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>
 library provides. You can either use the set of basic combinators or the set of more high-level StructuredFormat-like combinators.</p>
-
-<p>The best way to understand how to create pretty printers using our library is to take a look 
+<p>The best way to understand how to create pretty printers using our library is to take a look
 at <a href="https://github.com/fsprojects/YC.PrettyPrinter/blob/master/src/YC.PrettyPrinter/StructuredFormat.fs">our implementation</a> of
 <a href="https://github.com/fsprojects/FSharpx.Extras/tree/master/src/FSharpx.Text.StructuredFormat">FSharp.Text.StructuredFormat</a>.</p>
-
 <p>The following example demonstrates how to use this library.</p>
-
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
 <span class="l"> 3: </span>
@@ -160,7 +156,7 @@ at <a href="https://github.com/fsprojects/YC.PrettyPrinter/blob/master/src/YC.Pr
 <div class="tip" id="fs8">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
 <div class="tip" id="fs9">val stmtBlock : k:int -&gt; YC.PrettyPrinter.Doc.Doc<br /><br />Full name: Tutorial.stmtBlock</div>
 <div class="tip" id="fs10">val k : int</div>
-<div class="tip" id="fs11">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type List&lt;&#39;T&gt; =<br />&#160;&#160;| ( [] )<br />&#160;&#160;| ( :: ) of Head: &#39;T * Tail: &#39;T list<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;member Head : &#39;T<br />&#160;&#160;member IsEmpty : bool<br />&#160;&#160;member Item : index:int -&gt; &#39;T with get<br />&#160;&#160;member Length : int<br />&#160;&#160;member Tail : &#39;T list<br />&#160;&#160;static member Cons : head:&#39;T * tail:&#39;T list -&gt; &#39;T list<br />&#160;&#160;static member Empty : &#39;T list<br /><br />Full name: Microsoft.FSharp.Collections.List&lt;_&gt;</div>
+<div class="tip" id="fs11">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type List&lt;&#39;T&gt; =<br />&#160;&#160;| ( [] )<br />&#160;&#160;| ( :: ) of Head: &#39;T * Tail: &#39;T list<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;member GetSlice : startIndex:int option * endIndex:int option -&gt; &#39;T list<br />&#160;&#160;member Head : &#39;T<br />&#160;&#160;member IsEmpty : bool<br />&#160;&#160;member Item : index:int -&gt; &#39;T with get<br />&#160;&#160;member Length : int<br />&#160;&#160;member Tail : &#39;T list<br />&#160;&#160;static member Cons : head:&#39;T * tail:&#39;T list -&gt; &#39;T list<br />&#160;&#160;static member Empty : &#39;T list<br /><br />Full name: Microsoft.FSharp.Collections.List&lt;_&gt;</div>
 <div class="tip" id="fs12">val reduce : reduction:(&#39;T -&gt; &#39;T -&gt; &#39;T) -&gt; list:&#39;T list -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Collections.List.reduce</div>
 <div class="tip" id="fs13">val layout : YC.PrettyPrinter.Doc.Doc<br /><br />Full name: Tutorial.layout</div>
 <div class="tip" id="fs14">val condBlock : YC.PrettyPrinter.Doc.Doc</div>

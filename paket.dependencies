@@ -1,8 +1,8 @@
 source https://nuget.org/api/v2
 
-nuget FSharp.Formatting 2.8.0
-nuget FSharpVSPowerTools.Core 1.7.0
-nuget FSharpx.Text.StructuredFormat 1.8.41
+nuget FSharp.Core
+nuget FSharp.Formatting
+nuget FSharpVSPowerTools.Core
 nuget NUnit 
 nuget NUnit.Runners
 nuget FAKE
