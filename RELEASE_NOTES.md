@@ -1,3 +1,8 @@
+#### 0.0.5 - July 11 2016
+* Update FSharp.Core to latest version
+* Use FSharp.Core from NuGet
+* Original Text.StructuredFormat merged
+
 #### 0.0.4 - August 20 2015
 * Links fixed
 
