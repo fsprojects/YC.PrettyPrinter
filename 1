@@ -1,0 +1,307 @@
+No version specified. Downloading latest stable.
+Paket.exe 3.4.0.0 is up to date.
+Paket version 3.4.0.0
+0 seconds - ready.
+Building project with version: LocalBuild
+Shortened DependencyGraph for Target BuildPackage:
+<== BuildPackage
+   <== NuGet
+      <== All
+         <== GenerateDocs
+            <== GenerateReferenceDocs
+               <== RunTests
+                  <== CopyBinaries
+                     <== Build
+                        <== AssemblyInfo
+                           <== Clean
+               <== GenerateHelp
+                  <== CleanDocs
+
+The resulting target order is:
+ - Clean
+ - AssemblyInfo
+ - Build
+ - CopyBinaries
+ - RunTests
+ - CleanDocs
+ - GenerateHelp
+ - GenerateReferenceDocs
+ - GenerateDocs
+ - All
+ - NuGet
+ - BuildPackage
+Starting Target: Clean 
+Deleting contents of bin
+Deleting contents of temp
+Finished Target: Clean
+Starting Target: AssemblyInfo (==> Clean)
+Created AssemblyInfo file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\AssemblyInfo.fs".
+Finished Target: AssemblyInfo
+Starting Target: Build (==> AssemblyInfo)
+Building project: C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln
+  C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe  C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln /t:Rebuild /m      /p:RestorePackages="False" /p:Configuration="Release" /logger:Fake.MsBuildLogger+ErrorLogger,"C:\gsv\projects\YC\YC.PrettyPrinter\packages\FAKE\tools\FakeLib.dll"
+C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe  C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln /t:Rebuild /m      /p:RestorePackages="False" /p:Configuration="Release" /logger:Fake.MsBuildLogger+ErrorLogger,"C:\gsv\projects\YC\YC.PrettyPrinter\packages\FAKE\tools\FakeLib.dll"
+Microsoft (R) Build Engine version 14.0.24728.2
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 7/11/2016 6:34:29 PM.
+     1>Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" on node 1 (Rebuild target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Release|Any CPU".
+       The target "BeforeGenerateProjectPriFile" listed in a BeforeTargets attribute at "C:\Program Files (x86)\MSBuild\Microsoft\NuGet\Microsoft.NuGet.targets (186,61)" does not exist in the project, and will be ignored.
+     1>Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (1) is building "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj" (2) on node 4 (Rebuild target(s)).
+     2>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\Example.exe.config".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\Example.XML".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\Example.exe".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\Example.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\app.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\YC.PrettyPrinter.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\YC.PrettyPrinter.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\YC.PrettyPrinter.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\app.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\FSharp.Core.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\FSharp.Core.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\obj\Release\Example.fsprojResolveAssemblyReference.cache".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\obj\Release\Example.exe".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\obj\Release\Example.pdb".
+       The target "BeforeGenerateProjectPriFile" listed in a BeforeTargets attribute at "C:\Program Files (x86)\MSBuild\Microsoft\NuGet\Microsoft.NuGet.targets (186,61)" does not exist in the project, and will be ignored.
+     1>Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (1) is building "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\app.fsproj" (3) on node 3 (Rebuild target(s)).
+     3>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.XML".
+       The target "BeforeGenerateProjectPriFile" listed in a BeforeTargets attribute at "C:\Program Files (x86)\MSBuild\Microsoft\NuGet\Microsoft.NuGet.targets (186,61)" does not exist in the project, and will be ignored.
+       CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll".
+     1>Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (1) is building "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\YC.PrettyPrinter.fsproj" (4) on node 1 (Rebuild target(s)).
+     4>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.xml".
+       The target "BeforeGenerateProjectPriFile" listed in a BeforeTargets attribute at "C:\Program Files (x86)\MSBuild\Microsoft\NuGet\Microsoft.NuGet.targets (186,61)" does not exist in the project, and will be ignored.
+       CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll".
+     3>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\FSharp.Core.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\FSharp.Core.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\obj\Release\app.dll".
+     4>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\FSharp.Core.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\FSharp.Core.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\obj\Release\YC.PrettyPrinter.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\obj\Release\YC.PrettyPrinter.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\obj\Release\YC.PrettyPrinter.fsprojResolveAssemblyReference.cache".
+       GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft SDKs\F#\4.0\Framework\v4.0\fsc.exe -o:obj\Release\YC.PrettyPrinter.dll --debug:pdbonly --noframework --define:TRACE --doc:.\bin\Release\YC.PrettyPrinter.xml --optimize+ -r:C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Numerics.dll" --target:library --warn:3 --warnaserror:76 --fullpaths --flaterrors --highentropyva- "C:\Users\User\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.fs" Doc.fs Format.fs Pretty.fs StructuredFormatInterface.fs AssemblyInfo.fs StructuredFormat.fsi StructuredFormat.fs 
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft SDKs\F#\3.1\Framework\v4.0\fsc.exe -o:obj\Release\app.dll --noframework --doc:bin\Release\app.XML --optimize+ -r:C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Numerics.dll" --target:library --warnaserror:76 --fullpaths --flaterrors --highentropyva- "C:\Users\User\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.fs" CoreParser.fs Expr.fs Stmt.fs VerticalPrinter.fs 
+     1>Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (1) is building "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\YC.PrettyPrinter.Tests.fsproj" (5) on node 2 (Rebuild target(s)).
+     5>CoreClean:
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\app.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\nunit.framework.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\FSharp.Core.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\app.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\FSharp.Core.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\nunit.framework.xml".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll.config".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\obj\Release\YC.PrettyPrinter.Tests.fsprojResolveAssemblyReference.cache".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\obj\Release\YC.PrettyPrinter.Tests.pdb".
+         Deleting file "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\obj\Release\YC.PrettyPrinter.Tests.dll".
+     3>_CopyFilesMarkedCopyLocal:
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll" to "bin\Release\FSharp.Core.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.xml" to "bin\Release\FSharp.Core.xml".
+       CopyFilesToOutputDirectory:
+         Copying file from "obj\Release\app.dll" to "bin\Release\app.dll".
+         app -> C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll
+     3>Done Building Project "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\app.fsproj" (Rebuild target(s)).
+     4>_CopyFilesMarkedCopyLocal:
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll" to ".\bin\Release\FSharp.Core.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.xml" to ".\bin\Release\FSharp.Core.xml".
+       CopyFilesToOutputDirectory:
+         Copying file from "obj\Release\YC.PrettyPrinter.dll" to ".\bin\Release\YC.PrettyPrinter.dll".
+         YC.PrettyPrinter -> C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll
+         Copying file from "obj\Release\YC.PrettyPrinter.pdb" to ".\bin\Release\YC.PrettyPrinter.pdb".
+     4>Done Building Project "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\YC.PrettyPrinter.fsproj" (Rebuild target(s)).
+     2>GenerateBindingRedirects:
+         No suggested binding redirects from ResolveAssemblyReferences.
+       GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft SDKs\F#\4.0\Framework\v4.0\fsc.exe -o:obj\Release\Example.exe --debug:pdbonly --noframework --define:TRACE --doc:bin\Release\Example.XML --optimize+ --platform:anycpu32bitpreferred -r:C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Numerics.dll" -r:C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll --target:exe --warn:3 --warnaserror:76 --fullpaths --flaterrors --subsystemversion:6.00 --highentropyva+ "C:\Users\User\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.fs" Program.fs 
+     5>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft SDKs\F#\4.0\Framework\v4.0\fsc.exe -o:obj\Release\YC.PrettyPrinter.Tests.dll --debug:pdbonly --noframework --define:TRACE --doc:bin\Release\YC.PrettyPrinter.Tests.xml --optimize+ -r:C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll -r:C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" -r:C:\gsv\projects\YC\YC.PrettyPrinter\packages\NUnit\lib\net40\nunit.framework.dll -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Numerics.dll" -r:C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll --target:library --warn:3 --warnaserror:76 --fullpaths --flaterrors --highentropyva- "C:\Users\User\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.fs" FsxLPrinter.fs YCLPrinter.fs CheckCode.fs 
+     2>CoreCompile:
+         
+     2>C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Program.fs(29,15): warning FS0025: Incomplete pattern matches on this expression. For example, the value 'Assign (_, _)' may indicate a case not covered by the pattern(s). [C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj]
+         
+     2>C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Program.fs(52,15): warning FS0025: Incomplete pattern matches on this expression. For example, the value 'Assign (_, _)' may indicate a case not covered by the pattern(s). [C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj]
+       _CopyFilesMarkedCopyLocal:
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll" to "bin\Release\app.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll" to "bin\Release\YC.PrettyPrinter.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\FSharp.Core.dll" to "bin\Release\FSharp.Core.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.pdb" to "bin\Release\YC.PrettyPrinter.pdb".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.xml" to "bin\Release\YC.PrettyPrinter.xml".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.xml" to "bin\Release\app.xml".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\FSharp.Core.xml" to "bin\Release\FSharp.Core.xml".
+     5>_CopyFilesMarkedCopyLocal:
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.dll" to "bin\Release\app.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.dll" to "bin\Release\FSharp.Core.dll".
+     2>_CopyAppConfigFile:
+         Copying file from "App.config" to "bin\Release\Example.exe.config".
+       CopyFilesToOutputDirectory:
+         Copying file from "obj\Release\Example.exe" to "bin\Release\Example.exe".
+         Example -> C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\bin\Release\Example.exe
+         Copying file from "obj\Release\Example.pdb" to "bin\Release\Example.pdb".
+     2>Done Building Project "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj" (Rebuild target(s)).
+     5>_CopyFilesMarkedCopyLocal:
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\NUnit\lib\net40\nunit.framework.dll" to "bin\Release\nunit.framework.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.dll" to "bin\Release\YC.PrettyPrinter.dll".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.pdb" to "bin\Release\YC.PrettyPrinter.pdb".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\src\YC.PrettyPrinter\bin\Release\YC.PrettyPrinter.xml" to "bin\Release\YC.PrettyPrinter.xml".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\tests\LParser\bin\Release\app.xml" to "bin\Release\app.xml".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\FSharp.Core\lib\net40\FSharp.Core.xml" to "bin\Release\FSharp.Core.xml".
+         Copying file from "C:\gsv\projects\YC\YC.PrettyPrinter\packages\NUnit\lib\net40\nunit.framework.xml" to "bin\Release\nunit.framework.xml".
+       _CopyAppConfigFile:
+         Copying file from "App.config" to "bin\Release\YC.PrettyPrinter.Tests.dll.config".
+       CopyFilesToOutputDirectory:
+         Copying file from "obj\Release\YC.PrettyPrinter.Tests.dll" to "bin\Release\YC.PrettyPrinter.Tests.dll".
+         YC.PrettyPrinter.Tests -> C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll
+         Copying file from "obj\Release\YC.PrettyPrinter.Tests.pdb" to "bin\Release\YC.PrettyPrinter.Tests.pdb".
+     5>Done Building Project "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\YC.PrettyPrinter.Tests.fsproj" (Rebuild target(s)).
+     1>Done Building Project "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (Rebuild target(s)).
+
+Build succeeded.
+
+       "C:\gsv\projects\YC\YC.PrettyPrinter\YC.PrettyPrinter.sln" (Rebuild target) (1) ->
+       "C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj" (Rebuild target) (2) ->
+       (CoreCompile target) -> 
+         C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Program.fs(29,15): warning FS0025: Incomplete pattern matches on this expression. For example, the value 'Assign (_, _)' may indicate a case not covered by the pattern(s). [C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj]
+         C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Program.fs(52,15): warning FS0025: Incomplete pattern matches on this expression. For example, the value 'Assign (_, _)' may indicate a case not covered by the pattern(s). [C:\gsv\projects\YC\YC.PrettyPrinter\tests\Example\Example.fsproj]
+
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.87
+Finished Target: Build
+Starting Target: CopyBinaries (==> Build)
+Creating C:\gsv\projects\YC\YC.PrettyPrinter\bin\YC.PrettyPrinter
+Finished Target: CopyBinaries
+Starting Target: RunTests (==> CopyBinaries)
+C:\gsv\projects\YC\YC.PrettyPrinter\packages\NUnit.ConsoleRunner\tools\nunit3-console.exe "--noheader" "--dispose-runners" "--timeout=1200000" "--work=tests/YC.PrettyPrinter.Tests/bin/Release" "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" 
+C:\gsv\projects\YC\YC.PrettyPrinter\packages\NUnit.ConsoleRunner\tools\nunit3-console.exe "--noheader" "--dispose-runners" "--timeout=1200000" "--work=tests/YC.PrettyPrinter.Tests/bin/Release" "C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll" 
+Runtime Environment
+   OS Version: Microsoft Windows NT 10.0.10586.0
+  CLR Version: 4.0.30319.42000
+
+Test Files
+    C:\gsv\projects\YC\YC.PrettyPrinter\tests\YC.PrettyPrinter.Tests\bin\Release\YC.PrettyPrinter.Tests.dll
+
+=> YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeBB.ycp, LowTreeBB.fxp))
+Difference between "LowTreeBB.ycp", and "LowTreeBB.fxp"
+=> YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((LowTreeAbAb.ycp, LowTreeAbAb.fxp))
+Difference between "LowTreeAbAb.ycp", and "LowTreeAbAb.fxp"
+=> YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((HardTreeBB.ycp, HardTreeBB.fxp))
+Difference between "HardTreeBB.ycp", and "HardTreeBB.fxp"
+=> YC.PrinterCombinators.Tests+3CheckEquals+Equals Code.Are Equals((HardTreeAB.ycp, HardTreeAB.fxp))
+Difference between "HardTreeAB.ycp", and "HardTreeAB.fxp"
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x1.in")
+xSpeed with "xSpeed/x1.in" 
+ Text.StructuredFormat: 1.47095
+ YC.PrettyPrinter: 1.21997
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x2.in")
+xSpeed with "xSpeed/x2.in" 
+ Text.StructuredFormat: 4.45572
+ YC.PrettyPrinter: 3.98142
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x3.in")
+xSpeed with "xSpeed/x3.in" 
+ Text.StructuredFormat: 9.3156
+ YC.PrettyPrinter: 9.08205
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x4.in")
+xSpeed with "xSpeed/x4.in" 
+ Text.StructuredFormat: 20.72334
+ YC.PrettyPrinter: 20.17735
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x5.in")
+xSpeed with "xSpeed/x5.in" 
+ Text.StructuredFormat: 43.32691
+ YC.PrettyPrinter: 43.19283
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x6.in")
+xSpeed with "xSpeed/x6.in" 
+ Text.StructuredFormat: 86.65604
+ YC.PrettyPrinter: 87.15788
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x7.in")
+xSpeed with "xSpeed/x7.in" 
+ Text.StructuredFormat: 183.58815
+ YC.PrettyPrinter: 185.21143
+=> YC.PrinterCombinators.Tests+4xSpeed+xSpeedTest.Test("xSpeed/x8.in")
+xSpeed with "xSpeed/x8.in" 
+ Text.StructuredFormat: 364.28341
+ YC.PrettyPrinter: 366.93992
+=> YC.PrinterCombinators.Tests+5Perfomanse.5Test
+Difference between timeFX 3819.1977, and timeYC 4538.0711
+
+Run Settings
+    DisposeRunners: True
+    DefaultTimeout: 1200000
+    WorkDirectory: tests/YC.PrettyPrinter.Tests/bin/Release
+    ImageRuntimeVersion: 4.0.30319
+    ImageTargetFrameworkName: .NETFramework,Version=v4.0
+    ImageRequiresX86: False
+    ImageRequiresDefaultAppDomainAssemblyResolver: False
+    NumberOfTestWorkers: 4
+
+Test Run Summary
+  Overall result: Passed
+  Test Count: 74, Passed: 74, Failed: 0, Inconclusive: 0, Skipped: 0
+  Start time: 2016-07-11 15:34:32Z
+    End time: 2016-07-11 15:34:57Z
+    Duration: 24.716 seconds
+
+Results (nunit3) saved as TestResult.xml
+Finished Target: RunTests
+Starting Target: CleanDocs 
+Deleting contents of docs/output
+Finished Target: CleanDocs
+Starting Target: GenerateHelp (==> CleanDocs)
+Deleting C:\gsv\projects\YC\YC.PrettyPrinter\docs\content\release-notes.md
+Deleting C:\gsv\projects\YC\YC.PrettyPrinter\docs\content\license.md
+FSharp.Formatting Information: 0 : FSharp.Formatting Logging setup!
+Yaaf.FSharp.Scriping Information: 0 : Yaaf.FSharp.Scripting Logging setup!
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\logo-template.pdn
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\logo.png
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\logo128.png
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\logo32.png
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\logo64.png
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\_logo-template.pdn
+Copying file: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\img\__logo-template.pdn
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\style.css
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\style.css.bak
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\style_light.css
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\tips.js
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\img\github-blue.png
+Copying styles and scripts: C:\gsv\projects\YC\YC.PrettyPrinter\docs\output\content\img\github.png
+Generating 'C:\gsv\projects\YC\YC.PrettyPrinter\docs\tools\..\content/index.html'
+
+---------------------------------------------------------------------
+Build Time Report
+---------------------------------------------------------------------
+Target         Duration
+------         --------
+Clean          00:00:00.0046139
+AssemblyInfo   00:00:00.0093311
+Build          00:00:01.9838461
+CopyBinaries   00:00:00.0116115
+RunTests       00:00:25.5354073
+CleanDocs      00:00:00.0048645
+Total:         00:00:30.9752467
+---------------------------------------------------------------------
+---------------------------------------------------------------------

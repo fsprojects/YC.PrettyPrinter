@@ -36,6 +36,91 @@
 <h1>YC.PrettyPrinter</h1>
 
 
+  <h2>Microsoft.FSharp.Text.StructuredFormat Namespace</h2>
+    <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="microsoft-fsharp-text-structuredformat-formatoptions.html">FormatOptions</a>
+          </td>
+          <td class="xmldoc"><p>A record of options to control structural formatting.
+For F# Interactive properties matching those of this value can be accessed via the 'fsi'
+value.</p>
+<p>Floating Point format given in the same format accepted by System.Double.ToString,
+e.g. f6 or g15.</p>
+<p>If ShowProperties is set the printing process will evaluate properties of the values being
+displayed.  This may cause additional computation.</p>
+<p>The ShowIEnumerable is set the printing process will force the evalution of IEnumerable objects
+to a small, finite depth, as determined by the printing parameters.
+This may lead to additional computation being performed during printing.</p>
+<example>
+From F# Interactive the default settings can be adjusted using, for example, 
+<pre>
+  open Microsoft.FSharp.Compiler.Interactive.Settings;;
+  setPrintWidth 120;;
+</pre>
+</example>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="microsoft-fsharp-text-structuredformat-ienvironment.html">IEnvironment</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="microsoft-fsharp-text-structuredformat-joint.html">Joint</a>
+          </td>
+          <td class="xmldoc"><p>Data representing joints in structured layouts of terms.  The representation
+of this data type is only for the consumption of formatting engines.</p>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="microsoft-fsharp-text-structuredformat-layout.html">Layout</a>
+          </td>
+          <td class="xmldoc"><p>Data representing structured layouts of terms.  The representation
+of this data type is only for the consumption of formatting engines.</p>
+
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="microsoft-fsharp-text-structuredformat-displaymodule.html">Display</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="microsoft-fsharp-text-structuredformat-layoutopsmodule.html">LayoutOps</a>
+          </td>
+          <td class="xmldoc"><p>A layout is a sequence of strings which have been joined together.
+The strings are classified as words, separators and left and right parenthesis.
+This classification determines where spaces are inserted.
+A joint is either unbreakable, breakable or broken.
+If a joint is broken the RHS layout occurs on the next line with optional indentation.
+A layout can be squashed to for given width which forces breaks as required.</p>
+
+</td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
   <h2>YC.PrettyPrinter Namespace</h2>
     <div>
       <table class="table table-bordered module-list">
